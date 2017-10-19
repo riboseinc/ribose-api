@@ -1,7 +1,9 @@
 # (c) 2017 Ribose Inc.
 
-HERCULE = hercule
+DIRS    := sections
+DEPS    := $(foreach dir, $(DIRS), $(wildcard $(dir)/*))
+HERCULE  = hercule
 
-apiary.apib: input.apib
+apiary.apib: input.apib $(DEPS)
 	$(HERCULE) $< -o $@
 
