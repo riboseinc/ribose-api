@@ -1,3 +1,34 @@
 = Ribose API
 
 This repo is used to store API documentation viewable at http://docs.ribose.apiary.io .
+
+If you're only interested in viewing the API, head to the above link.
+
+== Contributing
+
+We use Hercule[https://github.com/jamesramsay/hercule] to generate the API file 
+for Apiary[http://docs.ribose.apiary.io].
+
+Install `hercule`:
+
+[source,bash]
+----
+npm install -g hercule
+----
+
+Clone this repo:
+
+[source,bash]
+----
+git clone https://github.com/riboseinc/ribose-api
+cd ribose-api
+----
+
+Edit source files, and run `make`:
+
+[source,bash]
+----
+make
+----
+
+Commit all changes to the repo and push.
