@@ -6,8 +6,8 @@ If you're only interested in viewing the API, head to the above link.
 
 == Contributing
 
-We use Hercule[https://github.com/jamesramsay/hercule] to generate the API file
-for Apiary[http://docs.ribose.apiary.io].
+We use https://github.com/jamesramsay/hercule[Hercule] to generate the API file
+for http://docs.ribose.apiary.io[Apiary].
 
 Install `hercule`:
 
