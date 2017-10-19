@@ -2,6 +2,6 @@
 
 HERCULE = hercule
 
-apiary.apib: input.md
+apiary.apib: input.apib
 	$(HERCULE) $< -o $@
 
