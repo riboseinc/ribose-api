@@ -6,7 +6,7 @@ If you're only interested in viewing the API, head to the above link.
 
 == Contributing
 
-We use Hercule[https://github.com/jamesramsay/hercule] to generate the API file 
+We use Hercule[https://github.com/jamesramsay/hercule] to generate the API file
 for Apiary[http://docs.ribose.apiary.io].
 
 Install `hercule`:
@@ -32,3 +32,11 @@ make
 ----
 
 Commit all changes to the repo and push.
+
+=== Sections
+
+The `sections/` directory contains APIB files that can be transcluded in the
+final output.
+
+Corresponding entries in the `input.apib` has to be maintained, so don't forget
+to add `:()[my_new_section.apib]` when contributing a new section.
