@@ -1,0 +1,18 @@
+    + `event[name]` (string) -  Name of the event.
+    + `event[all_day]` (boolean) - Whether the event is an all-day event.
+    + `event[date_start]` (string, required) - The start date of the event.
+    + `event[date_finish]` (string, required) - The finish date of the event.
+    + `event[time_start]` (string, required) - The start time of the event.
+    + `event[time_finish]` (string, required) - The finish time of the event.
+    + `event[where]` (string) - The location where the event happens.
+    + `event[description]` (string) - The description of the event.
+    + `event[recurring_type]` (enum[string]) - The recurring type of the event (absence means `not_repeat`).
+        + members
+            + `not_repeat`
+            + `daily`
+            + `weekly`
+            + `monthly`
+            + `yearly`
+            + `weekday`
+            + `mo_we_fr`
+            + `tu_th`
