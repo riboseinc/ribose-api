@@ -3,19 +3,21 @@ HOST: https://www.ribose.com/
 
 # Ribose API
 
+[comment]: <> (INTRODUCTION section)
 
+This is the Ribose API.
 
-
-
-
-
-## Calendar API
+[comment]: <> (REFERENCE section)
 
 ## Data Structures
 
+[comment]: <> (Data Structures used globally)
+
 ### uuid (string)
 
+
 ### Calendars [/calendar/calendar]
+
 #### Create a calendar [POST]
 
 
@@ -51,6 +53,7 @@ HOST: https://www.ribose.com/
         }
 
 ### Calendar [/calendar/calendar/{calendar_id}]
+
 #### Delete a calendar [DELETE]
 
 + Parameters
@@ -85,6 +88,7 @@ HOST: https://www.ribose.com/
         }
 
 ### Events [/calendar/calendar/{calendar_id}/event]
+
 #### Create an event [POST]
 
 + Parameters
@@ -358,6 +362,7 @@ HOST: https://www.ribose.com/
 
 
 ### Event [/calendar/calendar/{calendar_id}/event/{event_id}]
+
 #### Retrieve an event [GET]
 
 + Parameters
@@ -895,4 +900,9 @@ HOST: https://www.ribose.com/
 + Response 200 (application/json)
 
         {}
+
+
+
+
+
 
