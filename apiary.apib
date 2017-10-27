@@ -21,15 +21,15 @@ This is the Ribose API.
 #### Retrieve a calendar collection [GET]
 
 + Attributes
-        + `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
-        + `length` (number) - How many days to fetch.
-        + `cal_ids` `_H~C_Bn.J` (string):
+    + `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
+    + `length` (number) - How many days to fetch.
+    + `cal_ids`: `_H~C_Bn.J` (string)
 
-            Specify the calendars to fetch with `calendar_ids` encoded by `Range Codec`.
+        Specify the calendars to fetch with `calendar_ids` encoded by `Range Codec`.
 
-        + `time_zone` Etc/UTC (string):
+    + `time_zone`: `Etc/UTC` (string)
 
-            Specify the time zone for the events.
+        Specify the time zone for the events.
 
 + Request Retrieve only the calendar collection (application/json)
 
