@@ -1,0 +1,26 @@
+## Group Self Profile
+
+### Self Profile [/people/profile]
+
+#### Show [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+:[](profile/profile.apib)
+
+#### Update names [PUT]
+
++ Request (application/json)
+
+    + Attributes (object)
+        + `user` (object)
+            + `first_name` (string) - at least 2 characters long
+            + `last_name` (string) - at least 2 characters long
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+:[](profile/profile.apib)

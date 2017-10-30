@@ -127,6 +127,72 @@ This is the Ribose API.
 * `id` (uuid)
 * `name` (string) - Space name
 * `members_count` (number) - how many members it contains
+## Group Self Profile
+
+### Self Profile [/people/profile]
+
+#### Show [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + `user` (object)
+            + `first_name`       (string)
+            + `id`               (uuid)
+            + `last_name`        (string)
+            + `indigo_user_id`   (uuid)
+            + `name`             (string)
+            + `fields`           (array[object])
+                + `name`             (string)
+                + `base_name`        (string)
+                + `title`            (string)
+                + `type`             (string)
+                + `value`            (string, nullable)
+                + `value_type`       (string, nullable)
+                + `value_type_title` (string, nullable)
+                + `visibility`       (string)
+            + `avatar` (object, nullable)
+                + `id`                           (number)
+                + `last_resize_info_for_cropper` (string)
+                + `thumb_width`                  (number)
+                + `thumb_height`                 (number)
+
+
+#### Update names [PUT]
+
++ Request (application/json)
+
+    + Attributes (object)
+        + `user` (object)
+            + `first_name` (string) - at least 2 characters long
+            + `last_name` (string) - at least 2 characters long
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + `user` (object)
+            + `first_name`       (string)
+            + `id`               (uuid)
+            + `last_name`        (string)
+            + `indigo_user_id`   (uuid)
+            + `name`             (string)
+            + `fields`           (array[object])
+                + `name`             (string)
+                + `base_name`        (string)
+                + `title`            (string)
+                + `type`             (string)
+                + `value`            (string, nullable)
+                + `value_type`       (string, nullable)
+                + `value_type_title` (string, nullable)
+                + `visibility`       (string)
+            + `avatar` (object, nullable)
+                + `id`                           (number)
+                + `last_resize_info_for_cropper` (string)
+                + `thumb_width`                  (number)
+                + `thumb_height`                 (number)
+
 
 ## Group Calendar
 
