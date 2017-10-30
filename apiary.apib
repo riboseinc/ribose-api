@@ -1518,6 +1518,418 @@ This is the Ribose API.
 + Response 200 (application/json)
 
         {}
+## Group Wiki
+
+### Wikis [/spaces/{space_id}/wiki/wiki_pages]
+
+#### Retrieve a wiki collection [GET]
+
++ Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+
++ Attributes
+    + `direction` (enum[string]) - Defines how wikis are sorted in the collection.
+        + members
+            + `desc`
+            + `asc`
+    + `order_by` (enum[string]) - Defines of which property the collection will sort.
+        + members
+            + `updated_at`
+    + `start` (number) - Fetch the collection starting from which wiki.
+    + `length` (number) - Fetch how many wikis at once.
+    + `s` (string) - 
+
++ Request (application/json)
+
+        {
+            "direction": "desc",
+            "order_by": "updated_at",
+            "start": 0,
+            "length": 25,
+            "s": ""
+        }
+
++ Response 200 (application/json)
+
+        {
+            "requested_at": 1127761243,
+            "total": 2,
+            "indices": {
+                "0": 39,
+                "1": 38
+            },
+            "objects": [{
+                "id": 38,
+                "name": "My new wiki edited",
+                "address": "my-new-wiki",
+                "created_at": "2017-10-30T07:00:25.000+00:00",
+                "updated_at": "2017-10-30T07:09:00.000+00:00",
+                "version": null,
+                "allow_attachments": false,
+                "allow_comments": true,
+                "revision": 0,
+                "tag_list": [],
+                "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                "live_edit": {
+                    "revision": 0,
+                    "quill_contents": [{
+                        "insert": "\n"
+                    }],
+                    "name": "Peter Tam",
+                    "time": "2017-10-30T07:09:00.000+00:00"
+                },
+                "attachments_listed": [],
+                "is_new_record": false,
+                "rendered_created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "rendered_updated_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "allow_create": true,
+                "allow_edit": true,
+                "allow_update": true,
+                "allow_delete": true,
+                "allow_comment": true,
+                "allow_manage_permissions": true,
+                "current_user": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "encoded_rendered_content": "",
+                "comments": [],
+                "user": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Peter Tam",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                },
+                "updater": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Peter Tam",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                }
+            },
+            {
+                "id": 39,
+                "name": "The next wiki",
+                "address": "the-next-wiki",
+                "created_at": "2017-10-30T07:30:03.000+00:00",
+                "updated_at": "2017-10-30T07:30:03.000+00:00",
+                "version": null,
+                "allow_attachments": true,
+                "allow_comments": true,
+                "revision": 0,
+                "tag_list": [],
+                "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                "live_edit": {
+                    "revision": 0,
+                    "quill_contents": [{
+                        "insert": "\n"
+                    }],
+                    "name": "Peter Tam",
+                    "time": "2017-10-30T07:30:03.000+00:00"
+                },
+                "attachments_listed": [],
+                "is_new_record": false,
+                "rendered_created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "rendered_updated_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "allow_create": true,
+                "allow_edit": true,
+                "allow_update": true,
+                "allow_delete": true,
+                "allow_comment": true,
+                "allow_manage_permissions": true,
+                "current_user": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "encoded_rendered_content": "",
+                "comments": [],
+                "user": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Peter Tam",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                },
+                "updater": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Peter Tam",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                }
+            }],
+            "tags": {
+                "selected_tags": [],
+                "related_tags": [],
+                "all_tags": []
+            },
+            "allow_create": true,
+            "recent_activity": [{
+                "date": "Monday, October 30, 2017",
+                "links": [{
+                    "id": 39,
+                    "name": "The next wiki",
+                    "path": "the-next-wiki"
+                },
+                {
+                    "id": 38,
+                    "name": "My new wiki edited",
+                    "path": "my-new-wiki"
+                }]
+            }]
+        }
+
+#### Create a wiki [POST]
+
+
++ Attributes
+    + `wiki_page[name]` (string) - The name of the wiki page.
+    + `wiki_page[tag_list]` (string) - The list of tags of the wiki page.
+
++ Request (application/json)
+
+        {
+            "wiki_page[name]": "My new wiki",
+            "wiki_page[tag_list]": ""
+        }
+
++ Response 201 (application/json)
+
+        {
+            "wiki_page":  {
+                "id": 38,
+                "name": "My new wiki",
+                "address": "my-new-wiki",
+                "created_at": "2017-10-30T07:00:25.000+00:00",
+                "updated_at": "2017-10-30T07:00:25.000+00:00",
+                "version": null,
+                "allow_attachments": false,
+                "allow_comments": true,
+                "revision": 0,
+                "tag_list": [],
+                "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                "live_edit": {
+                    "revision": 0,
+                    "quill_contents":  [{"insert": "\n"}],
+                    "name": "Jasmine Green",
+                    "time": "2017-10-30T07:09:00.719+00:00"
+                },
+                "attachments_listed": [],
+                "is_new_record": false,
+                "rendered_created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "rendered_updated_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "allow_create": true,
+                "allow_edit": true,
+                "allow_update": true,
+                "allow_delete": true,
+                "allow_comment": true,
+                "allow_manage_permissions": true,
+                "current_user": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "encoded_rendered_content": "",
+                "comments": [],
+                "user":  {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Jasmine Green",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                },
+                "updater": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Jasmine Green",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                }
+            },
+            "tags": {
+                "selected_tags": [],
+                "related_tags": [],
+                "all_tags": []},
+                "allow_create": true,
+                "recent_activity": [{
+                    "date": "Monday, October 30, 2017",
+                    "links": [{
+                        "id": 38,
+                        "name": "My new wiki",
+                        "path": "my-new-wiki"
+                    }]
+                }]
+            }
+        }
+
+### Wiki [/calendar/calendar/{calendar_id}]
+
+#### Update a wiki [PUT]
+
++ Parameters
+
++ Attributes
+    + `wiki_page[name]` (string)
+    + `wiki_page[tag_list]` (string)
+
++ Request (application/json)
+
+        {
+            "wiki_page[name]": "My new wiki edited"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "wiki_page":  {
+                "id": 38,
+                "name": "My new wiki edited",
+                "address": "my-new-wiki",
+                "created_at": "2017-10-30T07:00:25.000+00:00",
+                "updated_at": "2017-10-30T07:09:00.719+00:00",
+                "version": null,
+                "allow_attachments": false,
+                "allow_comments": true,
+                "revision": 0,
+                "tag_list": [],
+                "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                "live_edit": {
+                    "revision": 0,
+                    "quill_contents":  [{"insert": "\n"}],
+                    "name": "Jasmine Green",
+                    "time": "2017-10-30T07:09:00.719+00:00"
+                },
+                "attachments_listed": [],
+                "is_new_record": false,
+                "rendered_created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "rendered_updated_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "allow_create": true,
+                "allow_edit": true,
+                "allow_update": true,
+                "allow_delete": true,
+                "allow_comment": true,
+                "allow_manage_permissions": true,
+                "current_user": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "encoded_rendered_content": "",
+                "comments": [],
+                "user":  {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Jasmine Green",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                },
+                "updater": {
+                    "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                    "name": "Jasmine Green",
+                    "connected": true,
+                    "mutual_spaces": [
+                        "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
+                        "b1d9b3bf-6cef-44c3-9382-4b32f7f2cd79"
+                    ]
+                }
+            },
+            "tags": {
+                "selected_tags": [],
+                "related_tags": [],
+                "all_tags": []},
+                "allow_create": true,
+                "recent_activity": [{
+                    "date": "Monday, October 30, 2017",
+                    "links": [{
+                        "id": 38,
+                        "name": "My new wiki edited",
+                        "path": "my-new-wiki"
+                    }]
+                }]
+            }
+        }
+
+#### Delete a wiki [DELETE]
+
++ Parameters
+
++ Attributes
+
++ Request (application/json)
+
+        {}
+
++ Response 200 (application/json)
+
+        {}
+
+### Live editors [/calendar/calendar/{calendar_id}/event]
+
+#### Create a live editor [POST]
+
++ Parameters
+
++ Attributes
+
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Live editor [/calendar/calendar/{calendar_id}/event]
+
+#### Update a live editor [POST]
+
++ Parameters
+
++ Attributes
+
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Increments [/calendar/calendar/{calendar_id}/event]
+
+#### Create an increment [POST]
+
++ Parameters
+
++ Attributes
+
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+
+### Increment [/calendar/calendar/{calendar_id}/event]
+
+#### Retrieve an increment [POST]
+
++ Parameters
+
++ Attributes
+
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
 
 
 ## Group Invitation
