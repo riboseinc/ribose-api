@@ -1641,7 +1641,7 @@ This is the Ribose API.
                     "quill_contents": [{
                         "insert": "\n"
                     }],
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "time": "2017-10-30T07:09:00.000+00:00"
                 },
                 "attachments_listed": [],
@@ -1659,7 +1659,7 @@ This is the Ribose API.
                 "comments": [],
                 "user": {
                     "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "connected": true,
                     "mutual_spaces": [
                         "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
@@ -1668,7 +1668,7 @@ This is the Ribose API.
                 },
                 "updater": {
                     "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "connected": true,
                     "mutual_spaces": [
                         "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
@@ -1693,7 +1693,7 @@ This is the Ribose API.
                     "quill_contents": [{
                         "insert": "\n"
                     }],
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "time": "2017-10-30T07:30:03.000+00:00"
                 },
                 "attachments_listed": [],
@@ -1711,7 +1711,7 @@ This is the Ribose API.
                 "comments": [],
                 "user": {
                     "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "connected": true,
                     "mutual_spaces": [
                         "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
@@ -1720,7 +1720,7 @@ This is the Ribose API.
                 },
                 "updater": {
                     "id": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
-                    "name": "Peter Tam",
+                    "name": "Jasmine Green",
                     "connected": true,
                     "mutual_spaces": [
                         "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
@@ -1780,7 +1780,7 @@ This is the Ribose API.
                 "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
                 "live_edit": {
                     "revision": 0,
-                    "quill_contents":  [{"insert": "\n"}],
+                    "quill_contents":  [{ "insert": "\n" }],
                     "name": "Jasmine Green",
                     "time": "2017-10-30T07:09:00.719+00:00"
                 },
@@ -1832,11 +1832,13 @@ This is the Ribose API.
             }
         }
 
-### Wiki [/calendar/calendar/{calendar_id}]
+### Wiki [/spaces/{space_id}/wiki/wiki/{address}]
 
 #### Update a wiki [PUT]
 
 + Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `address` (string) - The value of the address attribute of the wiki.
 
 + Attributes
     + `wiki_page[name]` (string)
@@ -1920,8 +1922,8 @@ This is the Ribose API.
 #### Delete a wiki [DELETE]
 
 + Parameters
-
-+ Attributes
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `address` (string) - The value of the address attribute of the wiki.
 
 + Request (application/json)
 
@@ -1931,11 +1933,13 @@ This is the Ribose API.
 
         {}
 
-### Live editors [/calendar/calendar/{calendar_id}/event]
+### Live editors [/spaces/{space_id}/wiki/wiki_pages/{wiki_page_id}/live_editors]
 
 #### Create a live editor [POST]
 
 + Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `wiki_page_id` (string) - The id of the wiki page.
 
 + Attributes
 
@@ -1943,48 +1947,99 @@ This is the Ribose API.
 
         {}
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-        {}
+        {
+            "live_editor": {
+                "id": 265,
+                "wiki_page_id": 38,
+                "created_at": "2017-10-30T09:30:24.915+00:00",
+                "updated_at": "2017-10-30T09:30:24.915+00:00",
+                "name": "Jasmine Green"
+            },
+            "wiki_page": {
+                "live_edit": {
+                    "revision": 0,
+                    "quill_contents": [{ "insert":"\n" }],
+                    "name": "Jasmine Green",
+                    "time": "2017-10-30T07:09:00.000+00:00"
+                }
+            }
+        }
 
-### Live editor [/calendar/calendar/{calendar_id}/event]
+### Live editor [/spaces/{space_id}/wiki/wiki_pages/{wiki_page_id}/live_editors/{live_editor_id}]
 
-#### Update a live editor [POST]
+#### Update a live editor [PUT]
 
 + Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `wiki_page_id` (number) - The id of the wiki page.
+    + `live_editor_id` (number) - The id of the wiki live editor.
 
 + Attributes
+    + `live_editor[updated_at]`: null (string, fixed)
 
 + Request (application/json)
 
-        {}
+        {
+            "live_editor[updated_at]": null
+        }
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-        {}
+        {
+            "live_editor": {
+                "id": 265,
+                "wiki_page_id": 38,
+                "created_at": "2017-10-30T09:30:24.000+00:00",
+                "updated_at": "2017-10-30T09:43:33.516+00:00",
+                "name": "Jasmine Green"
+            }
+        }
 
-### Increments [/calendar/calendar/{calendar_id}/event]
+### Increments [/spaces/{space_id}/wiki/wiki_pages/{wiki_page_id}/increments]
 
 #### Create an increment [POST]
 
 + Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `wiki_page_id` (number) - The id of the wiki page.
 
 + Attributes
+    + `increment[delta]` (object) - 
+    + `increment[revision]` - 
 
 + Request (application/json)
 
-        {}
+        {
+            "increment[delta]": { "ops": [{ "insert": "a" }] },
+            "increment[revision]": 0
+        }
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-        {}
+        {
+            "increment":{
+                "id": "85833009-5d9f-4fd7-bde6-1cf07895b2c1",
+                "wiki_page_id": 38,
+                "created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "live_editor_id": 265,
+                "created_at": "2017-10-30T09:48:39.991+00:00",
+                "updated_at": "2017-10-30T09:48:39.991+00:00",
+                "status": 0,
+                "revision": 0
+            }
+        }
 
 
-### Increment [/calendar/calendar/{calendar_id}/event]
+### Increment [/spaces/{space_id}/wiki/wiki_pages/{wiki_page_id}/increments/#{increment_id}]
 
-#### Retrieve an increment [POST]
+#### Retrieve an increment [GET]
 
 + Parameters
+    + `space_id` (uuid) - The space identifier of the wiki collection.
+    + `wiki_page_id` (number) - The id of the wiki page.
+    + `increment_id` (uuid) - The id of the wiki increment.
 
 + Attributes
 
