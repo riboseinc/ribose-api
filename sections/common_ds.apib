@@ -1,4 +1,116 @@
 
+### DatetimeString (string)
+
+### email (string)
+
+### id (number)
+
 ### uuid (string)
 [comment]: <> (uuid is used globally)
 
+### Invitation (object)
+
+* `id` (id) - invitation
+* `email` (email, nullable) - invitee email
+* `body` (string, nullable) - Invitation body message
+* `created_at` (DatetimeString)  -  invitation creation
+* `state` (enum[number])
+    * Members
+        * 0 - Pending
+        * 1 - Accepted
+        * 2 - Rejected
+        * 3 - Maybe
+        * 100 - Invalid
+* `type` (string)
+* `updated_at` (DatetimeString) - invitation update
+* `invitee` (InviterInvitee)
+* `inviter` (InviterInvitee)
+
+### InvitationToIndigo (Invitation)
+
+* `type`: Invitation::ToIndigo (string, fixed)
+
+### InvitationToConnection (Invitation)
+
+* `type`: Invitation::ToConnection (enum[string], default)
+    * Members
+        * Invitation::ToConnection
+        * Invitation::ToIndigo - if invitee is not a Ribose member
+
+
+### InvitationToSpace (Invitation)
+
+* `type` (enum[string])
+    * Members
+        * Invitation::ToSpace (default)
+        * Invitation::ToIndigo - if invitee is not a Ribose member
+* `space` (InvitationSpace)
+
+### JoinSpaceRequest (Invitation)
+
+* `type`: Invitation::JoinSpaceRequest (string, fixed)
+* `space` (InvitationSpace)
+
+### InvitationsToSpace (object)
+
+* `requested_at` (number) - token representing a timestamp of this request
+* `total` (number) - total number of objects
+* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    * *3 (string)* (id) - integer order on current page => invitation ID
+* `objects` (object)
+    * *123456 (string)* (object) - an object indexed by invitation ID
+        * `id` (id) - invitation
+        * `email` (email, nullable) - invitee email
+        * `body`  (string, nullable) - Invitation body message
+        * `created_at` (DatetimeString) - invitation creation
+        * `state` (enum[number])
+            * Members
+                * 0 - Pending
+                * 1 - Accepted
+                * 2 - Rejected
+                * 3 - Maybe
+                * 100 - Invalid
+        * `type`: Invitation::ToSpace (string, fixed)
+        * `updated_at` (DatetimeString)
+        * `invitee` (InviterInvitee)
+        * `space` (InvitationSpace)
+        * `inviter` (InviterInvitee)
+
+### JoinSpaceRequests (object)
+
+* `requested_at` (number) - token representing a timestamp of this request
+* `total` (number) - total number of objects
+* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    * *3 (string)* (id) - integer order on current page => invitation ID
+* `objects` (object)
+    * *123456 (string)* (object) - an object indexed by invitation ID
+        * `id` (id) - invitation
+        * `email` (email, nullable) - invitee email
+        * `body`  (string, nullable) - Invitation body message
+        * `created_at` (DatetimeString) - invitation creation
+        * `state` (enum[number])
+            * Members
+                * 0 - Pending
+                * 1 - Accepted
+                * 2 - Rejected
+                * 3 - Maybe
+                * 100 - Invalid
+        * `type`: Invitation::JoinSpaceRequest (string, fixed)
+        * `updated_at` (DatetimeString)
+        * `invitee` (InviterInvitee)
+        * `space` (InvitationSpace)
+        * `inviter` (InviterInvitee) - Space admin
+
+### InviterInvitee (object)
+
+* `id` (uuid) - user ID
+* `connected` (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
+* `name` (string) - User's display name
+* `mutual_spaces` (array[uuid]) - mutual Space ID strings
+
+
+### InvitationSpace (object)
+
+* `id` (uuid)
+* `name` (string) - Space name
+* `members_count` (number) - how many members it contains
