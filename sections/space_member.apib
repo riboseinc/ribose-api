@@ -50,3 +50,51 @@
 
     + Attributes (object)
         + `message` (string) - Success message for removal of member
+
+### Fetching roles [GET /people/users/{user_id}/roles/change_assignment{?in_space}]
+
++ Parameters
+
+    + `user_id` (uuid) - UUID of the User involved
+    + `in_space` (uuid) - UUID of the Space involved
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + `roles` (object) - 0-indexed map
+            + *`0` (string)* (object)
+                + `id` (id) - Role ID
+                + `name` (enum[string])
+                    + Members
+                        + Member
+                        + Administrator
+                        + Read only
+                + `space_id` (uuid) - UUID of the associated Space
+        + `user_role` (object) - details of current user's role
+            + `id` (id) - Role ID
+            + `name` (enum[string])
+                + Members
+                    + Member
+                    + Administrator
+                    + Read only
+            + `space_id` (uuid) - UUID of the associated Space
+
+### Assigning roles [PUT /people/users/{user_id}/roles/change_assignment{?in_space}]
+
++ Parameters
+
+    + `user_id` (uuid) - UUID of the User involved
+    + `in_space` (uuid) - UUID of the Space involved
+
++ Request (application/json)
+
+    + Attributes (object)
+        + `checked_role`  (id) - Role ID
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + Body
+                {}
