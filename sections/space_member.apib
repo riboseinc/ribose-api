@@ -1,0 +1,52 @@
+## Group Space Member
+
+### Space Members [/spaces/{space_id}/members]
+
++ Parameters
+
+    + `space_id` (uuid)
+
+#### Index [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        * `requested_at` (number) - token representing a timestamp of this request
+        * `total` (number) - total number of objects
+        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            * *3 (string)* (id) - integer order on current page => Space Member ID
+        * `objects` (object)
+            * *123456 (string)* (object) - an object indexed by Space Member ID
+                * `id`: 18700
+                * `user_id` (uuid)
+                * `space_id` (uuid)
+                * `role_name_in_space` (enum[string])
+                    * Members
+                        * Member
+                        * Administrator
+                        * Read only
+                * `user` (object) - attributes of this Space member
+                    * `id` (uuid) - Ribose user ID
+                    * `owner` (boolean) - `true` iff is the Space owner
+                    * `admin` (boolean) - `true` iff is a Space admin
+                    * `connected` (boolean) - `true` iff this Space member is a connection of current user
+                    * `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+                    * `name` (string) - Space Member's display name
+
+
+#### Destroy [DELETE /spaces/{space_id}/members/{space_member_id}]
+
++ Parameters
+
+    + `space_member_id` (id)
+
++ Request (application/json)
+
++ Response 403 (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + `message` (string) - Success message for removal of member
