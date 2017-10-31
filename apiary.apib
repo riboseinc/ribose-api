@@ -1780,7 +1780,7 @@ This is the Ribose API.
                 "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
                 "live_edit": {
                     "revision": 0,
-                    "quill_contents":  [{ "insert": "\n" }],
+                    "quill_contents":  [{"insert": "\n"}],
                     "name": "Jasmine Green",
                     "time": "2017-10-30T07:09:00.719+00:00"
                 },
@@ -1867,7 +1867,7 @@ This is the Ribose API.
                 "space_id": "326ee7a7-2c7c-4af0-9eb6-3f79b90dae92",
                 "live_edit": {
                     "revision": 0,
-                    "quill_contents":  [{"insert": "\n"}],
+                    "quill_contents":  [{ "insert": "\n" }],
                     "name": "Jasmine Green",
                     "time": "2017-10-30T07:09:00.719+00:00"
                 },
@@ -2006,8 +2006,8 @@ This is the Ribose API.
     + `wiki_page_id` (number) - The id of the wiki page.
 
 + Attributes
-    + `increment[delta]` (object) - 
-    + `increment[revision]` - 
+    + `increment[delta]` (object) - The Quilljs delta object. See https://github.com/quilljs/delta for details.
+    + `increment[revision]` - The client's revision of the document.
 
 + Request (application/json)
 
@@ -2042,14 +2042,32 @@ This is the Ribose API.
     + `increment_id` (uuid) - The id of the wiki increment.
 
 + Attributes
+    + `revision` (number) - The client's revision of the document. The API will respond with the lastest delta if the increment is success.
 
 + Request (application/json)
 
-        {}
+        {
+            revision: 1
+        }
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-        {}
+        {
+            "increment": {
+                "id": "2a12a905-16d8-43c5-93eb-b1f4a7826ce0",
+                "wiki_page_id": 38,
+                "created_by": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150",
+                "live_editor_id": 265,
+                "created_at": "2017-10-30T09:48:39.000+00:00",
+                "updated_at": "2017-10-30T09:48:39.000+00:00",
+                "status": 2,
+                "revision": 1
+            },
+            "delta": [
+                {"retain": 1},
+                {"insert": "b"}
+            ]
+        }
 
 
 
