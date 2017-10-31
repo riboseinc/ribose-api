@@ -194,6 +194,24 @@ This is the Ribose API.
                 + `thumb_height`                 (number)
 
 
+#### Set `login` [PUT /people/users/{user_id}]
+
++ Parameters
+    + `user_id` (uuid) - UUID of the current User
+
++ Request (application/json)
+
+    + Attributes (object)
+        + `login` (string) - must be between 7 to 40 characters long
+
++ Response 403 (application/json)
+
++ Response 422 (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+
 ## Group Calendar
 
 ### Calendars [/calendar/calendar]
