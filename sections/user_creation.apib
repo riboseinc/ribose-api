@@ -1,0 +1,38 @@
+## User
+
+### User Creation API
+
+#### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
+
+  + Attributes
+    + `email` (string, required) - email address of user
+
+  + Response 200 (application/json)
+    + Attributes (object)
+      + `unique` (boolean)
+
+#### Create sign-up request [POST /signup_requests]
+
+  + Attributes
+    + `email` (string, required) - email address of user
+
+  + Response 200 (application/json)
+    + Attributes
+
+  + Response 422 (application/json)
+    + Attributes
+
+#### Submit sign-up details [POST /signup.user]
+
+  + Attributes
+    + `email` (string, required) - email address of user
+    + `otp` (string, required) - OTP value from confirmation email
+    + `password` (string, required) - string of new password
+
+  + Response 201 (application/json)
+    + Attributes(object)
+      + `id` (string) - ID of new user
+      + `name` (string) - username
+
+  + Response 422 (application/json)
+    + Attributes
