@@ -23,24 +23,6 @@
 + Response 204 (application/json)
     + Attributes (object)
 
-### Request information [GET /app_data]
-
-+ Request (application/json)
-    + Attributes (object)
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `self_profile` (object) - profile of current user
-            + `user_id` (string) - ID of current user
-            + `name` (string) - name of current user
-            + `login_name` (string) - login name of current user
-            + `activity_profile` (string) - activity profile of current user
-        + `status_message` (string) - status message for current user
-        + `number_of_connections` (number) - how many current connections are active
-        + `notification` (object)
-            + `item_id` (string) - last received notification item ID
-            + `read_item_it` (string) - last read notification item ID
-
 ### Request settings [GET /settings]
 
 + Request (application/json)
