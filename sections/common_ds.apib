@@ -103,17 +103,17 @@
 
 ### InviterInvitee (object)
 
-* `id` (uuid) - user ID
-* `connected` (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
-* `name` (string) - User's display name
+* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - user ID
+* `connected`: true (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
+* `name`: Joe Public (string) - User's display name
 * `mutual_spaces` (array[uuid]) - mutual Space ID strings
 
 
 ### InvitationSpace (object)
 
-* `id` (uuid)
-* `name` (string) - Space name
-* `members_count` (number) - how many members it contains
+* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+* `name`: My first space (string) - Space name
+* `members_count`: 10 (number) - how many members it contains
 
 ### File (object)
 
@@ -162,3 +162,20 @@
 + `position` (number) - number of the order in position of the file version
 + `updated_at` (DatetimeString) - when the file version was updated
 + `version` (number) - version number of the file
+
+### Space (object)
+
+* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+* `name`: My first space (string) - Space name
+* `visibility`: visible (enum[string])
+    * Members
+        * visible
+        * visible_name
+        * invisible
+* `members_count`: 10 (number) - how many members it contains
+
+### User (object)
+
+* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
+* `name`: Jane Blogg (string) - User's display name
++ `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
