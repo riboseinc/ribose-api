@@ -114,3 +114,51 @@
 * `id` (uuid)
 * `name` (string) - Space name
 * `members_count` (number) - how many members it contains
+
+### File (object)
+
++ `allow_create` (boolean) - the permission of User to create a file
++ `allow_delete` (boolean) - the permission of User to delete a file
++ `allow_download` (boolean) - the permission of User to download a file
++ `allow_edit` (boolean) - the permission of User to edit a file
++ `allow_update` (boolean) - the permission of User to update a file
++ `author` (string) - the name of User
++ `content_size` (number) - the content size of the file
++ `content_type` (string) - the content type of the file
++ `created_at` (DatetimeString) - of when the file created
++ `current_version_id` (id) - the current version id of the version of the file
++ `description` (string) - the description of the file
++ `id` (id) - the id of the file
++ `name` (string) - the name of the file
++ `tag_list` (array[string]) - the list of tags
++ `updated_at` (DatetimeString) - of when the file updated
++ `version` (number) - the version number of the array of the file versions
++ `versions` (array[object]) - the array of the file version objects with attributes:
+    + (object)
+        + `author` (string) - the name of the author
+        + `content_size` (number) - the content size of the file version
+        + `content_type` (string) - the content type of the file version
+        + `created_at` (DatetimeString) of when the file version created
+        + `current_version_id` (id) - the current version id of the version of the file
+        + `description` (string) - the description of the file version
+        + `file_info_id` (id) - the version id of the version of the file
+        + `icon_path` (string) - the path of the thumbnail of the file version
+        + `name` (string) - the name of the file version
+        + `position` (number) - the number of the order in position of the file version
+        + `updated_at` (DatetimeString) - of when the file version updated
+        + `version` (number) - the version number of the file version
+
+### FileVersion (object)
+
++ `author` (string) - name of the author
++ `content_size` (number) - content size of the file version
++ `content_type` (string) - content type of the file version
++ `created_at` (DatetimeString) - date of when the file version was created
++ `current_version_id` (id) - current version ID of the version of the file
++ `description` (string) - description of the file version
++ `file_info_id` (id) - version ID of the version of the file
++ `icon_path` (string) - path of the thumbnail of the file version
++ `name` (string) - name of the file version
++ `position` (number) - number of the order in position of the file version
++ `updated_at` (DatetimeString) - when the file version was updated
++ `version` (number) - version number of the file
