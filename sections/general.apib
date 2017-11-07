@@ -1,28 +1,5 @@
 ## Group General
 
-### Log in [POST /login]
-
-+ Request (application/json)
-    + Attributes (object)
-        + `utf8` (string, required) - UTF8 string
-        + `authenticity_token` (string, required) - CSRF prevention
-        + `invitation_code` (string, required) - invitation code
-        + `return_to` (string, required) - URL redirection parameter
-        + `username` (string, required) - username or email
-        + `password` (string, required) - password
-        + `remember_me` (boolean, required) - remember login
-
-+ Response 200 (application/json)
-    + Attributes (object)
-
-### Log out [DELETE /logout]
-
-+ Request (application/json)
-    + Attributes (object)
-
-+ Response 204 (application/json)
-    + Attributes (object)
-
 ### Request settings [GET /settings]
 
 + Request (application/json)
