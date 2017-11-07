@@ -1,4 +1,4 @@
-## Group User Creation
+## Group User
 
 ### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
 
@@ -34,3 +34,17 @@
         + `name` (string) - username
 
 + Response 422 (application/json)
+
+### Delete user [DELETE /cancel_registration]
+
++ request (application/json)
+    + Attributes (object)
+        + `user_id` (uuid) - ID of the user
+        + `password` (string) - password of the user
+
++ Response 200 (application/json)
+
++ Response 403 (application/json)
+
++ Response 422 (application/json)
+
