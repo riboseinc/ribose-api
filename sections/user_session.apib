@@ -4,13 +4,13 @@
 
 + Request (application/json)
     + Attributes (object)
-        + `utf8` (string, required) - UTF8 string
+        + `utf8` (string, required) - Any string containing characters specific to UTF-8, e.g. `"✓"`
         + `authenticity_token` (string, required) - CSRF prevention
         + `invitation_code` (string, required) - invitation code
         + `return_to` (string, required) - URL redirection parameter
         + `username` (string, required) - username or email
         + `password` (string, required) - password
-        + `remember_me` (boolean, required) - remember login
+        + `remember_me` (boolean, required) - `1` for true or `0` for false
 
 + Response 200 (application/json)
     + Attributes (object)
