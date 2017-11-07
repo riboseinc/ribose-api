@@ -48,23 +48,6 @@
         + `members_count` (number) - number of members in the space
         + `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
 
-### Request space members [GET /spaces/:id/members]
-
-+ Request (application/json)
-    + Attributes (object)
-        + `id` (string, required) - UUID of space
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `id` (string) - user ID
-        + `connected` (boolean) - if the user is connected or not
-        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
-        + `owner` (boolean) - whether user is owner of space or not
-        + `admin` (boolean) - whether user has administrator access to space
-        + `role_name_in_space` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
-        + `indices` (object)
-        + `total` (number) - total number of items in the collection
-
 ### User connections [GET /people/connections]
 
 + Request (application/json)
