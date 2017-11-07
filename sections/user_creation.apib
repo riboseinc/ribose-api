@@ -1,38 +1,36 @@
-## User
+## Group User Creation
 
-### User Creation API
+### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
 
-#### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
-
-  + Attributes
-    + `email` (string, required) - email address of user
-
-  + Response 200 (application/json)
++ request (application/json)
     + Attributes (object)
-      + `unique` (boolean)
+        + `email` (string, required) - email address of user
 
-#### Create sign-up request [POST /signup_requests]
++ Response 200 (application/json)
+    + Attributes (object)
+        + `unique` (boolean)
 
-  + Attributes
-    + `email` (string, required) - email address of user
+### Create sign-up request [POST /signup_requests]
 
-  + Response 200 (application/json)
-    + Attributes
++ request (application/json)
+    + Attributes (object)
+        + `email` (string, required) - email address of user
 
-  + Response 422 (application/json)
-    + Attributes
++ Response 200 (application/json)
 
-#### Submit sign-up details [POST /signup.user]
++ Response 422 (application/json)
 
-  + Attributes
-    + `email` (string, required) - email address of user
-    + `otp` (string, required) - OTP value from confirmation email
-    + `password` (string, required) - string of new password
+### Submit sign-up details [POST /signup.user]
 
-  + Response 201 (application/json)
-    + Attributes(object)
-      + `id` (string) - ID of new user
-      + `name` (string) - username
++ request (application/json)
+    + Attributes (object)
+        + `email` (string, required) - email address of user
+        + `otp` (string, required) - OTP value from confirmation email
+        + `password` (string, required) - string of new password
 
-  + Response 422 (application/json)
-    + Attributes
++ Response 201 (application/json)
+    + Attributes (object)
+        + `id` (string) - ID of new user
+        + `name` (string) - username
+
++ Response 422 (application/json)

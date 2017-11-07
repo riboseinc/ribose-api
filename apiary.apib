@@ -7,10 +7,9 @@ HOST: https://www.ribose.com/
 
 This is the Ribose API.
 
-[comment]: <> (REFERENCE section)
+[comment]: <> (DATA STRUCTURES section, has to be on top)
 
 ## Data Structures
-
 
 
 ### DatetimeString (string)
@@ -128,6 +127,110 @@ This is the Ribose API.
 * `id` (uuid)
 * `name` (string) - Space name
 * `members_count` (number) - how many members it contains
+
+[comment]: <> (REFERENCE section)
+
+## Group General
+
+### Log in [POST /login]
+
++ Request (application/json)
+    + Attributes (object)
+        + `utf8` (string, required) - UTF8 string
+        + `authenticity_token` (string, required) - CSRF prevention
+        + `invitation_code` (string, required) - invitation code
+        + `return_to` (string, required) - URL redirection parameter
+        + `username` (string, required) - username or email
+        + `password` (string, required) - password
+        + `remember_me` (boolean, required) - remember login
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### Log out [DELETE /logout]
+
++ Request (application/json)
+    + Attributes (object)
+
++ Response 204 (application/json)
+    + Attributes (object)
+
+### Request information [GET /app_data]
+
++ Request (application/json)
+    + Attributes (object)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `self_profile` (object) - profile of current user
+            + `user_id` (string) - ID of current user
+            + `name` (string) - name of current user
+            + `login_name` (string) - login name of current user
+            + `activity_profile` (string) - activity profile of current user
+        + `status_message` (string) - status message for current user
+        + `number_of_connections` (number) - how many current connections are active
+        + `notification` (object)
+            + `item_id` (string) - last received notification item ID
+            + `read_item_it` (string) - last read notification item ID
+
+### Request settings [GET /settings]
+
++ Request (application/json)
+    + Attributes (object)
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### Request spaces [GET /spaces]
+
++ Request (application/json)
+    + Attributes (object)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (number) - space ID
+        + `name` (string) - name of the space
+        + `joined_at` (string) - date of when the user joined the space
+        + `created_at` (string) - date of when the space was created
+        + `owned_roles` (array) - array of objects representing a space role related to the space
+        + `access` (string) - options
+        + `active` (boolean) - whether the space is active or not
+        + `owner` (boolean) - whether the user is the owner of the space
+        + `role_name` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
+        + `description` (string) - description of the space
+        + `members_count` (number) - number of members in the space
+        + `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
+
+### Request space members [GET /spaces/:id/members]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (string) - user ID
+        + `connected` (boolean) - if the user is connected or not
+        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
+        + `owner` (boolean) - whether user is owner of space or not
+        + `admin` (boolean) - whether user has administrator access to space
+        + `role_name_in_space` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
+        + `indices` (object)
+        + `total` (number) - total number of items in the collection
+
+### User connections [GET /people/connections]
+
++ Request (application/json)
+    + Attributes (object)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (string) - user ID
+        + `login` (string) - user login name
+        + `jid` (string) - Jabber/XMPP ID of the user
+        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
+        + `name` (string) - name of the user
+        + `status_message` (string) - status message of the user
 ## Group Self Profile
 
 ### Self Profile [/people/profile]
@@ -2089,173 +2192,181 @@ This is the Ribose API.
         }
 
 
-## File
+## Group File
 
-### File API
+### Upload a file [POST /spaces/:id/file/files/upload]
 
-#### Upload a file [POST /spaces/:id/file/files/upload]
-
-  + Attributes
-    + `id` (required, string) - UUID of space
-    + `file_info[attachment][]` (required, array) - array of files to be uploaded
-    + `file_info[tag_list]` (required, string) - list of tags separated by commas
-    + `file_info[description]` (optional, string) - description of the file
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `attachment` (object) - the file attributes
+        + `id` (required, string) - UUID of space
+        + `file_info[attachment][]` (required, array) - array of files to be uploaded
+        + `file_info[tag_list]` (required, string) - list of tags separated by commas
+        + `file_info[description]` (optional, string) - description of the file
 
-  + Response 422 (application/json)
++ Response 200 (application/json)
     + Attributes (object)
-      + `attachment_errors` (string) - the error message
+        + `attachment` (object) - the file attributes
 
-#### List files [GET /spaces/:id/file/files]
-
-  + Attributes
-    + `id` (required, string) - UUID of space
-    + `order_by` (optional, string) - sort order of files, `name, size, date, author, file_type`, default `date`
-    + `direction` (optional, string) - sort direction of files, `asc, desc`, default desc
-    + `start` (optional, number) - starting index of file collection, default 0
-    + `length` (optional, number) - maximum size of collection, default 100
-
-  + Response 200 (application/json)
++ Response 422 (application/json)
     + Attributes (object)
-      + `total` (number) - total number of files
-      + `indices` (object) - hash of index-file_id
-      + `objects` (array) - array of file attributes
-      + `tags` (object) - hash of tags
-        + `all_tags` (array) - the array of all tags in space
-        + `related_tags` (array) - array of tags related to the current file
-        + `selected_tags` (array) - array of selected tags
-      + `recent_activity` (array) - array of recent activities of files
-        + `date` (string) - the date of the activities in format `%A, %B %d, %Y`
-        + `links` (array) - the array of recent updated files inside the grouped date
-          + `id` (number) - the ID of the file
-          + `name` (string) - the name of the file
-          + `path` (string) - the relative path of the link to the file
-      + `permissions` (object) - the hash of the permissions of the user
-        + `allow_create` (boolean) - the permission of the user to create a file
-        + `allow_delete` (boolean) - the permission of the user to delete a file
-        + `allow_download` (boolean) - the permission of the user to download a file
-        + `allow_edit` (boolean) - the permission of the user to edit a file
-        + `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
+        + `attachment_errors` (string) - the error message
 
+### List files [GET /spaces/:id/file/files]
 
-#### Show a file [GET /spaces/:id/file/files/:file_id]
-
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-    + `format` (string, optional) - format of the resonse `json, html`
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `file` (object) - file attributes
+        + `id` (required, string) - UUID of space
+        + `order_by` (optional, string) - sort order of files, `name, size, date, author, file_type`, default `date`
+        + `direction` (optional, string) - sort direction of files, `asc, desc`, default desc
+        + `start` (optional, number) - starting index of file collection, default 0
+        + `length` (optional, number) - maximum size of collection, default 100
 
-#### Update a file [PUT /spaces/:id/file/files/:file_id]
-
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-    + `file_info[name]` (string, optional) - ID of file
-    + `file_info[desciption]` (string, optional) - list of tags separated by commas
-
-  + Response 200 (application/json)
++ Response 200 (application/json)
     + Attributes (object)
-      + `file` (object) - file attributes
-      + `tags` (object) - hash of tags
-        + `all_tags` (array) - the array of all tags in space
-        + `related_tags` (array) - array of tags related to current file
-        + `selected_tags` (array) - array of the selected tags
-      + `recent_activity` (array) - array of recent activities of files
-        + `id` (number)
+        + `total` (number) - total number of files
+        + `indices` (object) - hash of index-file_id
+        + `objects` (array) - array of file attributes
+        + `tags` (object) - hash of tags
+            + `all_tags` (array) - the array of all tags in space
+            + `related_tags` (array) - array of tags related to the current file
+            + `selected_tags` (array) - array of selected tags
+        + `recent_activity` (array) - array of recent activities of files
+            + `date` (string) - the date of the activities in format `%A, %B %d, %Y`
+            + `links` (array) - the array of recent updated files inside the grouped date
+                + `id` (number) - the ID of the file
+                + `name` (string) - the name of the file
+                + `path` (string) - the relative path of the link to the file
+        + `permissions` (object) - the hash of the permissions of the user
+            + `allow_create` (boolean) - the permission of the user to create a file
+            + `allow_delete` (boolean) - the permission of the user to delete a file
+            + `allow_download` (boolean) - the permission of the user to download a file
+            + `allow_edit` (boolean) - the permission of the user to edit a file
+            + `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
 
-  + Response 422 (application/json)
+
+### Show a file [GET /spaces/:id/file/files/:file_id]
+
++ Request (application/json)
     + Attributes (object)
-      + `hash` (object) - hash of errors
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+        + `format` (string, optional) - format of the resonse `json, html`
 
-#### Delete a file [DELETE /spaces/:id/file/files/:file_id]
-
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file or array of IDs
-
-  + Response 200 (application/json)
++ Response 200 (application/json)
     + Attributes (object)
-      + `message` (object)
-        + `records_name` (string) - name of record
-        + `action_name` (string) - name of action
-        + `ok_count` (number) - number of successful files, only returned when deleting more than one file
-        + `total_count` (number) - number of total files, only returned when files failed to delete
+        + `file` (object) - file attributes
 
-#### Get a file icon [GET /spaces/:id/file/files/]
+### Update a file [PUT /spaces/:id/file/files/:file_id]
 
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `icon_processed` (boolean) - the file icon has been processed or not
-      + `icon_path` (string) - path of the file icon
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+        + `file_info[name]` (string, optional) - ID of file
+        + `file_info[desciption]` (string, optional) - list of tags separated by commas
 
-#### Download a file [GET /spaces/:id/file/files/:file_id/download]
++ Response 200 (application/json)
+    + Attributes (object)
+        + `file` (object) - file attributes
+        + `tags` (object) - hash of tags
+            + `all_tags` (array) - the array of all tags in space
+            + `related_tags` (array) - array of tags related to current file
+            + `selected_tags` (array) - array of the selected tags
+        + `recent_activity` (array) - array of recent activities of files
+            + `id` (number)
 
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file or array of IDs
++ Response 422 (application/json)
+    + Attributes (object)
+        + `hash` (object) - hash of errors
 
-  + Response 200 (application/json)
+### Delete a file [DELETE /spaces/:id/file/files/:file_id]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file or array of IDs
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `message` (object)
+            + `records_name` (string) - name of record
+            + `action_name` (string) - name of action
+            + `ok_count` (number) - number of successful files, only returned when deleting more than one file
+            + `total_count` (number) - number of total files, only returned when files failed to delete
+
+### Get a file icon [GET /spaces/:id/file/files/]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `icon_processed` (boolean) - the file icon has been processed or not
+        + `icon_path` (string) - path of the file icon
+
+### Download a file [GET /spaces/:id/file/files/:file_id/download]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file or array of IDs
+
++ Response 200 (application/json)
     + Attributes
 
-#### Show a file version [GET /spaces/:id/file/files/:file_id/versions/:file_version:id]
+### Show a file version [GET /spaces/:id/file/files/:file_id/versions/:file_version:id]
 
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-    + `file_version_id` (string, required) - ID of file version
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+        + `file_version_id` (string, required) - ID of file version
 
-  + Response 200 (application/json)
++ Response 200 (application/json)
     + Attributes
 
-#### Upload a file version [POST /spaces/:id/file/files/:file_id/versions/upload]
+### Upload a file version [POST /spaces/:id/file/files/:file_id/versions/upload]
 
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-    + `file_version_id` (string, required) - ID of file version
-    + `file_info_version` (string, optional) - description of the file version
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `attachment` (object) - file version attributes
-        + `author` (string) - name of the author
-        + `content_size` (number) - content size of the file version
-        + `content_type` (string) - content type of the file version
-        + `created_at` (string) - date of when the file version was created
-        + `current_version_id` (string) - current version ID of the version of the file
-        + `description` (string) - description of the file version
-        + `file_info_id` (string) - version ID of the version of the file
-        + `icon_path` (string) - path of the thumbnail of the file version
-        + `name` (string) - name of the file version
-        + `position` (number) - number of the order in position of the file version
-        + `updated_at` (string) - when the file version was updated
-        + `version` (number) - version number of the file
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+        + `file_version_id` (string, required) - ID of file version
+        + `file_info_version` (string, optional) - description of the file version
 
-  + Response 422 (application/json)
++ Response 200 (application/json)
     + Attributes (object)
-      + `attachment_errors` (string) - error message
+        + `attachment` (object) - file version attributes
+            + `author` (string) - name of the author
+            + `content_size` (number) - content size of the file version
+            + `content_type` (string) - content type of the file version
+            + `created_at` (string) - date of when the file version was created
+            + `current_version_id` (string) - current version ID of the version of the file
+            + `description` (string) - description of the file version
+            + `file_info_id` (string) - version ID of the version of the file
+            + `icon_path` (string) - path of the thumbnail of the file version
+            + `name` (string) - name of the file version
+            + `position` (number) - number of the order in position of the file version
+            + `updated_at` (string) - when the file version was updated
+            + `version` (number) - version number of the file
 
-#### Revert a file version [GET /spaces/:id/file/files/:file_id/versions/:file_version_id/revert]
-
-  + Attributes
-    + `id` (string, required) - UUID of space
-    + `file_id` (string, required) - ID of file
-    + `file_version_id` (string, required) - ID of file version
-
-  + Response 200 (application/json)
++ Response 422 (application/json)
     + Attributes (object)
-      + `hash` (object) - file attributes
+        + `attachment_errors` (string) - error message
+
+### Revert a file version [GET /spaces/:id/file/files/:file_id/versions/:file_version_id/revert]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+        + `file_id` (string, required) - ID of file
+        + `file_version_id` (string, required) - ID of file version
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `hash` (object) - file attributes
 ## Group Invitation
 
 ### Invitation to Ribose [/invitations/to_new_member/{invitation_id}]
@@ -2814,42 +2925,43 @@ This is the Ribose API.
     + Attributes (object)
         + Body
                 {}
-## User
+## Group User Creation
 
-### User Creation API
+### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
 
-#### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
-
-  + Attributes
-    + `email` (string, required) - email address of user
-
-  + Response 200 (application/json)
++ request (application/json)
     + Attributes (object)
-      + `unique` (boolean)
+        + `email` (string, required) - email address of user
 
-#### Create sign-up request [POST /signup_requests]
++ Response 200 (application/json)
+    + Attributes (object)
+        + `unique` (boolean)
 
-  + Attributes
-    + `email` (string, required) - email address of user
+### Create sign-up request [POST /signup_requests]
 
-  + Response 200 (application/json)
++ request (application/json)
+    + Attributes (object)
+        + `email` (string, required) - email address of user
+
++ Response 200 (application/json)
     + Attributes
 
-  + Response 422 (application/json)
++ Response 422 (application/json)
     + Attributes
 
-#### Submit sign-up details [POST /signup.user]
+### Submit sign-up details [POST /signup.user]
 
-  + Attributes
-    + `email` (string, required) - email address of user
-    + `otp` (string, required) - OTP value from confirmation email
-    + `password` (string, required) - string of new password
++ request (application/json)
+    + Attributes (object)
+        + `email` (string, required) - email address of user
+        + `otp` (string, required) - OTP value from confirmation email
+        + `password` (string, required) - string of new password
 
-  + Response 201 (application/json)
-    + Attributes(object)
-      + `id` (string) - ID of new user
-      + `name` (string) - username
++ Response 201 (application/json)
+    + Attributes (object)
+        + `id` (string) - ID of new user
+        + `name` (string) - username
 
-  + Response 422 (application/json)
++ Response 422 (application/json)
     + Attributes
 

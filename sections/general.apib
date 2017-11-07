@@ -1,96 +1,97 @@
-## General
+## Group General
 
-### General API endpoints
+### Log in [POST /login]
 
-#### Log in [POST /login]
-
-  + Attributes
-    + `utf8` (string, required) - UTF8 string
-    + `authenticity_token` (string, required) - CSRF prevention
-    + `invitation_code` (string, required) - invitation code
-    + `return_to` (string, required) - URL redirection parameter
-    + `username` (string, required) - username or email
-    + `password` (string, required) - password
-    + `remember_me` (boolean, required) - remember login
-
-  + Response 200 (application/json)
-    + Attributes
-
-#### Log out [DELETE /logout]
-
-  + Attributes
-
-  + Response 204 (application/json)
-    + Attributes
-
-#### Request information [GET /app_data]
-
-  + Attributes
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `self_profile` (object) - profile of current user
-        + `user_id` (string) - ID of current user
-        + `name` (string) - name of current user
-        + `login_name` (string) - login name of current user
-        + `activity_profile` (string) - activity profile of current user
-      + `status_message` (string) - status message for current user
-      + `number_of_connections` (number) - how many current connections are active
-      + `notification` (object)
-        + `item_id` (string) - last received notification item ID
-        + `read_item_it` (string) - last read notification item ID
+        + `utf8` (string, required) - UTF8 string
+        + `authenticity_token` (string, required) - CSRF prevention
+        + `invitation_code` (string, required) - invitation code
+        + `return_to` (string, required) - URL redirection parameter
+        + `username` (string, required) - username or email
+        + `password` (string, required) - password
+        + `remember_me` (boolean, required) - remember login
 
-#### Request settings [GET /settings]
-
-  + Attributes
-
-  + Response 200 (application/json)
++ Response 200 (application/json)
     + Attributes (object)
 
-#### Request spaces [GET /spaces]
+### Log out [DELETE /logout]
 
-  + Attributes
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `id` (number) - space ID
-      + `name` (string) - name of the space
-      + `joined_at` (string) - date of when the user joined the space
-      + `created_at` (string) - date of when the space was created
-      + `owned_roles` (array) - array of objects representing a space role related to the space
-      + `access` (string) - options
-      + `active` (boolean) - whether the space is active or not
-      + `owner` (boolean) - whether the user is the owner of the space
-      + `role_name` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
-      + `description` (string) - description of the space
-      + `members_count` (number) - number of members in the space
-      + `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
 
-#### Request space members [GET /spaces/:id/members]
-
-  + Attributes
-    + `id` (string, required) - UUID of space
-
-  + Response 200 (application/json)
++ Response 204 (application/json)
     + Attributes (object)
-      + `id` (string) - user ID
-      + `connected` (boolean) - if the user is connected or not
-      + `mutual_spaces` (array) - array of spaces that are shared by user and space member
-      + `owner` (boolean) - whether user is owner of space or not
-      + `admin` (boolean) - whether user has administrator access to space
-      + `role_name_in_space` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
-      + `indices` (object)
-      + `total` (number) - total number of items in the collection
 
-#### User connections [GET /people/connections]
+### Request information [GET /app_data]
 
-  + Attributes
-
-  + Response 200 (application/json)
++ Request (application/json)
     + Attributes (object)
-      + `id` (string) - user ID
-      + `login` (string) - user login name
-      + `jid` (string) - Jabber/XMPP ID of the user
-      + `mutual_spaces` (array) - array of spaces that are shared by user and space member
-      + `name` (string) - name of the user
-      + `status_message` (string) - status message of the user
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `self_profile` (object) - profile of current user
+            + `user_id` (string) - ID of current user
+            + `name` (string) - name of current user
+            + `login_name` (string) - login name of current user
+            + `activity_profile` (string) - activity profile of current user
+        + `status_message` (string) - status message for current user
+        + `number_of_connections` (number) - how many current connections are active
+        + `notification` (object)
+            + `item_id` (string) - last received notification item ID
+            + `read_item_it` (string) - last read notification item ID
+
+### Request settings [GET /settings]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+### Request spaces [GET /spaces]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (number) - space ID
+        + `name` (string) - name of the space
+        + `joined_at` (string) - date of when the user joined the space
+        + `created_at` (string) - date of when the space was created
+        + `owned_roles` (array) - array of objects representing a space role related to the space
+        + `access` (string) - options
+        + `active` (boolean) - whether the space is active or not
+        + `owner` (boolean) - whether the user is the owner of the space
+        + `role_name` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
+        + `description` (string) - description of the space
+        + `members_count` (number) - number of members in the space
+        + `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
+
+### Request space members [GET /spaces/:id/members]
+
++ Request (application/json)
+    + Attributes (object)
+        + `id` (string, required) - UUID of space
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (string) - user ID
+        + `connected` (boolean) - if the user is connected or not
+        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
+        + `owner` (boolean) - whether user is owner of space or not
+        + `admin` (boolean) - whether user has administrator access to space
+        + `role_name_in_space` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
+        + `indices` (object)
+        + `total` (number) - total number of items in the collection
+
+### User connections [GET /people/connections]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `id` (string) - user ID
+        + `login` (string) - user login name
+        + `jid` (string) - Jabber/XMPP ID of the user
+        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
+        + `name` (string) - name of the user
+        + `status_message` (string) - status message of the user
