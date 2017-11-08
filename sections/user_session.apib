@@ -12,7 +12,14 @@
         + `password` (string, required) - password
         + `remember_me` (boolean, required) - `1` for true or `0` for false
 
-+ Response 200 (application/json)
++ Response 302 (text/html; charset=utf-8)
+    On successful login, server responds with redirection to URL passed as
+    `return_to` option in request.
+
++ Response 200 (text/html; charset=utf-8)
+    Incorrect user name or password.
+
++ Response 200 (text/html)
     + Attributes (object)
 
 ### Log out [DELETE /logout]
@@ -20,6 +27,8 @@
 + Request (application/x-www-form-urlencoded)
     + Attributes
 
-+ Response 204 (application/json)
-    + Attributes (object)
++ Response 204 (text/html)
+    User has been logged out.
 
++ Response 302 (text/html)
+    User was not logged in.
