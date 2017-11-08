@@ -2,8 +2,8 @@
 
 ### Log in [POST /login]
 
-+ Request (application/json)
-    + Attributes (object)
++ Request (application/x-www-form-urlencoded)
+    + Attributes
         + `utf8` (string, required) - Any string containing characters specific to UTF-8, e.g. `"✓"`
         + `authenticity_token` (string, required) - CSRF prevention
         + `invitation_code` (string, required) - invitation code
@@ -17,8 +17,8 @@
 
 ### Log out [DELETE /logout]
 
-+ Request (application/json)
-    + Attributes (object)
++ Request (application/x-www-form-urlencoded)
+    + Attributes
 
 + Response 204 (application/json)
     + Attributes (object)
