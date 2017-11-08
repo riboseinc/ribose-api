@@ -1,0 +1,287 @@
+## Group Settings
+
+### General Settings [/settings/general]
+
+General settings are a collection of endpoints that deal with fetching user information about the current session, as well as performing operations related to the account such as facilitating password and email change requests.
+
+#### Get Info [GET /settings/general/info]
+
+Fetches some basic information about the current user and session.
+
++ Response 200 (application/json)
+
+        {
+          "created_at":"2017-11-01T03:40:32.000+00:00",
+          "email_change_request":null,
+          "authentication_token":"mhwBTBYK3Vd6YgU8c9Gb",
+          "question":"",
+          "concurrent":[],
+          "last_activity": {
+            "id":18,
+            "remote_ip":"127.0.0.1",
+            "failed_login":null,
+            "session_id":"4f5c4f5d78d294fd0808daee456ec684",
+            "created_at":"2017-11-02T06:06:26.000+00:00",
+            "updated_at":"2017-11-02T07:23:30.000+00:00",
+            "expired":false,
+            "platform":"Macintosh",
+            "browser":"Chrome",
+            "user_id":"5b3b34d4-1c19-4d08-b2dd-493e684a2b8c"
+          }
+        }
+
+#### Get Activities [GET /settings/general/activities]
+
+Fetches the user's latest network activities (up to 20).
+
++ Response 200 (application/json)
+
+        {
+          "current_remote_ip":"127.0.0.1",
+          "activities": [
+            {
+              "remote_ip":"127.0.0.1",
+              "created_at":"2017-11-02T06:06:26.000+00:00",
+              "updated_at":"2017-11-02T08:34:30.000+00:00",
+              "failed_login":null,
+              "is_current_session":true
+            },
+            {
+              "remote_ip":"127.0.0.1",
+              "created_at":"2017-11-01T03:40:33.000+00:00",
+              "updated_at":"2017-11-01T08:39:07.000+00:00",
+              "failed_login":null,
+              "is_current_session":false
+            }
+          ],
+          "concurrent":[]
+        }
+
+#### Regenerate Token [GET /settings/general/regenerate_token]
+
+Creates a new API token for the user and returns it. Current password must be sent under 'password_confirmation' to authorize action.
+
++ Response 200 (application/json)
+
+        {
+          "token":"mhwBTBYK3Vd6YgU8c9Gb"
+        }
+
+#### Change Password [POST /settings/general/change_password]
+
+Changes the user's password. Current password must be sent under 'password_confirmation' to authorize action.
+
++ Attributes
+    + `password_confirmation` (string) - current password
+    + `user` (object)
+      + `password` (string) - new password
+
++ Response 201 (application/json)
+
+        {
+        }
+
+#### Change Secret Question [POST /settings/general/change_secret_question]
+
+Changes the user's secret question and answer. Current password must be sent under 'password_confirmation' to authorize action.
+
++ Attributes
+    + `password_confirmation` (string) - current password
+    + `user` (object)
+      + `question` (string) - new secret question
+      + `answer` (string) - answer to the new secret question
+
++ Response 201 (application/json)
+
+        {
+        }
+
+#### Change Email [POST /settings/general/change_email]
+
+Sends a confirmation email to the submitted email address. If the activation link in the sent email is opened, The user's email will be successfully updated when the activation link. Current password must be sent under 'password_confirmation' to authorize action.
+
++ Attributes
+    + `password_confirmation` (string) - current password
+    + `user` (object)
+      + `email` (string) - new address to send confirmation email to
+
++ Response 201 (application/json)
+
+        {
+        }
+
+#### Resend Email Activation [POST /settings/general/resend_email_activation]
+
+If there is a pending email change request for the user, this action will send an email with a new activation link to the pending email address. This action imposes a 12-hour minimum delay between emails, and will not resend if the last email was sent less than 12 hours ago.
+
++ Response 201 (application/json)
+
+        {
+        }
+
+#### Discard Email Activation [POST /settings/general/reject_change]
+
+If there is a pending email change request for the user, this action cancels that request.
+
++ Response 201 (application/json)
+
+        {
+        }
+
+### Settings [/settings]
+
+The non-general setting endpoints deal with remembering a user's preferences for how various parts of the Ribose platform should behave. The full list of setting types and the configurations they take are as follows:
+
+**Setting::Personal** - affect site-wide behavior for the user
++ `help_getting_started` (boolean) - determines whether the user needs to go through the initial tutorial upon signing in. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
++ `help_change_space_color` (boolean) - determines whether the tutorial on changing space color should be shown. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
++ `chat_show_offline_users` (boolean) - sets whether the chat widget shows users who are offline. Default is true.
++ `chat_show_spaces` (boolean) - sets whether the Shared Spaces Indicator should be shown in chat. Default is false.
++ `chat_sound` (boolean) - sets whether a sound should play when the user receives a chat message. Default is true.
++ `theme_id` (number) - integer that references a Theme object id that the user has access to. Default is 1, the default Ribose theme.
++ `time_zone` (string) - sets the user's time zone. This configuration accepts any value defined by the public domain  IANA Time Zone Database (https://www.iana.org/time-zones). Default is "Etc/UTC".
++ `time_zone_autodetect` (string) - sets whether time zone should be automatically detected. Takes either "always" or "prompt". Default is "always".
++ `time_format` (string) - sets the format used to display time. Takes either "%I:%M%p" or "%H:%M". Default is "%I:%M%p".
++ `date_format` (string) - sets the format used to display dates. Only accepts values from "%d/%m/%Y", "%m/%d/%Y", "%d.%m.%Y", "%m.%d.%Y", or "%Y-%m-%d". Default is "%d/%m/%Y".
++ `block_concurrent_signin` (false) - sets whether the user's account is prevented from signing in concurrently from multiple devices. Default is false, which does allow concurrent sign in.
++ `connection_request_email` (boolean) - sets whether an email notification is sent when the user receives a connection request. Default is true.
++ `space_invitation_email` (boolean) - sets whether an email notification is sent when the user receives a space invitation. Default is true.
++ `connection_request_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's connection request. Default is true.
++ `space_invitation_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's space invitation. Default is true.
++ `inbox_message_email` (boolean) - sets whether an email notification is sent when the user receives an inbox message. Default is true.
+
+**Setting::Space** - affect all members of a specific space; only accessible by admins or the owner
++ `email_notifications` (boolean) - determines whether space members are sent email notifications about activities in the space. Default is true.
++ `realtime_notifications` (boolean) - determines whether space members are sent realtime notifications about activities in the space. Default is true.
+
+**Setting::UserSpace** - affect how a specific space behaves for the user (another user might have different settings for the same space)
++ `space_color` (string) - sets the color of the space's default avatar and some interface elements. Only accepts values from #E1EBE8, #D8E3EC, #EBE1E2, #E59C7D, #F2EFD1, DADBBC, #A3B7B9, or #C5C3B2. Default is #E1EBE8.
++ `email_notification_type` (number) - sets whether email notifications about activity in the space are sent to the user. Only accepts 0 for no notifications, or 2 for email notifications. Default is 2 which sends the email notifications.
+
+**Setting::UserApp::Calendar** - affect how calendars behave for the user
++ `week_start_day` (integer) - integer representing the starting day of the week. Only accepts 0 to 6. Default is 1 which stands for Monday.
++ `show_weekends` (boolean) - determines whether weekends are shown in the calendar. Default is true.
++ `work_day_begin` (number) - integer representing the hour that the calendar will treat as the start of a work day. Only accepts numbers 0 to 23. Default is 9 which stands for 9 a.m.
++ `work_day_end` (number) - integer representing the hour that the calendar will treat as the end of a work day. Only accepts numbers 0 to 23. Default is 18 which stands for 6 p.m.
++ `weekends` (number) - array of integers representing days that the calendar will treat as weekends. Only accepts numbers 0 to 6. Default is [0, 6] which stands for Saturday & Sunday.
++ `calendars_disabled` (number) - array of calendar ids; events from calendars listed here will not be displayed. Default is an empty array.
+
+**Setting::UserApp::Conversation**
++ `per_page` (number) - number of threads to display in each page when browsing the conversation section of spaces. Default is 50.
+
+**Setting::UserApp::File**
++ `per_page` (number) - number of files to display in each page when browsing the file section of spaces. Default is 100.
+
+**Setting::UserApp::Inbox**
++ `per_page` (number) - number of messages to display in each page when browsing the inbox. Default is 50.
+
+**Setting::UserApp::People**
++ `per_page` (number) - number of . Default is 90.
+
+**Setting::UserApp::Search**
++ `per_page` (number) - number of results to display in each page when searching. Default is 25.
+
+**Setting::UserApp::Wiki**
++ `per_page` (number) - number of entries to display in each page when browsing space wikis. Default is 50.
+
+**Setting::Widget::Notification**
++ `disabled_spaces` (string) - array of space ids; listed Spaces will not generate any notifications for the user. Default is an empty array.
+
+**Setting::Widget::Weather**
++ `order` (number) - array of Weather Widget object ids; each Weather Widget holds a saved weather location in the sidebar widget, and this configurations saves the order in which they appear. Default is an empty array.
+
+#### Get all settings [GET]
+
+Fetches all Setting configurations that the user owns or has access to. Setting objects or configuration keys that are missing from the returned response imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
+
++ Response 200 (application/json)
+
+        {
+          "settings": [
+            {
+              "id":12,
+              "type":"Setting::Personal",
+              "user_id":"8b919cd2-b977-4793-953c-fb3b6a0e35d0",
+              "help_getting_started":false,
+              "time_zone_offset":0,
+              "time_zone_autodetect_status":-1
+            },
+            {
+              "id":13,
+              "type":"Setting::Space",
+              "space_id":"5113b5bf-f203-49d6-bb94-44e0c39357ac",
+              "email_notifications":false
+            }
+          ]
+        }
+
+#### Create a setting [POST]
+
+Creates a new setting object, obeying the following restrictions:
+
++ **Setting::Personal** - each user can only have 1 Personal setting. A Personal setting must also have a user_id that references the user.
++ **Setting::Space** - each space can only have 1 Space setting. A Space setting must also have a space_id that references the space.
++ **Setting::UserSpace** - each space can only have 1 UserSpace setting per user. A UserSpace setting must also have a space_id that references the space, and a user_id that references the user.
++ **Setting::UserApps** - each user can only have 1 UserApp setting of each type (e.g. only 1 Setting::UserApp::Conversation per user). A UserApp setting must also have a user_id that references the user.
++ **Setting::Widget** - each user can only have 1 Widget setting of each type (e.g. only 1 Setting::Widget::Notification per user). A Widget setting must also have a widget_id that references the corresponding Widget object (e.g. a Widget::Weather object for a Setting::Widget::Weather object).
+
+If a create request conflicts with the above quantity restrictions, i.e. if a user tries to create a setting that already exists for them such as a Personal setting or their UserApp::Wiki setting, then this action will simply return the existing setting without any changes, behaving much like a get request for an individual setting. This will not change any of the setting's configuration values no matter what values were submitted in the create request. To change an existing setting's configuration values, perform an update request instead.
+
++ Attributes
+    + `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
+      + `type` (string) - required attribute. The full list of setting types and the config keys that they allow can be found under the main "Settings" (/settings) heading. Different types also have different id reference requirements as defined above.
+
++ Response 200 (application/json)
+
+        {
+          "setting": {
+            "id":15,
+            "type":"Setting::Personal",
+            "user_id":"0d3ad034-0b1b-4c0d-8b66-f31356c11e5a",
+            "time_zone_autodetect":"prompt",
+            "time_zone_offset":0,
+            "time_zone_autodetect_status":-1
+          }
+        }
+
+### Setting [/settings/{setting_id}]
+
+Operations on individual setting objects. Read the more detailed description under "Settings" (/settings) to see how the setting system operates, and for a reference on the types of settings available and the configurations that each type handles.
+
++ Parameters
+    + `setting_id` (number, required) - Id of the setting.
+
+#### Get a setting [GET]
+
+Returns the setting object of the given id if the user owns or has permission to access to the object. Missing configurations imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
+
++ Response 200 (application/json)
+
+        {
+          "setting": {
+            "id":12,
+            "type":"Setting::Personal",
+            "user_id":"8b919cd2-b977-4793-953c-fb3b6a0e35d0",
+            "help_getting_started":false,
+            "time_zone_offset":0,
+            "time_zone_autodetect_status":-1
+          }
+        }
+
+#### Update a setting [PUT]
+
+Updates and returns the updated setting object of the given id if the user owns or has permission to access the object. Missing configurations imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
+
++ Attributes
+    + `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
+
++ Response 200 (application/json)
+
+        {
+          "setting": {
+            "id":13,
+            "type":"Setting::Space",
+            "space_id":"5113b5bf-f203-49d6-bb94-44e0c39357ac",
+            "realtime_notifications":false
+          }
+        }
