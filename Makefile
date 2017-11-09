@@ -3,7 +3,7 @@
 DIRS    := sections
 DEPS    := $(foreach dir, $(DIRS), $(wildcard $(dir)/*))
 HERCULE  = hercule
+TARGET   = apiary.apib
 
-apiary.apib: input.apib $(DEPS)
+$(TARGET): input.apib $(DEPS)
 	$(HERCULE) $< -o $@
-
