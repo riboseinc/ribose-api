@@ -1,0 +1,8 @@
+sudo: false
+dist: trusty
+
+before_script:
+  - npm install colors drafter.js glob
+
+script:
+  - node validate.js
