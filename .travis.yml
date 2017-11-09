@@ -5,6 +5,6 @@ before_script:
   - npm install colors drafter.js glob hercule
 
 script:
-  - make HERCULE=./node_modules/hercule/bin/hercule
+  - make rebuild HERCULE=./node_modules/hercule/bin/hercule
   - bash .travis_ensure_compiled.sh
   - node validate.js
