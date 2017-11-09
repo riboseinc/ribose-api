@@ -2,6 +2,9 @@
 
 ### Log in [POST /login]
 
+On successful login, server responds with redirection to URL passed as
+`return_to` option in request.  Otherwise, it responds with HTTP 200 OK.
+
 + Request (application/x-www-form-urlencoded)
     + Attributes
         + `utf8` (string, required) - Any string containing characters specific to UTF-8, e.g. `"✓"`
@@ -13,19 +16,17 @@
         + `remember_me` (boolean, required) - `1` for true or `0` for false
 
 + Response 302 (text/html; charset=utf-8)
-    On successful login, server responds with redirection to URL passed as
-    `return_to` option in request.
 
 + Response 200 (text/html; charset=utf-8)
-    Incorrect user name or password.
 
 ### Log out [DELETE /logout]
+
+Typically, server returns HTTP 204 No Content.  That said, a redirection will
+happen if no user was logged in.
 
 + Request (application/x-www-form-urlencoded)
     + Attributes
 
 + Response 204 (text/html)
-    User has been logged out.
 
 + Response 302 (text/html)
-    User was not logged in.
