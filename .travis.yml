@@ -2,7 +2,8 @@ sudo: false
 dist: trusty
 
 before_script:
-  - npm install colors drafter.js glob
+  - npm install colors drafter.js glob hercule
 
 script:
+  - make HERCULE=./node_modules/hercule/bin/hercule
   - node validate.js
