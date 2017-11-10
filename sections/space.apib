@@ -9,3 +9,46 @@
 + Response 200 (application/json)
     + Attributes (object)
         + spaces (array[Space]) - list of spaces
+
+#### Create [POST]
+
++ Request (application/json)
+    + Attributes (object)
+        + space (Space) - new space attributes
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + space (Space) - created space
+
+#### Show [GET /spaces/{space_id}]
+
++ Parameters
+    + `space_id` (id)
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + space (Space) - retrieved space
+
+#### Update [PUT /spaces/{space_id}]
+
++ Parameters
+    + `space_id` (id)
+
++ Request (application/json)
+    + Attributes (object)
+        + space (Space) - space update
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + space (Space) - updated space
+
+#### Delete [DELETE /spaces/{space_id}]
+
++ Parameters
+    + `space_id` (id)
+
++ Request (application/json)
+
++ Response 200 (application/json)
