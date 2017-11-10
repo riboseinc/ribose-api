@@ -174,6 +174,21 @@
         * invisible
 * `members_count`: 10 (number) - how many members it contains
 
+### Space (object)
+
++ `id` (number) - space ID
++ `name` (string) - name of the space
++ `joined_at` (string) - date of when the user joined the space
++ `created_at` (string) - date of when the space was created
++ `owned_roles` (array) - array of objects representing a space role related to the space
++ `access` (string) - options
++ `active` (boolean) - whether the space is active or not
++ `owner` (boolean) - whether the user is the owner of the space
++ `role_name` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
++ `description` (string) - description of the space
++ `members_count` (number) - number of members in the space
++ `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
+
 ### User (object)
 
 * `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
