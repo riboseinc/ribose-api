@@ -1,0 +1,25 @@
+{
+  "name": "ribose-api-documentation",
+  "version": "0.1.0",
+  "description": "API blueprints for ribose.com",
+  "main": "echo \"Error: no main specified\" && exit 1",
+  "dependencies": {
+    "drafter.js": "^2.6.7",
+    "colors": "^1.1.2",
+    "glob": "^7.1.2",
+    "hercule": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riboseinc/ribose-api.git"
+  },
+  "author": "Ribose Inc.",
+  "bugs": {
+    "url": "https://github.com/riboseinc/ribose-api/issues"
+  },
+  "homepage": "https://github.com/riboseinc/ribose-api#readme"
+}
