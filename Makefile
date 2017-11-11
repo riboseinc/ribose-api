@@ -2,14 +2,12 @@
 
 DIRS    := sections
 DEPS    := $(foreach dir, $(DIRS), $(wildcard $(dir)/*))
-NPM_BIN := $(shell npm bin)
-HERCULE := $(NPM_BIN)/hercule
 TARGET   = apiary.apib
 
 .PHONY: build clean rebuild
 
 $(TARGET): input.apib $(DEPS)
-	$(HERCULE) $< -o $@
+	cat $< | bin/build.js > $@
 
 build: $(TARGET)
 
