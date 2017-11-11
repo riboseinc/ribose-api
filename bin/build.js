@@ -9,9 +9,15 @@
 
 let hercule = require("hercule")
 
+let resolvers = [
+  hercule.resolveHttpUrl,
+  hercule.resolveLocalUrl,
+  hercule.resolveString,
+]
+
 let input = process.stdin
 let output = process.stdout
-let transcluder = new hercule.TranscludeStream()
+let transcluder = new hercule.TranscludeStream(undefined, { resolvers })
 
 /// Handles transclusion exceptions like dead links
 transcluder.on("error", (err) => {
