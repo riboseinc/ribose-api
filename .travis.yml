@@ -6,5 +6,5 @@ before_script:
 
 script:
   - make rebuild HERCULE=./node_modules/hercule/bin/hercule
-  - bash bin/travis_ensure_compiled.sh
-  - node bin/validate.js
+  - bin/travis_ensure_compiled.sh
+  - bin/validate.js
