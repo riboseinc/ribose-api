@@ -2,9 +2,9 @@ sudo: false
 dist: trusty
 
 before_script:
-  - npm install colors drafter.js glob hercule
+  - npm install
 
 script:
-  - make rebuild HERCULE=./node_modules/hercule/bin/hercule
+  - make rebuild
   - bin/travis_ensure_compiled.sh
   - bin/validate.js
