@@ -189,18 +189,26 @@ This is the Ribose API.
 
 ### Space (object)
 
-+ `id` (number) - space ID
++ `id` (uuid) - space ID
 + `name` (string) - name of the space
-+ `joined_at` (string) - date of when the user joined the space
-+ `created_at` (string) - date of when the space was created
++ `joined_at` (DatetimeString) - date of when the user joined the space
++ `created_at` (DatetimeString) - date of when the space was created
 + `owned_roles` (array) - array of objects representing a space role related to the space
 + `access` (string) - options
 + `active` (boolean) - whether the space is active or not
 + `owner` (boolean) - whether the user is the owner of the space
-+ `role_name` (string) - role of the current user, can be `Administrator`, `Member`, or `Read only`
++ `role_name` (string) - role of the current user
+    * Members
+        * Administrator
+        * Member
+        * Read only
 + `description` (string) - description of the space
 + `members_count` (number) - number of members in the space
-+ `visibility` (string) - visibility of the space, can be `visible`, `visible_name`, or `invisible`
++ `visibility` (enum[string]) - visibility of the space
+    * Members
+        * visible
+        * visible_name
+        * invisible
 
 ### User (object)
 
@@ -3665,7 +3673,7 @@ Updates and returns the updated setting object of the given id if the user owns 
 #### Show [GET /spaces/{space_id}]
 
 + Parameters
-    + `space_id` (id)
+    + `space_id` (uuid)
 
 + Request (application/json)
 
@@ -3738,7 +3746,7 @@ Updates and returns the updated setting object of the given id if the user owns 
 #### Update [PUT /spaces/{space_id}]
 
 + Parameters
-    + `space_id` (id)
+    + `space_id` (uuid)
 
 + Request (application/json)
     + Attributes (object)
@@ -3813,7 +3821,7 @@ Updates and returns the updated setting object of the given id if the user owns 
 #### Delete [DELETE /spaces/{space_id}]
 
 + Parameters
-    + `space_id` (id)
+    + `space_id` (uuid)
 
 + Request (application/json)
 
