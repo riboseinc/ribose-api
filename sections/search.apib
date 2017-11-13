@@ -1,0 +1,168 @@
+## Group Search
+
+### Search [/search]
+
+Endpoint for searching content, spaces, and other users.
+
+#### Search [GET /search]
+
++ Attributes
+    + `q` (string) - text to be searched.
+    + `tab` (string) - determines the type of items to search; "people" and "spaces" search only for users and spaces respectively, "my_content" searches for space app content such as conversation messages, while "all" searches all of the above. Any other value will cause the request to return nothing.
+    + `length` (number) - how many results to return.
+    + `start` (number) - request will return results starting from this number (e.g. start 5 and length 10 will return results #5-15 of a particular search).
+
++ Response 200 (application/json)
+
+        {
+          "indices":{
+            "0":"people_655d02e1-09d6-4969-b620-53b91c3aadf6",
+            "1":"people_7daf7e84-5091-446c-a401-9624e6c30fc1",
+            "2":"people_233830b7-b2e2-4769-b39d-273fa7c690e4",
+            "3":"people_5b3b34d4-1c19-4d08-b2dd-493e684a2b8c",
+            "4":"people_0d3ad034-0b1b-4c0d-8b66-f31356c11e5a"
+          },
+          "objects":[
+            {
+              "id":"655d02e1-09d6-4969-b620-53b91c3aadf6",
+              "name":"Testtwo Test",
+              "indigo_user":{
+                "id":"655d02e1-09d6-4969-b620-53b91c3aadf6",
+                "profile":{
+                  "name":"Testtwo Test"
+                }
+              },
+              "mutual_space_id":[],
+              "mutual_connection_count":0,
+              "mutual_space_count":0,
+              "connection_count":0,
+              "to_connection":true,
+              "type":"people",
+              "search_type":"people"
+            },
+            {
+              "id":"7daf7e84-5091-446c-a401-9624e6c30fc1",
+              "name":"Test Test",
+              "indigo_user":{
+                "id":"7daf7e84-5091-446c-a401-9624e6c30fc1",
+                "profile":{
+                  "name":"Test Test"
+                }
+              },
+              "mutual_space_id":[],
+              "mutual_connection_count":0,
+              "mutual_space_count":0,
+              "connection_count":0,
+              "to_connection":true,
+              "type":"people",
+              "search_type":"people"
+            },
+            {
+              "id":"233830b7-b2e2-4769-b39d-273fa7c690e4",
+              "name":"test",
+              "indigo_user":{
+                "id":"233830b7-b2e2-4769-b39d-273fa7c690e4",
+                "profile":{
+                  "name":"test"
+                }
+              },
+              "mutual_space_id":[],
+              "mutual_connection_count":0,
+              "mutual_space_count":0,
+              "connection_count":0,
+              "to_connection":true,
+              "type":"people",
+              "search_type":"people"
+            },{
+              "id":"5b3b34d4-1c19-4d08-b2dd-493e684a2b8c",
+              "name":"Test Right",
+              "indigo_user":{
+                "id":"5b3b34d4-1c19-4d08-b2dd-493e684a2b8c",
+                "profile":{
+                  "name":"Test Right"
+                }
+              },
+              "mutual_space_id":[],
+              "mutual_connection_count":0,
+              "mutual_space_count":0,
+              "connection_count":0,
+              "to_connection":true,
+              "type":"people",
+              "search_type":"people"
+            },
+            {
+              "id":"0d3ad034-0b1b-4c0d-8b66-f31356c11e5a",
+              "name":"testanother",
+              "indigo_user":{
+                "id":"0d3ad034-0b1b-4c0d-8b66-f31356c11e5a",
+                "profile":{
+                  "name":"testanother"
+                }
+              },
+              "mutual_space_id":[],
+              "mutual_connection_count":0,
+              "mutual_space_count":0,
+              "connection_count":0,
+              "to_connection":true,
+              "type":"people",
+              "search_type":"people"
+            }
+          ],
+          "total":9,
+          "tags":[]
+        }
+
+#### Suggestion [GET /search/suggestion]
+
+Fetches recommended spaces and users.
+
++ Response 200 (application/json)
+
+        {
+          "spaces": {
+            "indices": {
+              "0":"spaces_c08941de-93c4-4945-9cfa-7277425e5bef"
+            },
+            "objects":[
+              {
+                "id":"c08941de-93c4-4945-9cfa-7277425e5bef",
+                "name":"Test Space",
+                "description":"jfklawjelkr;jawkl;j",
+                "member":1,
+                "mutual_connection_users":[],
+                "mutual_connection":0,
+                "join_requests_access":"disabled",
+                "type":"spaces",
+                "search_type":"spaces"
+              }
+            ],
+            "total":1,
+            "tags":[]
+          },
+          "people": {
+            "indices": {
+              "0":"people_fd520026-7cd0-4fbc-a367-ac24288d11a3"
+            },
+            "objects":[
+              {
+                "id":"fd520026-7cd0-4fbc-a367-ac24288d11a3",
+                "name":"Goraidh Vaishnavi",
+                "indigo_user": {
+                  "id":"fd520026-7cd0-4fbc-a367-ac24288d11a3",
+                  "profile": {
+                    "name":"Goraidh Vaishnavi"
+                  }
+                },
+                "mutual_space_id":[],
+                "mutual_connection_count":0,
+                "mutual_space_count":0,
+                "connection_count":0,
+                "to_connection":true,
+                "type":"people",
+                "search_type":"people"
+              }
+            ],
+            "total":1,
+            "tags":[]
+          }
+        }
