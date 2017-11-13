@@ -9,19 +9,19 @@ If you're only interested in viewing the API, head to the above link.
 We use https://github.com/jamesramsay/hercule[Hercule] to generate the API file
 for http://docs.ribose.apiary.io[Apiary].
 
-Install `hercule`:
-
-[source,bash]
-----
-npm install -g hercule
-----
-
 Clone this repo:
 
 [source,bash]
 ----
 git clone https://github.com/riboseinc/ribose-api
 cd ribose-api
+----
+
+Install dependencies:
+
+[source,bash]
+----
+npm install
 ----
 
 Edit source files, and run `make`:
