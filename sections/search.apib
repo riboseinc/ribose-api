@@ -4,13 +4,15 @@
 
 Endpoint for searching content, spaces, and other users.
 
-#### Search [GET /search]
+#### Search [GET]
 
-+ Attributes
-    + `q` (string) - text to be searched.
-    + `tab` (string) - determines the type of items to search; "people" and "spaces" search only for users and spaces respectively, "my_content" searches for space app content such as conversation messages, while "all" searches all of the above. Any other value will cause the request to return nothing.
-    + `length` (number) - how many results to return.
-    + `start` (number) - request will return results starting from this number (e.g. start 5 and length 10 will return results #5-15 of a particular search).
++ Request (application/json)
+
+  + Attributes
+      + `q` (string) - text to be searched.
+      + `tab` (string) - determines the type of items to search; "people" and "spaces" search only for users and spaces respectively, "my_content" searches for space app content such as conversation messages, while "all" searches all of the above. Any other value will cause the request to return nothing.
+      + `length` (number) - how many results to return.
+      + `start` (number) - request will return results starting from this number (e.g. start 5 and length 10 will return results #5-15 of a particular search).
 
 + Response 200 (application/json)
 
@@ -115,6 +117,8 @@ Endpoint for searching content, spaces, and other users.
 #### Suggestion [GET /search/suggestion]
 
 Fetches recommended spaces and users.
+
++ Request (application/json)
 
 + Response 200 (application/json)
 
