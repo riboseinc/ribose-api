@@ -4,8 +4,9 @@
   "description": "API blueprints for ribose.com",
   "main": "echo \"Error: no main specified\" && exit 1",
   "dependencies": {
-    "drafter.js": "^2.6.7",
     "colors": "^1.1.2",
+    "drafter.js": "^2.6.7",
+    "find-root": "^1.1.0",
     "glob": "^7.1.2",
     "hercule": "^4.1.0"
   },
