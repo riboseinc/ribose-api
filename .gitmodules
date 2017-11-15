@@ -1,0 +1,4 @@
+[submodule "ribose-ruby"]
+	path = fixtures
+	url = https://github.com/riboseinc/ribose-ruby.git
+	branch = master
