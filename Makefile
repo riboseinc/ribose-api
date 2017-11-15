@@ -7,7 +7,7 @@ TARGET   = apiary.apib
 .PHONY: build clean rebuild
 
 $(TARGET): input.apib $(DEPS)
-	cat $< | bin/build.js > $@
+	npm run compile
 
 build: $(TARGET)
 
