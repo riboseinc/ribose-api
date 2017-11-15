@@ -10,195 +10,195 @@
 
 ### Invitation (object)
 
-* `id` (id) - invitation
-* `email` (email, nullable) - invitee email
-* `body` (string, nullable) - Invitation body message
-* `created_at` (DatetimeString)  -  invitation creation
-* `state` (enum[number])
-    * Members
-        * 0 - Pending
-        * 1 - Accepted
-        * 2 - Rejected
-        * 3 - Maybe
-        * 100 - Invalid
-* `type` (string)
-* `updated_at` (DatetimeString) - invitation update
-* `invitee` (InviterInvitee)
-* `inviter` (InviterInvitee)
+- `id` (id) - invitation
+- `email` (email, nullable) - invitee email
+- `body` (string, nullable) - Invitation body message
+- `created_at` (DatetimeString)  -  invitation creation
+- `state` (enum[number])
+    - Members
+        - 0 - Pending
+        - 1 - Accepted
+        - 2 - Rejected
+        - 3 - Maybe
+        - 100 - Invalid
+- `type` (string)
+- `updated_at` (DatetimeString) - invitation update
+- `invitee` (InviterInvitee)
+- `inviter` (InviterInvitee)
 
 ### InvitationToIndigo (Invitation)
 
-* `type`: Invitation::ToIndigo (string, fixed)
+- `type`: Invitation::ToIndigo (string, fixed)
 
 ### InvitationToConnection (Invitation)
 
-* `type`: Invitation::ToConnection (enum[string], default)
-    * Members
-        * Invitation::ToConnection
-        * Invitation::ToIndigo - if invitee is not a Ribose member
+- `type`: Invitation::ToConnection (enum[string], default)
+    - Members
+        - Invitation::ToConnection
+        - Invitation::ToIndigo - if invitee is not a Ribose member
 
 
 ### InvitationToSpace (Invitation)
 
-* `type` (enum[string])
-    * Members
-        * Invitation::ToSpace (default)
-        * Invitation::ToIndigo - if invitee is not a Ribose member
-* `space` (InvitationSpace)
+- `type` (enum[string])
+    - Members
+        - Invitation::ToSpace (default)
+        - Invitation::ToIndigo - if invitee is not a Ribose member
+- `space` (InvitationSpace)
 
 ### JoinSpaceRequest (Invitation)
 
-* `type`: Invitation::JoinSpaceRequest (string, fixed)
-* `space` (InvitationSpace)
+- `type`: Invitation::JoinSpaceRequest (string, fixed)
+- `space` (InvitationSpace)
 
 ### InvitationsToSpace (object)
 
-* `requested_at` (number) - token representing a timestamp of this request
-* `total` (number) - total number of objects
-* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-    * *3 (string)* (id) - integer order on current page => invitation ID
-* `objects` (object)
-    * *123456 (string)* (object) - an object indexed by invitation ID
-        * `id` (id) - invitation
-        * `email` (email, nullable) - invitee email
-        * `body`  (string, nullable) - Invitation body message
-        * `created_at` (DatetimeString) - invitation creation
-        * `state` (enum[number])
-            * Members
-                * 0 - Pending
-                * 1 - Accepted
-                * 2 - Rejected
-                * 3 - Maybe
-                * 100 - Invalid
-        * `type`: Invitation::ToSpace (string, fixed)
-        * `updated_at` (DatetimeString)
-        * `invitee` (InviterInvitee)
-        * `space` (InvitationSpace)
-        * `inviter` (InviterInvitee)
+- `requested_at` (number) - token representing a timestamp of this request
+- `total` (number) - total number of objects
+- `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    - *3 (string)* (id) - integer order on current page => invitation ID
+- `objects` (object)
+    - *123456 (string)* (object) - an object indexed by invitation ID
+        - `id` (id) - invitation
+        - `email` (email, nullable) - invitee email
+        - `body`  (string, nullable) - Invitation body message
+        - `created_at` (DatetimeString) - invitation creation
+        - `state` (enum[number])
+            - Members
+                - 0 - Pending
+                - 1 - Accepted
+                - 2 - Rejected
+                - 3 - Maybe
+                - 100 - Invalid
+        - `type`: Invitation::ToSpace (string, fixed)
+        - `updated_at` (DatetimeString)
+        - `invitee` (InviterInvitee)
+        - `space` (InvitationSpace)
+        - `inviter` (InviterInvitee)
 
 ### JoinSpaceRequests (object)
 
-* `requested_at` (number) - token representing a timestamp of this request
-* `total` (number) - total number of objects
-* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-    * *3 (string)* (id) - integer order on current page => invitation ID
-* `objects` (object)
-    * *123456 (string)* (object) - an object indexed by invitation ID
-        * `id` (id) - invitation
-        * `email` (email, nullable) - invitee email
-        * `body`  (string, nullable) - Invitation body message
-        * `created_at` (DatetimeString) - invitation creation
-        * `state` (enum[number])
-            * Members
-                * 0 - Pending
-                * 1 - Accepted
-                * 2 - Rejected
-                * 3 - Maybe
-                * 100 - Invalid
-        * `type`: Invitation::JoinSpaceRequest (string, fixed)
-        * `updated_at` (DatetimeString)
-        * `invitee` (InviterInvitee)
-        * `space` (InvitationSpace)
-        * `inviter` (InviterInvitee) - Space admin
+- `requested_at` (number) - token representing a timestamp of this request
+- `total` (number) - total number of objects
+- `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    - *3 (string)* (id) - integer order on current page => invitation ID
+- `objects` (object)
+    - *123456 (string)* (object) - an object indexed by invitation ID
+        - `id` (id) - invitation
+        - `email` (email, nullable) - invitee email
+        - `body`  (string, nullable) - Invitation body message
+        - `created_at` (DatetimeString) - invitation creation
+        - `state` (enum[number])
+            - Members
+                - 0 - Pending
+                - 1 - Accepted
+                - 2 - Rejected
+                - 3 - Maybe
+                - 100 - Invalid
+        - `type`: Invitation::JoinSpaceRequest (string, fixed)
+        - `updated_at` (DatetimeString)
+        - `invitee` (InviterInvitee)
+        - `space` (InvitationSpace)
+        - `inviter` (InviterInvitee) - Space admin
 
 ### InviterInvitee (object)
 
-* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - user ID
-* `connected`: true (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
-* `name`: Joe Public (string) - User's display name
-* `mutual_spaces` (array[uuid]) - mutual Space ID strings
+- `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - user ID
+- `connected`: true (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
+- `name`: Joe Public (string) - User's display name
+- `mutual_spaces` (array[uuid]) - mutual Space ID strings
 
 
 ### InvitationSpace (object)
 
-* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
-* `name`: My first space (string) - Space name
-* `members_count`: 10 (number) - how many members it contains
+- `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+- `name`: My first space (string) - Space name
+- `members_count`: 10 (number) - how many members it contains
 
 ### File (object)
 
-+ `allow_create` (boolean) - the permission of User to create a file
-+ `allow_delete` (boolean) - the permission of User to delete a file
-+ `allow_download` (boolean) - the permission of User to download a file
-+ `allow_edit` (boolean) - the permission of User to edit a file
-+ `allow_update` (boolean) - the permission of User to update a file
-+ `author` (string) - the name of User
-+ `content_size` (number) - the content size of the file
-+ `content_type` (string) - the content type of the file
-+ `created_at` (DatetimeString) - of when the file created
-+ `current_version_id` (id) - the current version id of the version of the file
-+ `description` (string) - the description of the file
-+ `id` (id) - the id of the file
-+ `name` (string) - the name of the file
-+ `tag_list` (array[string]) - the list of tags
-+ `updated_at` (DatetimeString) - of when the file updated
-+ `version` (number) - the version number of the array of the file versions
-+ `versions` (array[object]) - the array of the file version objects with attributes:
-    + (object)
-        + `author` (string) - the name of the author
-        + `content_size` (number) - the content size of the file version
-        + `content_type` (string) - the content type of the file version
-        + `created_at` (DatetimeString) of when the file version created
-        + `current_version_id` (id) - the current version id of the version of the file
-        + `description` (string) - the description of the file version
-        + `file_info_id` (id) - the version id of the version of the file
-        + `icon_path` (string) - the path of the thumbnail of the file version
-        + `name` (string) - the name of the file version
-        + `position` (number) - the number of the order in position of the file version
-        + `updated_at` (DatetimeString) - of when the file version updated
-        + `version` (number) - the version number of the file version
+- `allow_create` (boolean) - the permission of User to create a file
+- `allow_delete` (boolean) - the permission of User to delete a file
+- `allow_download` (boolean) - the permission of User to download a file
+- `allow_edit` (boolean) - the permission of User to edit a file
+- `allow_update` (boolean) - the permission of User to update a file
+- `author` (string) - the name of User
+- `content_size` (number) - the content size of the file
+- `content_type` (string) - the content type of the file
+- `created_at` (DatetimeString) - of when the file created
+- `current_version_id` (id) - the current version id of the version of the file
+- `description` (string) - the description of the file
+- `id` (id) - the id of the file
+- `name` (string) - the name of the file
+- `tag_list` (array[string]) - the list of tags
+- `updated_at` (DatetimeString) - of when the file updated
+- `version` (number) - the version number of the array of the file versions
+- `versions` (array[object]) - the array of the file version objects with attributes:
+    - (object)
+        - `author` (string) - the name of the author
+        - `content_size` (number) - the content size of the file version
+        - `content_type` (string) - the content type of the file version
+        - `created_at` (DatetimeString) of when the file version created
+        - `current_version_id` (id) - the current version id of the version of the file
+        - `description` (string) - the description of the file version
+        - `file_info_id` (id) - the version id of the version of the file
+        - `icon_path` (string) - the path of the thumbnail of the file version
+        - `name` (string) - the name of the file version
+        - `position` (number) - the number of the order in position of the file version
+        - `updated_at` (DatetimeString) - of when the file version updated
+        - `version` (number) - the version number of the file version
 
 ### FileVersion (object)
 
-+ `author` (string) - name of the author
-+ `content_size` (number) - content size of the file version
-+ `content_type` (string) - content type of the file version
-+ `created_at` (DatetimeString) - date of when the file version was created
-+ `current_version_id` (id) - current version ID of the version of the file
-+ `description` (string) - description of the file version
-+ `file_info_id` (id) - version ID of the version of the file
-+ `icon_path` (string) - path of the thumbnail of the file version
-+ `name` (string) - name of the file version
-+ `position` (number) - number of the order in position of the file version
-+ `updated_at` (DatetimeString) - when the file version was updated
-+ `version` (number) - version number of the file
+- `author` (string) - name of the author
+- `content_size` (number) - content size of the file version
+- `content_type` (string) - content type of the file version
+- `created_at` (DatetimeString) - date of when the file version was created
+- `current_version_id` (id) - current version ID of the version of the file
+- `description` (string) - description of the file version
+- `file_info_id` (id) - version ID of the version of the file
+- `icon_path` (string) - path of the thumbnail of the file version
+- `name` (string) - name of the file version
+- `position` (number) - number of the order in position of the file version
+- `updated_at` (DatetimeString) - when the file version was updated
+- `version` (number) - version number of the file
 
 ### SimpleSpace (object)
 
-* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
-* `name`: My first space (string) - Space name
-* `visibility`: visible (enum[string])
-    * Members
-        * visible
-        * visible_name
-        * invisible
-* `members_count`: 10 (number) - how many members it contains
+- `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+- `name`: My first space (string) - Space name
+- `visibility`: visible (enum[string])
+    - Members
+        - visible
+        - visible_name
+        - invisible
+- `members_count`: 10 (number) - how many members it contains
 
 ### Space (object)
 
-+ `id` (uuid) - space ID
-+ `name` (string) - name of the space
-+ `joined_at` (DatetimeString) - date of when the user joined the space
-+ `created_at` (DatetimeString) - date of when the space was created
-+ `owned_roles` (array) - array of objects representing a space role related to the space
-+ `access` (string) - options
-+ `active` (boolean) - whether the space is active or not
-+ `owner` (boolean) - whether the user is the owner of the space
-+ `role_name` (enum[string]) - role of the current user
-    * Members
-        * Administrator
-        * Member
-        * Read only
-+ `description` (string) - description of the space
-+ `members_count` (number) - number of members in the space
-+ `visibility` (enum[string]) - visibility of the space
-    * Members
-        * visible
-        * visible_name
-        * invisible
+- `id` (uuid) - space ID
+- `name` (string) - name of the space
+- `joined_at` (DatetimeString) - date of when the user joined the space
+- `created_at` (DatetimeString) - date of when the space was created
+- `owned_roles` (array) - array of objects representing a space role related to the space
+- `access` (string) - options
+- `active` (boolean) - whether the space is active or not
+- `owner` (boolean) - whether the user is the owner of the space
+- `role_name` (enum[string]) - role of the current user
+    - Members
+        - Administrator
+        - Member
+        - Read only
+- `description` (string) - description of the space
+- `members_count` (number) - number of members in the space
+- `visibility` (enum[string]) - visibility of the space
+    - Members
+        - visible
+        - visible_name
+        - invisible
 
 ### User (object)
 
-* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
-* `name`: Jane Blogg (string) - User's display name
-+ `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
+- `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
+- `name`: Jane Blogg (string) - User's display name
+- `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs

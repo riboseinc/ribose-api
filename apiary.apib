@@ -23,198 +23,198 @@ This is the Ribose API.
 
 ### Invitation (object)
 
-* `id` (id) - invitation
-* `email` (email, nullable) - invitee email
-* `body` (string, nullable) - Invitation body message
-* `created_at` (DatetimeString)  -  invitation creation
-* `state` (enum[number])
-    * Members
-        * 0 - Pending
-        * 1 - Accepted
-        * 2 - Rejected
-        * 3 - Maybe
-        * 100 - Invalid
-* `type` (string)
-* `updated_at` (DatetimeString) - invitation update
-* `invitee` (InviterInvitee)
-* `inviter` (InviterInvitee)
+- `id` (id) - invitation
+- `email` (email, nullable) - invitee email
+- `body` (string, nullable) - Invitation body message
+- `created_at` (DatetimeString)  -  invitation creation
+- `state` (enum[number])
+    - Members
+        - 0 - Pending
+        - 1 - Accepted
+        - 2 - Rejected
+        - 3 - Maybe
+        - 100 - Invalid
+- `type` (string)
+- `updated_at` (DatetimeString) - invitation update
+- `invitee` (InviterInvitee)
+- `inviter` (InviterInvitee)
 
 ### InvitationToIndigo (Invitation)
 
-* `type`: Invitation::ToIndigo (string, fixed)
+- `type`: Invitation::ToIndigo (string, fixed)
 
 ### InvitationToConnection (Invitation)
 
-* `type`: Invitation::ToConnection (enum[string], default)
-    * Members
-        * Invitation::ToConnection
-        * Invitation::ToIndigo - if invitee is not a Ribose member
+- `type`: Invitation::ToConnection (enum[string], default)
+    - Members
+        - Invitation::ToConnection
+        - Invitation::ToIndigo - if invitee is not a Ribose member
 
 
 ### InvitationToSpace (Invitation)
 
-* `type` (enum[string])
-    * Members
-        * Invitation::ToSpace (default)
-        * Invitation::ToIndigo - if invitee is not a Ribose member
-* `space` (InvitationSpace)
+- `type` (enum[string])
+    - Members
+        - Invitation::ToSpace (default)
+        - Invitation::ToIndigo - if invitee is not a Ribose member
+- `space` (InvitationSpace)
 
 ### JoinSpaceRequest (Invitation)
 
-* `type`: Invitation::JoinSpaceRequest (string, fixed)
-* `space` (InvitationSpace)
+- `type`: Invitation::JoinSpaceRequest (string, fixed)
+- `space` (InvitationSpace)
 
 ### InvitationsToSpace (object)
 
-* `requested_at` (number) - token representing a timestamp of this request
-* `total` (number) - total number of objects
-* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-    * *3 (string)* (id) - integer order on current page => invitation ID
-* `objects` (object)
-    * *123456 (string)* (object) - an object indexed by invitation ID
-        * `id` (id) - invitation
-        * `email` (email, nullable) - invitee email
-        * `body`  (string, nullable) - Invitation body message
-        * `created_at` (DatetimeString) - invitation creation
-        * `state` (enum[number])
-            * Members
-                * 0 - Pending
-                * 1 - Accepted
-                * 2 - Rejected
-                * 3 - Maybe
-                * 100 - Invalid
-        * `type`: Invitation::ToSpace (string, fixed)
-        * `updated_at` (DatetimeString)
-        * `invitee` (InviterInvitee)
-        * `space` (InvitationSpace)
-        * `inviter` (InviterInvitee)
+- `requested_at` (number) - token representing a timestamp of this request
+- `total` (number) - total number of objects
+- `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    - *3 (string)* (id) - integer order on current page => invitation ID
+- `objects` (object)
+    - *123456 (string)* (object) - an object indexed by invitation ID
+        - `id` (id) - invitation
+        - `email` (email, nullable) - invitee email
+        - `body`  (string, nullable) - Invitation body message
+        - `created_at` (DatetimeString) - invitation creation
+        - `state` (enum[number])
+            - Members
+                - 0 - Pending
+                - 1 - Accepted
+                - 2 - Rejected
+                - 3 - Maybe
+                - 100 - Invalid
+        - `type`: Invitation::ToSpace (string, fixed)
+        - `updated_at` (DatetimeString)
+        - `invitee` (InviterInvitee)
+        - `space` (InvitationSpace)
+        - `inviter` (InviterInvitee)
 
 ### JoinSpaceRequests (object)
 
-* `requested_at` (number) - token representing a timestamp of this request
-* `total` (number) - total number of objects
-* `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-    * *3 (string)* (id) - integer order on current page => invitation ID
-* `objects` (object)
-    * *123456 (string)* (object) - an object indexed by invitation ID
-        * `id` (id) - invitation
-        * `email` (email, nullable) - invitee email
-        * `body`  (string, nullable) - Invitation body message
-        * `created_at` (DatetimeString) - invitation creation
-        * `state` (enum[number])
-            * Members
-                * 0 - Pending
-                * 1 - Accepted
-                * 2 - Rejected
-                * 3 - Maybe
-                * 100 - Invalid
-        * `type`: Invitation::JoinSpaceRequest (string, fixed)
-        * `updated_at` (DatetimeString)
-        * `invitee` (InviterInvitee)
-        * `space` (InvitationSpace)
-        * `inviter` (InviterInvitee) - Space admin
+- `requested_at` (number) - token representing a timestamp of this request
+- `total` (number) - total number of objects
+- `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+    - *3 (string)* (id) - integer order on current page => invitation ID
+- `objects` (object)
+    - *123456 (string)* (object) - an object indexed by invitation ID
+        - `id` (id) - invitation
+        - `email` (email, nullable) - invitee email
+        - `body`  (string, nullable) - Invitation body message
+        - `created_at` (DatetimeString) - invitation creation
+        - `state` (enum[number])
+            - Members
+                - 0 - Pending
+                - 1 - Accepted
+                - 2 - Rejected
+                - 3 - Maybe
+                - 100 - Invalid
+        - `type`: Invitation::JoinSpaceRequest (string, fixed)
+        - `updated_at` (DatetimeString)
+        - `invitee` (InviterInvitee)
+        - `space` (InvitationSpace)
+        - `inviter` (InviterInvitee) - Space admin
 
 ### InviterInvitee (object)
 
-* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - user ID
-* `connected`: true (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
-* `name`: Joe Public (string) - User's display name
-* `mutual_spaces` (array[uuid]) - mutual Space ID strings
+- `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - user ID
+- `connected`: true (boolean) - `true` iff this User is connected to current User, or if this User *is* the current User
+- `name`: Joe Public (string) - User's display name
+- `mutual_spaces` (array[uuid]) - mutual Space ID strings
 
 
 ### InvitationSpace (object)
 
-* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
-* `name`: My first space (string) - Space name
-* `members_count`: 10 (number) - how many members it contains
+- `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+- `name`: My first space (string) - Space name
+- `members_count`: 10 (number) - how many members it contains
 
 ### File (object)
 
-+ `allow_create` (boolean) - the permission of User to create a file
-+ `allow_delete` (boolean) - the permission of User to delete a file
-+ `allow_download` (boolean) - the permission of User to download a file
-+ `allow_edit` (boolean) - the permission of User to edit a file
-+ `allow_update` (boolean) - the permission of User to update a file
-+ `author` (string) - the name of User
-+ `content_size` (number) - the content size of the file
-+ `content_type` (string) - the content type of the file
-+ `created_at` (DatetimeString) - of when the file created
-+ `current_version_id` (id) - the current version id of the version of the file
-+ `description` (string) - the description of the file
-+ `id` (id) - the id of the file
-+ `name` (string) - the name of the file
-+ `tag_list` (array[string]) - the list of tags
-+ `updated_at` (DatetimeString) - of when the file updated
-+ `version` (number) - the version number of the array of the file versions
-+ `versions` (array[object]) - the array of the file version objects with attributes:
-    + (object)
-        + `author` (string) - the name of the author
-        + `content_size` (number) - the content size of the file version
-        + `content_type` (string) - the content type of the file version
-        + `created_at` (DatetimeString) of when the file version created
-        + `current_version_id` (id) - the current version id of the version of the file
-        + `description` (string) - the description of the file version
-        + `file_info_id` (id) - the version id of the version of the file
-        + `icon_path` (string) - the path of the thumbnail of the file version
-        + `name` (string) - the name of the file version
-        + `position` (number) - the number of the order in position of the file version
-        + `updated_at` (DatetimeString) - of when the file version updated
-        + `version` (number) - the version number of the file version
+- `allow_create` (boolean) - the permission of User to create a file
+- `allow_delete` (boolean) - the permission of User to delete a file
+- `allow_download` (boolean) - the permission of User to download a file
+- `allow_edit` (boolean) - the permission of User to edit a file
+- `allow_update` (boolean) - the permission of User to update a file
+- `author` (string) - the name of User
+- `content_size` (number) - the content size of the file
+- `content_type` (string) - the content type of the file
+- `created_at` (DatetimeString) - of when the file created
+- `current_version_id` (id) - the current version id of the version of the file
+- `description` (string) - the description of the file
+- `id` (id) - the id of the file
+- `name` (string) - the name of the file
+- `tag_list` (array[string]) - the list of tags
+- `updated_at` (DatetimeString) - of when the file updated
+- `version` (number) - the version number of the array of the file versions
+- `versions` (array[object]) - the array of the file version objects with attributes:
+    - (object)
+        - `author` (string) - the name of the author
+        - `content_size` (number) - the content size of the file version
+        - `content_type` (string) - the content type of the file version
+        - `created_at` (DatetimeString) of when the file version created
+        - `current_version_id` (id) - the current version id of the version of the file
+        - `description` (string) - the description of the file version
+        - `file_info_id` (id) - the version id of the version of the file
+        - `icon_path` (string) - the path of the thumbnail of the file version
+        - `name` (string) - the name of the file version
+        - `position` (number) - the number of the order in position of the file version
+        - `updated_at` (DatetimeString) - of when the file version updated
+        - `version` (number) - the version number of the file version
 
 ### FileVersion (object)
 
-+ `author` (string) - name of the author
-+ `content_size` (number) - content size of the file version
-+ `content_type` (string) - content type of the file version
-+ `created_at` (DatetimeString) - date of when the file version was created
-+ `current_version_id` (id) - current version ID of the version of the file
-+ `description` (string) - description of the file version
-+ `file_info_id` (id) - version ID of the version of the file
-+ `icon_path` (string) - path of the thumbnail of the file version
-+ `name` (string) - name of the file version
-+ `position` (number) - number of the order in position of the file version
-+ `updated_at` (DatetimeString) - when the file version was updated
-+ `version` (number) - version number of the file
+- `author` (string) - name of the author
+- `content_size` (number) - content size of the file version
+- `content_type` (string) - content type of the file version
+- `created_at` (DatetimeString) - date of when the file version was created
+- `current_version_id` (id) - current version ID of the version of the file
+- `description` (string) - description of the file version
+- `file_info_id` (id) - version ID of the version of the file
+- `icon_path` (string) - path of the thumbnail of the file version
+- `name` (string) - name of the file version
+- `position` (number) - number of the order in position of the file version
+- `updated_at` (DatetimeString) - when the file version was updated
+- `version` (number) - version number of the file
 
 ### SimpleSpace (object)
 
-* `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
-* `name`: My first space (string) - Space name
-* `visibility`: visible (enum[string])
-    * Members
-        * visible
-        * visible_name
-        * invisible
-* `members_count`: 10 (number) - how many members it contains
+- `id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid)
+- `name`: My first space (string) - Space name
+- `visibility`: visible (enum[string])
+    - Members
+        - visible
+        - visible_name
+        - invisible
+- `members_count`: 10 (number) - how many members it contains
 
 ### Space (object)
 
-+ `id` (uuid) - space ID
-+ `name` (string) - name of the space
-+ `joined_at` (DatetimeString) - date of when the user joined the space
-+ `created_at` (DatetimeString) - date of when the space was created
-+ `owned_roles` (array) - array of objects representing a space role related to the space
-+ `access` (string) - options
-+ `active` (boolean) - whether the space is active or not
-+ `owner` (boolean) - whether the user is the owner of the space
-+ `role_name` (enum[string]) - role of the current user
-    * Members
-        * Administrator
-        * Member
-        * Read only
-+ `description` (string) - description of the space
-+ `members_count` (number) - number of members in the space
-+ `visibility` (enum[string]) - visibility of the space
-    * Members
-        * visible
-        * visible_name
-        * invisible
+- `id` (uuid) - space ID
+- `name` (string) - name of the space
+- `joined_at` (DatetimeString) - date of when the user joined the space
+- `created_at` (DatetimeString) - date of when the space was created
+- `owned_roles` (array) - array of objects representing a space role related to the space
+- `access` (string) - options
+- `active` (boolean) - whether the space is active or not
+- `owner` (boolean) - whether the user is the owner of the space
+- `role_name` (enum[string]) - role of the current user
+    - Members
+        - Administrator
+        - Member
+        - Read only
+- `description` (string) - description of the space
+- `members_count` (number) - number of members in the space
+- `visibility` (enum[string]) - visibility of the space
+    - Members
+        - visible
+        - visible_name
+        - invisible
 
 ### User (object)
 
-* `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
-* `name`: Jane Blogg (string) - User's display name
-+ `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
+- `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
+- `name`: Jane Blogg (string) - User's display name
+- `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
 
 [comment]: <> (REFERENCE section)
 
@@ -222,336 +222,336 @@ This is the Ribose API.
 
 ### User connections [GET /people/connections]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `id` (string) - user ID
-        + `login` (string) - user login name
-        + `jid` (string) - Jabber/XMPP ID of the user
-        + `mutual_spaces` (array) - array of spaces that are shared by user and space member
-        + `name` (string) - name of the user
-        + `status_message` (string) - status message of the user
+- Response 200 (application/json)
+    - Attributes (object)
+        - `id` (string) - user ID
+        - `login` (string) - user login name
+        - `jid` (string) - Jabber/XMPP ID of the user
+        - `mutual_spaces` (array) - array of spaces that are shared by user and space member
+        - `name` (string) - name of the user
+        - `status_message` (string) - status message of the user
 ## Group Self Profile
 
 ### Self Profile [/people/profile]
 
 #### Show [GET]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        + `user` (object)
-            + `first_name`       (string)
-            + `id`               (uuid)
-            + `last_name`        (string)
-            + `indigo_user_id`   (uuid)
-            + `name`             (string)
-            + `fields`           (array[object])
-                + `name`             (string)
-                + `base_name`        (string)
-                + `title`            (string)
-                + `type`             (string)
-                + `value`            (string, nullable)
-                + `value_type`       (string, nullable)
-                + `value_type_title` (string, nullable)
-                + `visibility`       (string)
-            + `avatar` (object, nullable)
-                + `id`                           (number)
-                + `last_resize_info_for_cropper` (string)
-                + `thumb_width`                  (number)
-                + `thumb_height`                 (number)
+    - Attributes (object)
+        - `user` (object)
+            - `first_name`       (string)
+            - `id`               (uuid)
+            - `last_name`        (string)
+            - `indigo_user_id`   (uuid)
+            - `name`             (string)
+            - `fields`           (array[object])
+                - `name`             (string)
+                - `base_name`        (string)
+                - `title`            (string)
+                - `type`             (string)
+                - `value`            (string, nullable)
+                - `value_type`       (string, nullable)
+                - `value_type_title` (string, nullable)
+                - `visibility`       (string)
+            - `avatar` (object, nullable)
+                - `id`                           (number)
+                - `last_resize_info_for_cropper` (string)
+                - `thumb_width`                  (number)
+                - `thumb_height`                 (number)
 
 
 #### Update names [PUT]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `user` (object)
-            + `first_name` (string) - at least 2 characters long
-            + `last_name` (string) - at least 2 characters long
+    - Attributes (object)
+        - `user` (object)
+            - `first_name` (string) - at least 2 characters long
+            - `last_name` (string) - at least 2 characters long
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        + `user` (object)
-            + `first_name`       (string)
-            + `id`               (uuid)
-            + `last_name`        (string)
-            + `indigo_user_id`   (uuid)
-            + `name`             (string)
-            + `fields`           (array[object])
-                + `name`             (string)
-                + `base_name`        (string)
-                + `title`            (string)
-                + `type`             (string)
-                + `value`            (string, nullable)
-                + `value_type`       (string, nullable)
-                + `value_type_title` (string, nullable)
-                + `visibility`       (string)
-            + `avatar` (object, nullable)
-                + `id`                           (number)
-                + `last_resize_info_for_cropper` (string)
-                + `thumb_width`                  (number)
-                + `thumb_height`                 (number)
+    - Attributes (object)
+        - `user` (object)
+            - `first_name`       (string)
+            - `id`               (uuid)
+            - `last_name`        (string)
+            - `indigo_user_id`   (uuid)
+            - `name`             (string)
+            - `fields`           (array[object])
+                - `name`             (string)
+                - `base_name`        (string)
+                - `title`            (string)
+                - `type`             (string)
+                - `value`            (string, nullable)
+                - `value_type`       (string, nullable)
+                - `value_type_title` (string, nullable)
+                - `visibility`       (string)
+            - `avatar` (object, nullable)
+                - `id`                           (number)
+                - `last_resize_info_for_cropper` (string)
+                - `thumb_width`                  (number)
+                - `thumb_height`                 (number)
 
 
 ### Set login [PUT /people/users/{user_id}]
 
-+ Parameters
-    + `user_id` (uuid) - UUID of the current User
+- Parameters
+    - `user_id` (uuid) - UUID of the current User
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `user` (object)
-            + `login`: mynewusername (string) - must be between 7 to 40 characters long
+    - Attributes (object)
+        - `user` (object)
+            - `login`: mynewusername (string) - must be between 7 to 40 characters long
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 ## Group App Data
 
 ### Request information [GET /app_data]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `misc` (object)
-            + `jabber` (object) - chat metadata for current user
-                + `login`: username (string) - user login
-                + `status`: unavailable (enum[string]) - user chat status
-                    + Members
-                        + unavailable
-                        + available
-                        + idle
-                        + offline
-                + `status_message`: "Free to chat!" (string)
-            + `locale`: en (enum[string])
-                + Members
-                    + en - English
-            + `notification` (object)
-                + `notifications_last_received`: 1234567 (id) - last received notification item ID
-                + `notifications_last_shown`: 1234123 (id) - last read notification item ID
-            + `capps` (object)
-                + *0 (string)* (object) - int-indexed metadata of Space Apps for current user
-                    + `id`: 123456 (id) - ID of the App
-                    + `app_name`: app/dashboard (enum[string])
-                        + Members
-                            + app/dashboard
-                            + app/conversation
-                            + app/file
-                            + app/member
-                            + app/calendar
-                            + app/wiki
-                            + app/poll
-                    + `enabled`: true (boolean)
-                    + `name`: null (string, nullable, fixed)
-                    + `order_id`: 0 (number) - display purpose only
-                    + `used_storage`: 0 (number) - counts how much storage is used by this App
-                    + `owner_type`: Space (string, fixed)
-                    + `owner_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
-                    + `system`: true (boolean, fixed)
-                    + `app_type`: home (enum[string])
-                        + Members
-                            + home
-                            + conversation
-                            + file
-                            + people
-                            + calendar
-                            + wiki
-                            + poll
-                    + `space_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
-                    + `namespace`: dashboard (enum[string])
-                        + Members
-                            + dashboard
-                            + conversation
-                            + file
-                            + people
-                            + calendar
-                            + wiki
-                            + poll
-                    + `show_in_menu?`: true (boolean, fixed)
-                    + `uses_email_notifications?`: false (boolean)
-                    + `searchable?`: false (boolean) - whether Search results would contain this App
-            + `status_message`: "Free to chat!" (string)
-            + `number_of_connections`: 51 (number) - how many current connections are active
-        + `user` (object) - profile of current user
-            + `id` (uuid)
-            + `login`: myusername (string, nullable) - login name of current user
-            + `email` (email) - account's email address of current user
-            + `created_at` (DatetimeString) - account's creation time
-            + `activity_points` (object) - activity profile of current user
-                + `level`: 3 (number)
-                + `total`: 313370 (number) - total activity points gained since account creation
-                + `last7days`: 120 (number) - activity points gained during the last 7 days
-                + `last30days`: 720 (number) - activity points gained during the last 30 days
-                + `points_till_next_level`: 1187255 (number)
-                + `points_for_current_level`: 1457750 (number)
-            + `mutual_users` (array[uuid]) - list of connected Users's UUID
-            + `visible_spaces` (array[SimpleSpace]) - list of current User's Spaces
-            + `connection_id`: null (uuid, nullable)
-            + `from_ribose?`: true (boolean, fixed)
-            + `name`: Joe Public (string)
-            + `connected_users` (array[User])
-            + `badge_states` (array)
-            + `avatar` (object) - current User's avatar metadata
-                + `id`: 1512 (id) - avatar object ID
-                + `thumb_width`: 500 (number) - avatar thumbnail image width
-                + `thumb_height`: 520 (number) - avatar thumbnail image height
-                + `generate_status`: SUCCESS (enum[string]) - whether thumbnail generation has succeeded
-                    + Members
-                        + SUCCESS
-                        + FAIL
-            + `profile` (object) - current User's Profile
-                + `id`: 135 (id) - Profile object ID
-                + `first_name`: Joe (string)
-                + `last_name`: Blogg (string)
-                + `user_id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - corresponding Ribose User UUID
-                + `fields` (object)
-                    + `name` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `family`: Blogg (string)
-                            + `given`: Joe (string)
-                    + `note` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: Hello, World!11 (string)
-                    + `organization` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `company`: Monster Inc (string)
-                            + `department`: Animation (string)
-                    + `url` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: ribose.com (string)
-                            + `scheme` (string, nullable)
-                            + `mediatype` (string, nullable)
-                    + `title` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: Animator (string)
-                    + `address` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `tz` (string, nullable)
-                            + `geo` (string, nullable)
-                            + `pobox` (string, nullable)
-                            + `extended` (string, nullable)
-                            + `street` (string, nullable)
-                            + `locality` (string, nullable)
-                            + `region` (string, nullable)
-                            + `postalcode` (string, nullable)
-                            + `country`: Planet Urf (string, nullable)
-                            + `delivery` (string, nullable)
-                    + `email` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: joe@example.com (string)
-                    + `birthday` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `year`: 1970 (number, nullable)
-                            + `month`: 1 (number, nullable)
-                            + `day`: 1 (number, nullable)
-                    + `telephone` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: 123454321 (string)
-                    + `impp` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `purpose` (array[string])
-                            + `scheme`: skype (string)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: myskypeid (string)
-                + `name`: Joe Blogg (string) - concatenation of first- and last-name of current User
+        - `misc` (object)
+            - `jabber` (object) - chat metadata for current user
+                - `login`: username (string) - user login
+                - `status`: unavailable (enum[string]) - user chat status
+                    - Members
+                        - unavailable
+                        - available
+                        - idle
+                        - offline
+                - `status_message`: "Free to chat!" (string)
+            - `locale`: en (enum[string])
+                - Members
+                    - en - English
+            - `notification` (object)
+                - `notifications_last_received`: 1234567 (id) - last received notification item ID
+                - `notifications_last_shown`: 1234123 (id) - last read notification item ID
+            - `capps` (object)
+                - *0 (string)* (object) - int-indexed metadata of Space Apps for current user
+                    - `id`: 123456 (id) - ID of the App
+                    - `app_name`: app/dashboard (enum[string])
+                        - Members
+                            - app/dashboard
+                            - app/conversation
+                            - app/file
+                            - app/member
+                            - app/calendar
+                            - app/wiki
+                            - app/poll
+                    - `enabled`: true (boolean)
+                    - `name`: null (string, nullable, fixed)
+                    - `order_id`: 0 (number) - display purpose only
+                    - `used_storage`: 0 (number) - counts how much storage is used by this App
+                    - `owner_type`: Space (string, fixed)
+                    - `owner_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
+                    - `system`: true (boolean, fixed)
+                    - `app_type`: home (enum[string])
+                        - Members
+                            - home
+                            - conversation
+                            - file
+                            - people
+                            - calendar
+                            - wiki
+                            - poll
+                    - `space_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
+                    - `namespace`: dashboard (enum[string])
+                        - Members
+                            - dashboard
+                            - conversation
+                            - file
+                            - people
+                            - calendar
+                            - wiki
+                            - poll
+                    - `show_in_menu?`: true (boolean, fixed)
+                    - `uses_email_notifications?`: false (boolean)
+                    - `searchable?`: false (boolean) - whether Search results would contain this App
+            - `status_message`: "Free to chat!" (string)
+            - `number_of_connections`: 51 (number) - how many current connections are active
+        - `user` (object) - profile of current user
+            - `id` (uuid)
+            - `login`: myusername (string, nullable) - login name of current user
+            - `email` (email) - account's email address of current user
+            - `created_at` (DatetimeString) - account's creation time
+            - `activity_points` (object) - activity profile of current user
+                - `level`: 3 (number)
+                - `total`: 313370 (number) - total activity points gained since account creation
+                - `last7days`: 120 (number) - activity points gained during the last 7 days
+                - `last30days`: 720 (number) - activity points gained during the last 30 days
+                - `points_till_next_level`: 1187255 (number)
+                - `points_for_current_level`: 1457750 (number)
+            - `mutual_users` (array[uuid]) - list of connected Users's UUID
+            - `visible_spaces` (array[SimpleSpace]) - list of current User's Spaces
+            - `connection_id`: null (uuid, nullable)
+            - `from_ribose?`: true (boolean, fixed)
+            - `name`: Joe Public (string)
+            - `connected_users` (array[User])
+            - `badge_states` (array)
+            - `avatar` (object) - current User's avatar metadata
+                - `id`: 1512 (id) - avatar object ID
+                - `thumb_width`: 500 (number) - avatar thumbnail image width
+                - `thumb_height`: 520 (number) - avatar thumbnail image height
+                - `generate_status`: SUCCESS (enum[string]) - whether thumbnail generation has succeeded
+                    - Members
+                        - SUCCESS
+                        - FAIL
+            - `profile` (object) - current User's Profile
+                - `id`: 135 (id) - Profile object ID
+                - `first_name`: Joe (string)
+                - `last_name`: Blogg (string)
+                - `user_id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - corresponding Ribose User UUID
+                - `fields` (object)
+                    - `name` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `family`: Blogg (string)
+                            - `given`: Joe (string)
+                    - `note` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: Hello, World!11 (string)
+                    - `organization` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `company`: Monster Inc (string)
+                            - `department`: Animation (string)
+                    - `url` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: ribose.com (string)
+                            - `scheme` (string, nullable)
+                            - `mediatype` (string, nullable)
+                    - `title` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: Animator (string)
+                    - `address` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `tz` (string, nullable)
+                            - `geo` (string, nullable)
+                            - `pobox` (string, nullable)
+                            - `extended` (string, nullable)
+                            - `street` (string, nullable)
+                            - `locality` (string, nullable)
+                            - `region` (string, nullable)
+                            - `postalcode` (string, nullable)
+                            - `country`: Planet Urf (string, nullable)
+                            - `delivery` (string, nullable)
+                    - `email` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: joe@example.com (string)
+                    - `birthday` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `year`: 1970 (number, nullable)
+                            - `month`: 1 (number, nullable)
+                            - `day`: 1 (number, nullable)
+                    - `telephone` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: 123454321 (string)
+                    - `impp` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `purpose` (array[string])
+                            - `scheme`: skype (string)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: myskypeid (string)
+                - `name`: Joe Blogg (string) - concatenation of first- and last-name of current User
 ## Group Calendar
 
 ### Calendars [/calendar/calendar]
 
 #### Retrieve a calendar collection [GET]
 
-+ Attributes
-    + `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
-    + `length` (number) - How many days to fetch.
-    + `cal_ids`: `_H~C_Bn.J` (string)
+- Attributes
+    - `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
+    - `length` (number) - How many days to fetch.
+    - `cal_ids`: `_H~C_Bn.J` (string)
 
         Specify the calendars to fetch with `calendar_ids` encoded by `Range Codec`.
 
-    + `time_zone`: `Etc/UTC` (string)
+    - `time_zone`: `Etc/UTC` (string)
 
         Specify the time zone for the events.
 
-+ Request Retrieve only the calendar collection (application/json)
+- Request Retrieve only the calendar collection (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "filter": {
@@ -612,7 +612,7 @@ This is the Ribose API.
             "requested_at": 847475124
         }
 
-+ Request Retrieve events in the calendar collection (application/json)
+- Request Retrieve events in the calendar collection (application/json)
 
         {
             "start": 17465,
@@ -621,7 +621,7 @@ This is the Ribose API.
             "time_zone": "Etc/UTC"
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_events": [
@@ -1041,15 +1041,15 @@ This is the Ribose API.
 #### Create a calendar [POST]
 
 
-+ Attributes (object)
-    + `calendar[name]` (string) - Name of the calendar.
-    + `calendar[owner_type]` (enum[string], required) - Type of the owner of the calendar.
-        + members
-            + `User`
-            + `Space`
-    + `calendar[owner_id]` (uuid, required) - Id of the owner of the calendar.
+- Attributes (object)
+    - `calendar[name]` (string) - Name of the calendar.
+    - `calendar[owner_type]` (enum[string], required) - Type of the owner of the calendar.
+        - members
+            - `User`
+            - `Space`
+    - `calendar[owner_id]` (uuid, required) - Id of the owner of the calendar.
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "calendar[name]": "A new personal calendar",
@@ -1057,7 +1057,7 @@ This is the Ribose API.
             "calendar[owner_id]": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150"
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "calendar": {
@@ -1076,31 +1076,31 @@ This is the Ribose API.
 
 #### Delete a calendar [DELETE]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
 
-+ Attributes
-    + `move_events` (boolean) - Whether to move events to a new calendar.
-    + `new_cal_id` (number) - Id of the new calendar for the moving events.
+- Attributes
+    - `move_events` (boolean) - Whether to move events to a new calendar.
+    - `new_cal_id` (number) - Id of the new calendar for the moving events.
 
-+ Request Delete together with all the events inside (application/json)
+- Request Delete together with all the events inside (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "id": 113
         }
 
-+ Request Delete and move events to another calendar (application/json)
+- Request Delete and move events to another calendar (application/json)
 
         {
             "move_events": true,
             "new_cal_id": 112
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "old_cal_id": 114,
@@ -1111,42 +1111,42 @@ This is the Ribose API.
 
 #### Create an event [POST]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
 
-+ Attributes
-    + `event[name]` (string) -  Name of the event.
-    + `event[all_day]` (boolean) - Whether the event is an all-day event.
-    + `event[date_start]` (string, required) - The start date of the event.
-    + `event[date_finish]` (string, required) - The finish date of the event.
-    + `event[time_start]` (string, required) - The start time of the event.
-    + `event[time_finish]` (string, required) - The finish time of the event.
-    + `event[where]` (string) - The location where the event happens.
-    + `event[description]` (string) - The description of the event.
-    + `event[recurring_type]` (enum[string]) - The recurring type of the event (absence means `not_repeat`).
-        + members
-            + `not_repeat`
-            + `daily`
-            + `weekly`
-            + `monthly`
-            + `yearly`
-            + `weekday`
-            + `mo_we_fr`
-            + `tu_th`
-    + `event[until]` (enum[string])
-        + members
-          + `never` - Indicates the recurring series will never end.
-          + `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
-    + `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
-    + `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
+- Attributes
+    - `event[name]` (string) -  Name of the event.
+    - `event[all_day]` (boolean) - Whether the event is an all-day event.
+    - `event[date_start]` (string, required) - The start date of the event.
+    - `event[date_finish]` (string, required) - The finish date of the event.
+    - `event[time_start]` (string, required) - The start time of the event.
+    - `event[time_finish]` (string, required) - The finish time of the event.
+    - `event[where]` (string) - The location where the event happens.
+    - `event[description]` (string) - The description of the event.
+    - `event[recurring_type]` (enum[string]) - The recurring type of the event (absence means `not_repeat`).
+        - members
+            - `not_repeat`
+            - `daily`
+            - `weekly`
+            - `monthly`
+            - `yearly`
+            - `weekday`
+            - `mo_we_fr`
+            - `tu_th`
+    - `event[until]` (enum[string])
+        - members
+          - `never` - Indicates the recurring series will never end.
+          - `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
+    - `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
+    - `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
 
         Repeats until the specified date.
 
-    + `event[repeat_by]`: 2,4,7 (string)
+    - `event[repeat_by]`: 2,4,7 (string)
 
         Repeats by the days in a week (1-7 representing Monday to Sunday), separated by a delimiter ",".
 
-+ Request With no recurrence (application/json)
+- Request With no recurrence (application/json)
 
         {
             "event[name]": "My first event!!!",
@@ -1157,7 +1157,7 @@ This is the Ribose API.
             "event[time_finish]": "12:00am"
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "events": {
@@ -1181,7 +1181,7 @@ This is the Ribose API.
             }
         }
 
-+ Request With recurrence (application/json)
+- Request With recurrence (application/json)
 
         {
             "event[name]": "My first recurrence",
@@ -1199,7 +1199,7 @@ This is the Ribose API.
             "event[all_day]": false
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "events": [
@@ -1385,15 +1385,15 @@ This is the Ribose API.
 
 #### Retrieve an event [GET]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Request (application/json)
+- Request (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "filter": {
@@ -1441,45 +1441,45 @@ This is the Ribose API.
 
 #### Update an event [PUT]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Attributes
-    + `event[future]` (boolean) - Whether to update events in the series from this event on.
-    + `event[all]` (boolean) - Whether to update the entire series.
-    + `event[name]` (string) -  Name of the event.
-    + `event[all_day]` (boolean) - Whether the event is an all-day event.
-    + `event[date_start]` (string, required) - The start date of the event.
-    + `event[date_finish]` (string, required) - The finish date of the event.
-    + `event[time_start]` (string, required) - The start time of the event.
-    + `event[time_finish]` (string, required) - The finish time of the event.
-    + `event[where]` (string) - The location where the event happens.
-    + `event[description]` (string) - The description of the event.
-    + `event[recurring_type]` (enum[string]) - The recurring type of the event (absence means `not_repeat`).
-        + members
-            + `not_repeat`
-            + `daily`
-            + `weekly`
-            + `monthly`
-            + `yearly`
-            + `weekday`
-            + `mo_we_fr`
-            + `tu_th`
-    + `event[until]` (enum[string])
-        + members
-          + `never` - Indicates the recurring series will never end.
-          + `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
-    + `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
-    + `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
+- Attributes
+    - `event[future]` (boolean) - Whether to update events in the series from this event on.
+    - `event[all]` (boolean) - Whether to update the entire series.
+    - `event[name]` (string) -  Name of the event.
+    - `event[all_day]` (boolean) - Whether the event is an all-day event.
+    - `event[date_start]` (string, required) - The start date of the event.
+    - `event[date_finish]` (string, required) - The finish date of the event.
+    - `event[time_start]` (string, required) - The start time of the event.
+    - `event[time_finish]` (string, required) - The finish time of the event.
+    - `event[where]` (string) - The location where the event happens.
+    - `event[description]` (string) - The description of the event.
+    - `event[recurring_type]` (enum[string]) - The recurring type of the event (absence means `not_repeat`).
+        - members
+            - `not_repeat`
+            - `daily`
+            - `weekly`
+            - `monthly`
+            - `yearly`
+            - `weekday`
+            - `mo_we_fr`
+            - `tu_th`
+    - `event[until]` (enum[string])
+        - members
+          - `never` - Indicates the recurring series will never end.
+          - `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
+    - `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
+    - `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
 
         Repeats until the specified date.
 
-    + `event[repeat_by]`: 2,4,7 (string)
+    - `event[repeat_by]`: 2,4,7 (string)
 
         Repeats by the days in a week (1-7 representing Monday to Sunday), separated by a delimiter ",".
 
-+ Request With no recurrence (application/json)
+- Request With no recurrence (application/json)
 
         {
             "event[name]": "My first event!!! (Edited)",
@@ -1494,7 +1494,7 @@ This is the Ribose API.
             "event[repeat_by]": ""
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events":[
@@ -1520,7 +1520,7 @@ This is the Ribose API.
             ]
         }
 
-+ Request With recurrence and for future (application/json)
+- Request With recurrence and for future (application/json)
 
         {
             "event[date_start]": "22/11/2017",
@@ -1533,7 +1533,7 @@ This is the Ribose API.
             "event[future]": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events": [
@@ -1664,7 +1664,7 @@ This is the Ribose API.
             }
         }
 
-+ Request With recurrence and for the entire series (application/json)
+- Request With recurrence and for the entire series (application/json)
 
         {
             "event[date_start]": "16/11/2017",
@@ -1679,7 +1679,7 @@ This is the Ribose API.
             "event[all]": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events":[
@@ -1866,29 +1866,29 @@ This is the Ribose API.
 
 #### Delete an event [DELETE]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Attributes
-    + `after` (boolean) - Whether to delete event in the series from this event on.
-    + `all` (boolean) - Whether to delete the entire series.
+- Attributes
+    - `after` (boolean) - Whether to delete event in the series from this event on.
+    - `all` (boolean) - Whether to delete the entire series.
 
-+ Request With no recurrence (application/json)
-
-        {}
-
-+ Response 200 (application/json)
+- Request With no recurrence (application/json)
 
         {}
 
-+ Request With recurrence and for future (application/json)
+- Response 200 (application/json)
+
+        {}
+
+- Request With recurrence and for future (application/json)
 
         {
             "after": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_id": 90,
@@ -1896,13 +1896,13 @@ This is the Ribose API.
             "last_entity": 91
         }
 
-+ Request With recurrence and for future (application/json)
+- Request With recurrence and for future (application/json)
 
         {
             "after": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_id": 90,
@@ -1911,13 +1911,13 @@ This is the Ribose API.
         }
 
 
-+ Request With recurrence and for the entire series (application/json)
+- Request With recurrence and for the entire series (application/json)
 
         {
             "all": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {}
 ## Group Wiki
@@ -1926,22 +1926,22 @@ This is the Ribose API.
 
 #### Retrieve a wiki collection [GET]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
 
-+ Attributes
-    + `direction` (enum[string]) - Defines how wikis are sorted in the collection.
-        + members
-            + `desc`
-            + `asc`
-    + `order_by` (enum[string]) - Defines of which property the collection will sort.
-        + members
-            + `updated_at`
-    + `start` (number) - Fetch the collection starting from which wiki.
-    + `length` (number) - Fetch how many wikis at once.
-    + `s` (string) - 
+- Attributes
+    - `direction` (enum[string]) - Defines how wikis are sorted in the collection.
+        - members
+            - `desc`
+            - `asc`
+    - `order_by` (enum[string]) - Defines of which property the collection will sort.
+        - members
+            - `updated_at`
+    - `start` (number) - Fetch the collection starting from which wiki.
+    - `length` (number) - Fetch how many wikis at once.
+    - `s` (string) - 
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "direction": "desc",
@@ -1951,7 +1951,7 @@ This is the Ribose API.
             "s": ""
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "requested_at": 1127761243,
@@ -2088,18 +2088,18 @@ This is the Ribose API.
 #### Create a wiki [POST]
 
 
-+ Attributes
-    + `wiki_page[name]` (string) - The name of the wiki page.
-    + `wiki_page[tag_list]` (string) - The list of tags of the wiki page.
+- Attributes
+    - `wiki_page[name]` (string) - The name of the wiki page.
+    - `wiki_page[tag_list]` (string) - The list of tags of the wiki page.
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "wiki_page[name]": "My new wiki",
             "wiki_page[tag_list]": ""
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "wiki_page":  {
@@ -2172,21 +2172,21 @@ This is the Ribose API.
 
 #### Update a wiki [PUT]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `address` (string) - The value of the address attribute of the wiki.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `address` (string) - The value of the address attribute of the wiki.
 
-+ Attributes
-    + `wiki_page[name]` (string)
-    + `wiki_page[tag_list]` (string)
+- Attributes
+    - `wiki_page[name]` (string)
+    - `wiki_page[tag_list]` (string)
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "wiki_page[name]": "My new wiki edited"
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "wiki_page":  {
@@ -2257,15 +2257,15 @@ This is the Ribose API.
 
 #### Delete a wiki [DELETE]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `address` (string) - The value of the address attribute of the wiki.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `address` (string) - The value of the address attribute of the wiki.
 
-+ Request (application/json)
+- Request (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {}
 
@@ -2273,17 +2273,17 @@ This is the Ribose API.
 
 #### Create a live editor [POST]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `wiki_page_id` (string) - The id of the wiki page.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `wiki_page_id` (string) - The id of the wiki page.
 
-+ Attributes
+- Attributes
 
-+ Request (application/json)
+- Request (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "live_editor": {
@@ -2307,21 +2307,21 @@ This is the Ribose API.
 
 #### Update a live editor [PUT]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `wiki_page_id` (number) - The id of the wiki page.
-    + `live_editor_id` (number) - The id of the wiki live editor.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `wiki_page_id` (number) - The id of the wiki page.
+    - `live_editor_id` (number) - The id of the wiki live editor.
 
-+ Attributes
-    + `live_editor[updated_at]`: null (string, fixed)
+- Attributes
+    - `live_editor[updated_at]`: null (string, fixed)
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "live_editor[updated_at]": null
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "live_editor": {
@@ -2337,22 +2337,22 @@ This is the Ribose API.
 
 #### Create an increment [POST]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `wiki_page_id` (number) - The id of the wiki page.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `wiki_page_id` (number) - The id of the wiki page.
 
-+ Attributes
-    + `increment[delta]` (object) - The Quilljs delta object. See https://github.com/quilljs/delta for details.
-    + `increment[revision]` - The client's revision of the document.
+- Attributes
+    - `increment[delta]` (object) - The Quilljs delta object. See https://github.com/quilljs/delta for details.
+    - `increment[revision]` - The client's revision of the document.
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "increment[delta]": { "ops": [{ "insert": "a" }] },
             "increment[revision]": 0
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "increment":{
@@ -2372,21 +2372,21 @@ This is the Ribose API.
 
 #### Retrieve an increment [GET]
 
-+ Parameters
-    + `space_id` (uuid) - The space identifier of the wiki collection.
-    + `wiki_page_id` (number) - The id of the wiki page.
-    + `increment_id` (uuid) - The id of the wiki increment.
+- Parameters
+    - `space_id` (uuid) - The space identifier of the wiki collection.
+    - `wiki_page_id` (number) - The id of the wiki page.
+    - `increment_id` (uuid) - The id of the wiki increment.
 
-+ Attributes
-    + `revision` (number) - The client's revision of the document. The API will respond with the lastest delta if the increment is success.
+- Attributes
+    - `revision` (number) - The client's revision of the document. The API will respond with the lastest delta if the increment is success.
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             revision: 1
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "increment": {
@@ -2410,206 +2410,206 @@ This is the Ribose API.
 
 ### Upload a file [POST /spaces/{space_id}/file/files/upload]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
+- Parameters
+    - `space_id` (uuid) - UUID of space
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info` (object)
-            + `attachment` (required, array) - array of files to be uploaded
-            + `description`: This is an important file (optional, string) - description of the file
-            + `tag_list`: tag1,tag2 (optional, string) - list of tags separated by commas
+- Request (application/json)
+    - Attributes (object)
+        - `file_info` (object)
+            - `attachment` (required, array) - array of files to be uploaded
+            - `description`: This is an important file (optional, string) - description of the file
+            - `tag_list`: tag1,tag2 (optional, string) - list of tags separated by commas
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `attachment` (File)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `attachment` (File)
 
-+ Response 422 (application/json)
-    + Attributes (object)
-        + `attachment_errors` (string) - the error message
+- Response 422 (application/json)
+    - Attributes (object)
+        - `attachment_errors` (string) - the error message
 
 ### List files [GET /spaces/{space_id}/file/files]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
+- Parameters
+    - `space_id` (uuid) - UUID of space
 
-+ Request (application/json)
-    + Attributes (object)
-        + `order_by`: date (optional, enum[string]) - sort order of files
-            + Members
-                + name
-                + size
-                + date
-                + author
-                + file_type
-        + `direction`: desc (optional, enum[string]) - sort direction of files
-            + Members
-                + asc
-                + desc
-        + `start`: 0 (optional, number) - starting index of file collection, default: 0
-        + `length`: 100 (optional, number) - maximum size of collection, default: 100
+- Request (application/json)
+    - Attributes (object)
+        - `order_by`: date (optional, enum[string]) - sort order of files
+            - Members
+                - name
+                - size
+                - date
+                - author
+                - file_type
+        - `direction`: desc (optional, enum[string]) - sort direction of files
+            - Members
+                - asc
+                - desc
+        - `start`: 0 (optional, number) - starting index of file collection, default: 0
+        - `length`: 100 (optional, number) - maximum size of collection, default: 100
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `total` (number) - total number of files
-        + `indices` (object) - hash of index-file_id
-        + `objects` (array[File]) - array of file attributes
-        + `tags` (object) - hash of tags
-            + `all_tags` (array) - the array of all tags in space
-            + `related_tags` (array) - array of tags related to the current file
-            + `selected_tags` (array) - array of selected tags
-        + `recent_activity` (array) - array of recent activities of files
-            + `date` (string) - the date of the activities in format `%A, %B %d, %Y`
-            + `links` (array) - the array of recent updated files inside the grouped date
-                + (object)
-                    + `id` (number) - the ID of the file
-                    + `name` (string) - the name of the file
-                    + `path` (string) - the relative path of the link to the file
-        + `permissions` (object) - the hash of the permissions of the user
-            + `allow_create` (boolean) - the permission of the user to create a file
-            + `allow_delete` (boolean) - the permission of the user to delete a file
-            + `allow_download` (boolean) - the permission of the user to download a file
-            + `allow_edit` (boolean) - the permission of the user to edit a file
-            + `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
+- Response 200 (application/json)
+    - Attributes (object)
+        - `total` (number) - total number of files
+        - `indices` (object) - hash of index-file_id
+        - `objects` (array[File]) - array of file attributes
+        - `tags` (object) - hash of tags
+            - `all_tags` (array) - the array of all tags in space
+            - `related_tags` (array) - array of tags related to the current file
+            - `selected_tags` (array) - array of selected tags
+        - `recent_activity` (array) - array of recent activities of files
+            - `date` (string) - the date of the activities in format `%A, %B %d, %Y`
+            - `links` (array) - the array of recent updated files inside the grouped date
+                - (object)
+                    - `id` (number) - the ID of the file
+                    - `name` (string) - the name of the file
+                    - `path` (string) - the relative path of the link to the file
+        - `permissions` (object) - the hash of the permissions of the user
+            - `allow_create` (boolean) - the permission of the user to create a file
+            - `allow_delete` (boolean) - the permission of the user to delete a file
+            - `allow_download` (boolean) - the permission of the user to download a file
+            - `allow_edit` (boolean) - the permission of the user to edit a file
+            - `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
 
 
 ### File [/spaces/{space_id}/file/files/{file_id}]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
-    + `file_id` (id) - ID of file
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `file_id` (id) - ID of file
 
 #### Show a file [GET]
 
-+ Request (text/html)
+- Request (text/html)
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the file
-    + Body
+    - Body
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of file indices and an array of objects of files
 
-    + Attributes (object)
-        + `file` (File)
+    - Attributes (object)
+        - `file` (File)
 
 #### Update a file [PUT]
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info` (object)
-            + `name` (string, optional) - file name
-            + `description` (string, optional) - brief description of the file
-            + `tag_list` (string, optional) - list of tags separated by commas
+- Request (application/json)
+    - Attributes (object)
+        - `file_info` (object)
+            - `name` (string, optional) - file name
+            - `description` (string, optional) - brief description of the file
+            - `tag_list` (string, optional) - list of tags separated by commas
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of file attributes, tags of files and recent 
       activities of files.
 
-    + Attributes (object)
-        + `file` (File)
-        + `tags` (object)
-            + `all_tags` (array[string]) - the array of all tags in space
-            + `related_tags` (array[string]) - array of tags related to current file
-            + `selected_tags` (array[string]) - array of the selected tags
-        + `recent_activity` (array[object]) - array of recent activities of files
-            + `date` (DatetimeString) - the date of the activities in format "%A, %B %d, %Y"
-            + `links` (array) - the array of recent updated files inside the grouped date
-                + (object)
-                    + `id` (number) - the ID of the file
-                    + `name` (string) - the name of the file
-                    + `path` (string) - the relative path of the link to the file
+    - Attributes (object)
+        - `file` (File)
+        - `tags` (object)
+            - `all_tags` (array[string]) - the array of all tags in space
+            - `related_tags` (array[string]) - array of tags related to current file
+            - `selected_tags` (array[string]) - array of the selected tags
+        - `recent_activity` (array[object]) - array of recent activities of files
+            - `date` (DatetimeString) - the date of the activities in format "%A, %B %d, %Y"
+            - `links` (array) - the array of recent updated files inside the grouped date
+                - (object)
+                    - `id` (number) - the ID of the file
+                    - `name` (string) - the name of the file
+                    - `path` (string) - the relative path of the link to the file
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
     - hash of errors
 
-    + Attributes (object)
+    - Attributes (object)
 
 #### Delete a file [DELETE /spaces/{space_id}/file/files/{file_ids}]
 
-+ Parameters
-    + `file_ids` (id) - ID of a file or multiple IDs separated by commas
+- Parameters
+    - `file_ids` (id) - ID of a file or multiple IDs separated by commas
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of statistics of deleting the files.
 
-    + Attributes (object)
-        + `message` (object)
-            + `records_name` (string) - name of record
-            + `action_name` (string) - name of action
-            + `ok_count` (number) - number of successful files, only returned when deleting more than one file
-            + `total_count` (number) - number of total files, only returned when files failed to delete
+    - Attributes (object)
+        - `message` (object)
+            - `records_name` (string) - name of record
+            - `action_name` (string) - name of action
+            - `ok_count` (number) - number of successful files, only returned when deleting more than one file
+            - `total_count` (number) - number of total files, only returned when files failed to delete
 
 #### Get a file icon [GET /spaces/{space_id}/file/files/{file_id}/icon]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `icon_processed` (boolean) - the file icon has been processed or not
-        + `icon_path` (string) - path of the file icon
+- Response 200 (application/json)
+    - Attributes (object)
+        - `icon_processed` (boolean) - the file icon has been processed or not
+        - `icon_path` (string) - path of the file icon
 
 #### Download a file [GET /spaces/{space_id}/file/files/{file_ids}/download]
 
-+ Parameters
-    + `file_ids` (id) - ID of a file or multiple IDs separated by commas
+- Parameters
+    - `file_ids` (id) - ID of a file or multiple IDs separated by commas
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the selected files
-    + Body
+    - Body
 
 #### Show a file version [GET /spaces/{space_id}/file/files/{file_id}/versions/{file_version_id}]
 
-+ Parameters
-    + `file_version_id` (id) - ID of file
+- Parameters
+    - `file_version_id` (id) - ID of file
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the version of the file
-    + Body
+    - Body
 
 #### Upload a file version [POST /spaces/{space_id}/file/files/{file_id}/versions/upload]
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info_version` (object)
-            + `attachment` (required) - the file to be uploaded as a new version
-            + `description` (string, optional) - description of the new file version
+- Request (application/json)
+    - Attributes (object)
+        - `file_info_version` (object)
+            - `attachment` (required) - the file to be uploaded as a new version
+            - `description` (string, optional) - description of the new file version
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `attachment` (FileVersion)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `attachment` (FileVersion)
 
-+ Response 422 (application/json)
-    + Attributes (object)
-        + `attachment_errors` (string) - error message
+- Response 422 (application/json)
+    - Attributes (object)
+        - `attachment_errors` (string) - error message
 
 #### Revert a file version [PUT /spaces/{space_id}/file/files/{file_id}/versions/{file_version_id}/revert]
 
     -  `GET` would also work
 
-+ Parameters
-    + `file_version_id` (id) - ID of file
+- Parameters
+    - `file_version_id` (id) - ID of file
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (File)
+- Response 200 (application/json)
+    - Attributes (File)
 ## Group Invitation
 
 ### Invitation to Ribose [/invitations/to_new_member/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 #### Resending [POST /invitations/to_new_member/{invitation_id}/resend]
 
@@ -2617,452 +2617,452 @@ This is the Ribose API.
     - time throttled
     - only applicable to invitations sent to non-member emails
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + success: true (boolean)
+        - success: true (boolean)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
+        - error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
 
 
 #### Creating [POST /invitations/to_new_member/mass_create]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email]) - must specify at least either `emails`
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email]) - must specify at least either `emails`
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (InvitationToIndigo) - an object indexed by Email
-                * `user_ids` (object)
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids` (object) - empty
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (InvitationToIndigo) - an object indexed by Email
+                - `user_ids` (object)
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids` (object) - empty
 
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 #### Retrieving [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (object)
-        * `requested_at` (number) - token representing a timestamp of this request
-        * `rejected_ids` (array[id]) - rejected invitation IDs
-        * `total` (number) - total number of objects
-        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-            * *3 (string)* (id) - integer order on current page => invitation ID
-        * `objects` (object)
-            * *123456 (string)* (object) - an object indexed by invitation ID
-                * `id` (id) - invitation
-                * `email` (email, nullable) - invitee email
-                * `body`  (string, nullable) - Invitation body message
-                * `created_at` (DatetimeString) - invitation creation
-                * `state` (enum[number])
-                    * Members
-                        * 0 - Pending
-                        * 1 - Accepted
-                        * 2 - Rejected
-                        * 3 - Maybe
-                        * 100 - Invalid
-                * `type`: Invitation::ToIndigo (string, fixed)
-                * `updated_at` (DatetimeString)
-                * `invitee` (InviterInvitee)
-                * `inviter` (InviterInvitee)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `rejected_ids` (array[id]) - rejected invitation IDs
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => invitation ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by invitation ID
+                - `id` (id) - invitation
+                - `email` (email, nullable) - invitee email
+                - `body`  (string, nullable) - Invitation body message
+                - `created_at` (DatetimeString) - invitation creation
+                - `state` (enum[number])
+                    - Members
+                        - 0 - Pending
+                        - 1 - Accepted
+                        - 2 - Rejected
+                        - 3 - Maybe
+                        - 100 - Invalid
+                - `type`: Invitation::ToIndigo (string, fixed)
+                - `updated_at` (DatetimeString)
+                - `invitee` (InviterInvitee)
+                - `inviter` (InviterInvitee)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 
 ### Invitation to connection [/invitations/to_connection/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 #### Deleting / Cancelling [DELETE]
 
     - an inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Body
+    - Body
 
             {}
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 #### Accepting / Rejecting [PUT]
 
     - an invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
-+ Response 200 (application/json)
-    * Attributes (InvitationToConnection)
+- Response 200 (application/json)
+    - Attributes (InvitationToConnection)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 
 #### Retrieving [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (object)
-        * `requested_at` (number) - token representing a timestamp of this request
-        * `rejected_ids` (array[id]) - rejected invitation IDs
-        * `total` (number) - total number of objects
-        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-            * *3 (string)* (id) - integer order on current page => invitation ID
-        * `objects` (object)
-            * *123456 (string)* (object) - an object indexed by invitation ID
-                * `id` (id) - invitation
-                * `email` (email, nullable) - invitee email
-                * `body`  (string, nullable) - Invitation body message
-                * `created_at` (DatetimeString) - invitation creation
-                * `state` (enum[number])
-                    * Members
-                        * 0 - Pending
-                        * 1 - Accepted
-                        * 2 - Rejected
-                        * 3 - Maybe
-                        * 100 - Invalid
-                * `type`: Invitation::ToConnection (string, fixed)
-                * `updated_at` (DatetimeString)
-                * `invitee` (InviterInvitee)
-                * `inviter` (InviterInvitee)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `rejected_ids` (array[id]) - rejected invitation IDs
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => invitation ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by invitation ID
+                - `id` (id) - invitation
+                - `email` (email, nullable) - invitee email
+                - `body`  (string, nullable) - Invitation body message
+                - `created_at` (DatetimeString) - invitation creation
+                - `state` (enum[number])
+                    - Members
+                        - 0 - Pending
+                        - 1 - Accepted
+                        - 2 - Rejected
+                        - 3 - Maybe
+                        - 100 - Invalid
+                - `type`: Invitation::ToConnection (string, fixed)
+                - `updated_at` (DatetimeString)
+                - `invitee` (InviterInvitee)
+                - `inviter` (InviterInvitee)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Creating [POST /invitations/to_connection/mass_create]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email]) - must specify at least either `emails` / `user_ids`
-            + `user_ids` (array[uuid]) - must specify at least either `emails` / `user_ids`
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email]) - must specify at least either `emails` / `user_ids`
+            - `user_ids` (array[uuid]) - must specify at least either `emails` / `user_ids`
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (InvitationToConnection) - an object indexed by Email
-                * `user_ids` (object)
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (InvitationToConnection) - an object indexed by User UUIDs
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids`
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (array[string]) - Array of error strings indexed by User UUIDs
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (InvitationToConnection) - an object indexed by Email
+                - `user_ids` (object)
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (InvitationToConnection) - an object indexed by User UUIDs
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids`
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (array[string]) - Array of error strings indexed by User UUIDs
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 
 ### Invitation to Space [/invitations/to_space/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 
 #### Deleting a.k.a. Cancelling [DELETE]
 
     - an inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-        * {}
+        - {}
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Accepting / Rejecting [PUT]
 
     - an invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 #### Updating pre-assigned role [PUT /invitations/to_space/{invitation_id}]
 
     - inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `role_id` (id) - Space Role ID
+        - `invitation` (object)
+            - `role_id` (id) - Space Role ID
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 
 #### Retrieving [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (InvitationsToSpace)
+    - Attributes (InvitationsToSpace)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Mass creating [POST /spaces/{space_id}/invitations/to_space/mass_create]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of the Space under which invitations are to be created
+- Parameters
+    - `space_id` (uuid) - UUID of the Space under which invitations are to be created
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email])
-            + `user_ids` (array[uuid])
-            + `role_ids` (object)
-                + *271A3A83-EA0C-450D-BAFB-51ED42C4CF10 (uuid)* (id) - Map from email / user ID to Space Role ID
-                + *invitee@example.com (email)* (id) - Map from email / user ID to Space Role ID
-            + `space_id` (uuid) - Space (same as :space_id)
-            + `body` - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email])
+            - `user_ids` (array[uuid])
+            - `role_ids` (object)
+                - *271A3A83-EA0C-450D-BAFB-51ED42C4CF10 (uuid)* (id) - Map from email / user ID to Space Role ID
+                - *invitee@example.com (email)* (id) - Map from email / user ID to Space Role ID
+            - `space_id` (uuid) - Space (same as :space_id)
+            - `body` - Body of invitation message to the invitees
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (object) - an object indexed by Email
-                        * Invitee (InviterInvitee)
-                * `user_ids` (object)
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - an object indexed by User UUIDs
-                        * Invitee (InviterInvitee)
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids`
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (object) - an object indexed by Email
+                        - Invitee (InviterInvitee)
+                - `user_ids` (object)
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - an object indexed by User UUIDs
+                        - Invitee (InviterInvitee)
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids`
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
 
 #### Creating [POST /invitations/to_space]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `state`: 0 (number, fixed)
-            + `type`:  Invitation::ToSpace (string, fixed)
-            + `space_id` (uuid) - Space ID
-            + `body` (string) - Body of invitation message to the invitees
-            + `invitee_id` (uuid) - invitee user ID
+        - `invitation` (object)
+            - `state`: 0 (number, fixed)
+            - `type`:  Invitation::ToSpace (string, fixed)
+            - `space_id` (uuid) - Space ID
+            - `body` (string) - Body of invitation message to the invitees
+            - `invitee_id` (uuid) - invitee user ID
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 ### Join Space Request [/invitations/join_space_request/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 
 #### Accepting / Rejecting a.k.a Ignoring [PUT]
 
     - An invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `join_space_request` (InvitationToSpace)
+        - `join_space_request` (InvitationToSpace)
 
 #### Updating pre-assigned role [PUT]
 
     - A Space Admin-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `role_id` (id) - Space Role Id
+        - `invitation` (object)
+            - `role_id` (id) - Space Role Id
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `join_space_request` (InvitationToSpace)
+        - `join_space_request` (InvitationToSpace)
 
 #### Retrieving [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (JoinSpaceRequests)
+    - Attributes (JoinSpaceRequests)
 
 #### Creating [POST /invitations/join_space_request]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `state`: 0 (number, fixed)
-            + `type`:  Invitation::JoinSpaceRequest (string, fixed)
-            + `space_id` (uuid) - Space ID
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `state`: 0 (number, fixed)
+            - `type`:  Invitation::JoinSpaceRequest (string, fixed)
+            - `space_id` (uuid) - Space ID
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (JoinSpaceRequest)
+    - Attributes (JoinSpaceRequest)
 ## Group Search
 
 ### Search [/search]
@@ -3071,15 +3071,15 @@ Endpoint for searching content, spaces, and other users.
 
 #### Search [GET]
 
-+ Request (application/json)
+- Request (application/json)
 
-  + Attributes
-      + `q` (string) - text to be searched.
-      + `tab` (string) - determines the type of items to search; "people" and "spaces" search only for users and spaces respectively, "my_content" searches for space app content such as conversation messages, while "all" searches all of the above. Any other value will cause the request to return nothing.
-      + `length` (number) - how many results to return.
-      + `start` (number) - request will return results starting from this number (e.g. start 5 and length 10 will return results #5-15 of a particular search).
+  - Attributes
+      - `q` (string) - text to be searched.
+      - `tab` (string) - determines the type of items to search; "people" and "spaces" search only for users and spaces respectively, "my_content" searches for space app content such as conversation messages, while "all" searches all of the above. Any other value will cause the request to return nothing.
+      - `length` (number) - how many results to return.
+      - `start` (number) - request will return results starting from this number (e.g. start 5 and length 10 will return results #5-15 of a particular search).
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "indices":{
@@ -3183,9 +3183,9 @@ Endpoint for searching content, spaces, and other users.
 
 Fetches recommended spaces and users.
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "spaces": {
@@ -3245,7 +3245,7 @@ General settings are a collection of endpoints that deal with fetching user info
 
 Fetches some basic information about the current user and session.
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "created_at":"2017-11-01T03:40:32.000+00:00",
@@ -3271,7 +3271,7 @@ Fetches some basic information about the current user and session.
 
 Fetches the user's latest network activities (up to 20).
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "current_remote_ip":"127.0.0.1",
@@ -3298,7 +3298,7 @@ Fetches the user's latest network activities (up to 20).
 
 Creates a new API token for the user and returns it. Current password must be sent under 'password_confirmation' to authorize action.
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "token":"mhwBTBYK3Vd6YgU8c9Gb"
@@ -3308,12 +3308,12 @@ Creates a new API token for the user and returns it. Current password must be se
 
 Changes the user's password. Current password must be sent under 'password_confirmation' to authorize action.
 
-+ Attributes
-    + `password_confirmation` (string) - current password
-    + `user` (object)
-      + `password` (string) - new password
+- Attributes
+    - `password_confirmation` (string) - current password
+    - `user` (object)
+      - `password` (string) - new password
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
         }
@@ -3322,13 +3322,13 @@ Changes the user's password. Current password must be sent under 'password_confi
 
 Changes the user's secret question and answer. Current password must be sent under 'password_confirmation' to authorize action.
 
-+ Attributes
-    + `password_confirmation` (string) - current password
-    + `user` (object)
-      + `question` (string) - new secret question
-      + `answer` (string) - answer to the new secret question
+- Attributes
+    - `password_confirmation` (string) - current password
+    - `user` (object)
+      - `question` (string) - new secret question
+      - `answer` (string) - answer to the new secret question
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
         }
@@ -3337,12 +3337,12 @@ Changes the user's secret question and answer. Current password must be sent und
 
 Sends a confirmation email to the submitted email address. If the activation link in the sent email is opened, The user's email will be successfully updated when the activation link. Current password must be sent under 'password_confirmation' to authorize action.
 
-+ Attributes
-    + `password_confirmation` (string) - current password
-    + `user` (object)
-      + `email` (string) - new address to send confirmation email to
+- Attributes
+    - `password_confirmation` (string) - current password
+    - `user` (object)
+      - `email` (string) - new address to send confirmation email to
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
         }
@@ -3351,7 +3351,7 @@ Sends a confirmation email to the submitted email address. If the activation lin
 
 If there is a pending email change request for the user, this action will send an email with a new activation link to the pending email address. This action imposes a 12-hour minimum delay between emails, and will not resend if the last email was sent less than 12 hours ago.
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
         }
@@ -3360,7 +3360,7 @@ If there is a pending email change request for the user, this action will send a
 
 If there is a pending email change request for the user, this action cancels that request.
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
         }
@@ -3369,69 +3369,69 @@ If there is a pending email change request for the user, this action cancels tha
 
 The non-general setting endpoints deal with remembering a user's preferences for how various parts of the Ribose platform should behave. The full list of setting types and the configurations they take are as follows:
 
-**Setting::Personal** - affect site-wide behavior for the user
-+ `help_getting_started` (boolean) - determines whether the user needs to go through the initial tutorial upon signing in. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
-+ `help_change_space_color` (boolean) - determines whether the tutorial on changing space color should be shown. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
-+ `chat_show_offline_users` (boolean) - sets whether the chat widget shows users who are offline. Default is true.
-+ `chat_show_spaces` (boolean) - sets whether the Shared Spaces Indicator should be shown in chat. Default is false.
-+ `chat_sound` (boolean) - sets whether a sound should play when the user receives a chat message. Default is true.
-+ `theme_id` (number) - integer that references a Theme object id that the user has access to. Default is 1, the default Ribose theme.
-+ `time_zone` (string) - sets the user's time zone. This configuration accepts any value defined by the public domain  IANA Time Zone Database (https://www.iana.org/time-zones). Default is "Etc/UTC".
-+ `time_zone_autodetect` (string) - sets whether time zone should be automatically detected. Takes either "always" or "prompt". Default is "always".
-+ `time_format` (string) - sets the format used to display time. Takes either "%I:%M%p" or "%H:%M". Default is "%I:%M%p".
-+ `date_format` (string) - sets the format used to display dates. Only accepts values from "%d/%m/%Y", "%m/%d/%Y", "%d.%m.%Y", "%m.%d.%Y", or "%Y-%m-%d". Default is "%d/%m/%Y".
-+ `block_concurrent_signin` (false) - sets whether the user's account is prevented from signing in concurrently from multiple devices. Default is false, which does allow concurrent sign in.
-+ `connection_request_email` (boolean) - sets whether an email notification is sent when the user receives a connection request. Default is true.
-+ `space_invitation_email` (boolean) - sets whether an email notification is sent when the user receives a space invitation. Default is true.
-+ `connection_request_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's connection request. Default is true.
-+ `space_invitation_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's space invitation. Default is true.
-+ `inbox_message_email` (boolean) - sets whether an email notification is sent when the user receives an inbox message. Default is true.
+-*Setting::Personal** - affect site-wide behavior for the user
+- `help_getting_started` (boolean) - determines whether the user needs to go through the initial tutorial upon signing in. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
+- `help_change_space_color` (boolean) - determines whether the tutorial on changing space color should be shown. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
+- `chat_show_offline_users` (boolean) - sets whether the chat widget shows users who are offline. Default is true.
+- `chat_show_spaces` (boolean) - sets whether the Shared Spaces Indicator should be shown in chat. Default is false.
+- `chat_sound` (boolean) - sets whether a sound should play when the user receives a chat message. Default is true.
+- `theme_id` (number) - integer that references a Theme object id that the user has access to. Default is 1, the default Ribose theme.
+- `time_zone` (string) - sets the user's time zone. This configuration accepts any value defined by the public domain  IANA Time Zone Database (https://www.iana.org/time-zones). Default is "Etc/UTC".
+- `time_zone_autodetect` (string) - sets whether time zone should be automatically detected. Takes either "always" or "prompt". Default is "always".
+- `time_format` (string) - sets the format used to display time. Takes either "%I:%M%p" or "%H:%M". Default is "%I:%M%p".
+- `date_format` (string) - sets the format used to display dates. Only accepts values from "%d/%m/%Y", "%m/%d/%Y", "%d.%m.%Y", "%m.%d.%Y", or "%Y-%m-%d". Default is "%d/%m/%Y".
+- `block_concurrent_signin` (false) - sets whether the user's account is prevented from signing in concurrently from multiple devices. Default is false, which does allow concurrent sign in.
+- `connection_request_email` (boolean) - sets whether an email notification is sent when the user receives a connection request. Default is true.
+- `space_invitation_email` (boolean) - sets whether an email notification is sent when the user receives a space invitation. Default is true.
+- `connection_request_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's connection request. Default is true.
+- `space_invitation_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's space invitation. Default is true.
+- `inbox_message_email` (boolean) - sets whether an email notification is sent when the user receives an inbox message. Default is true.
 
-**Setting::Space** - affect all members of a specific space; only accessible by admins or the owner
-+ `email_notifications` (boolean) - determines whether space members are sent email notifications about activities in the space. Default is true.
-+ `realtime_notifications` (boolean) - determines whether space members are sent realtime notifications about activities in the space. Default is true.
+-*Setting::Space** - affect all members of a specific space; only accessible by admins or the owner
+- `email_notifications` (boolean) - determines whether space members are sent email notifications about activities in the space. Default is true.
+- `realtime_notifications` (boolean) - determines whether space members are sent realtime notifications about activities in the space. Default is true.
 
-**Setting::UserSpace** - affect how a specific space behaves for the user (another user might have different settings for the same space)
-+ `space_color` (string) - sets the color of the space's default avatar and some interface elements. Only accepts values from #E1EBE8, #D8E3EC, #EBE1E2, #E59C7D, #F2EFD1, DADBBC, #A3B7B9, or #C5C3B2. Default is #E1EBE8.
-+ `email_notification_type` (number) - sets whether email notifications about activity in the space are sent to the user. Only accepts 0 for no notifications, or 2 for email notifications. Default is 2 which sends the email notifications.
+-*Setting::UserSpace** - affect how a specific space behaves for the user (another user might have different settings for the same space)
+- `space_color` (string) - sets the color of the space's default avatar and some interface elements. Only accepts values from #E1EBE8, #D8E3EC, #EBE1E2, #E59C7D, #F2EFD1, DADBBC, #A3B7B9, or #C5C3B2. Default is #E1EBE8.
+- `email_notification_type` (number) - sets whether email notifications about activity in the space are sent to the user. Only accepts 0 for no notifications, or 2 for email notifications. Default is 2 which sends the email notifications.
 
-**Setting::UserApp::Calendar** - affect how calendars behave for the user
-+ `week_start_day` (integer) - integer representing the starting day of the week. Only accepts 0 to 6. Default is 1 which stands for Monday.
-+ `show_weekends` (boolean) - determines whether weekends are shown in the calendar. Default is true.
-+ `work_day_begin` (number) - integer representing the hour that the calendar will treat as the start of a work day. Only accepts numbers 0 to 23. Default is 9 which stands for 9 a.m.
-+ `work_day_end` (number) - integer representing the hour that the calendar will treat as the end of a work day. Only accepts numbers 0 to 23. Default is 18 which stands for 6 p.m.
-+ `weekends` (number) - array of integers representing days that the calendar will treat as weekends. Only accepts numbers 0 to 6. Default is [0, 6] which stands for Saturday & Sunday.
-+ `calendars_disabled` (number) - array of calendar ids; events from calendars listed here will not be displayed. Default is an empty array.
+-*Setting::UserApp::Calendar** - affect how calendars behave for the user
+- `week_start_day` (integer) - integer representing the starting day of the week. Only accepts 0 to 6. Default is 1 which stands for Monday.
+- `show_weekends` (boolean) - determines whether weekends are shown in the calendar. Default is true.
+- `work_day_begin` (number) - integer representing the hour that the calendar will treat as the start of a work day. Only accepts numbers 0 to 23. Default is 9 which stands for 9 a.m.
+- `work_day_end` (number) - integer representing the hour that the calendar will treat as the end of a work day. Only accepts numbers 0 to 23. Default is 18 which stands for 6 p.m.
+- `weekends` (number) - array of integers representing days that the calendar will treat as weekends. Only accepts numbers 0 to 6. Default is [0, 6] which stands for Saturday & Sunday.
+- `calendars_disabled` (number) - array of calendar ids; events from calendars listed here will not be displayed. Default is an empty array.
 
-**Setting::UserApp::Conversation**
-+ `per_page` (number) - number of threads to display in each page when browsing the conversation section of spaces. Default is 50.
+-*Setting::UserApp::Conversation**
+- `per_page` (number) - number of threads to display in each page when browsing the conversation section of spaces. Default is 50.
 
-**Setting::UserApp::File**
-+ `per_page` (number) - number of files to display in each page when browsing the file section of spaces. Default is 100.
+-*Setting::UserApp::File**
+- `per_page` (number) - number of files to display in each page when browsing the file section of spaces. Default is 100.
 
-**Setting::UserApp::Inbox**
-+ `per_page` (number) - number of messages to display in each page when browsing the inbox. Default is 50.
+-*Setting::UserApp::Inbox**
+- `per_page` (number) - number of messages to display in each page when browsing the inbox. Default is 50.
 
-**Setting::UserApp::People**
-+ `per_page` (number) - number of . Default is 90.
+-*Setting::UserApp::People**
+- `per_page` (number) - number of . Default is 90.
 
-**Setting::UserApp::Search**
-+ `per_page` (number) - number of results to display in each page when searching. Default is 25.
+-*Setting::UserApp::Search**
+- `per_page` (number) - number of results to display in each page when searching. Default is 25.
 
-**Setting::UserApp::Wiki**
-+ `per_page` (number) - number of entries to display in each page when browsing space wikis. Default is 50.
+-*Setting::UserApp::Wiki**
+- `per_page` (number) - number of entries to display in each page when browsing space wikis. Default is 50.
 
-**Setting::Widget::Notification**
-+ `disabled_spaces` (string) - array of space ids; listed Spaces will not generate any notifications for the user. Default is an empty array.
+-*Setting::Widget::Notification**
+- `disabled_spaces` (string) - array of space ids; listed Spaces will not generate any notifications for the user. Default is an empty array.
 
-**Setting::Widget::Weather**
-+ `order` (number) - array of Weather Widget object ids; each Weather Widget holds a saved weather location in the sidebar widget, and this configurations saves the order in which they appear. Default is an empty array.
+-*Setting::Widget::Weather**
+- `order` (number) - array of Weather Widget object ids; each Weather Widget holds a saved weather location in the sidebar widget, and this configurations saves the order in which they appear. Default is an empty array.
 
 #### Get all settings [GET]
 
 Fetches all Setting configurations that the user owns or has access to. Setting objects or configuration keys that are missing from the returned response imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "settings": [
@@ -3456,19 +3456,19 @@ Fetches all Setting configurations that the user owns or has access to. Setting 
 
 Creates a new setting object, obeying the following restrictions:
 
-+ **Setting::Personal** - each user can only have 1 Personal setting. A Personal setting must also have a user_id that references the user.
-+ **Setting::Space** - each space can only have 1 Space setting. A Space setting must also have a space_id that references the space.
-+ **Setting::UserSpace** - each space can only have 1 UserSpace setting per user. A UserSpace setting must also have a space_id that references the space, and a user_id that references the user.
-+ **Setting::UserApps** - each user can only have 1 UserApp setting of each type (e.g. only 1 Setting::UserApp::Conversation per user). A UserApp setting must also have a user_id that references the user.
-+ **Setting::Widget** - each user can only have 1 Widget setting of each type (e.g. only 1 Setting::Widget::Notification per user). A Widget setting must also have a widget_id that references the corresponding Widget object (e.g. a Widget::Weather object for a Setting::Widget::Weather object).
+- **Setting::Personal** - each user can only have 1 Personal setting. A Personal setting must also have a user_id that references the user.
+- **Setting::Space** - each space can only have 1 Space setting. A Space setting must also have a space_id that references the space.
+- **Setting::UserSpace** - each space can only have 1 UserSpace setting per user. A UserSpace setting must also have a space_id that references the space, and a user_id that references the user.
+- **Setting::UserApps** - each user can only have 1 UserApp setting of each type (e.g. only 1 Setting::UserApp::Conversation per user). A UserApp setting must also have a user_id that references the user.
+- **Setting::Widget** - each user can only have 1 Widget setting of each type (e.g. only 1 Setting::Widget::Notification per user). A Widget setting must also have a widget_id that references the corresponding Widget object (e.g. a Widget::Weather object for a Setting::Widget::Weather object).
 
 If a create request conflicts with the above quantity restrictions, i.e. if a user tries to create a setting that already exists for them such as a Personal setting or their UserApp::Wiki setting, then this action will simply return the existing setting without any changes, behaving much like a get request for an individual setting. This will not change any of the setting's configuration values no matter what values were submitted in the create request. To change an existing setting's configuration values, perform an update request instead.
 
-+ Attributes
-    + `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
-      + `type` (string) - required attribute. The full list of setting types and the config keys that they allow can be found under the main "Settings" (/settings) heading. Different types also have different id reference requirements as defined above.
+- Attributes
+    - `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
+      - `type` (string) - required attribute. The full list of setting types and the config keys that they allow can be found under the main "Settings" (/settings) heading. Different types also have different id reference requirements as defined above.
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "setting": {
@@ -3485,14 +3485,14 @@ If a create request conflicts with the above quantity restrictions, i.e. if a us
 
 Operations on individual setting objects. Read the more detailed description under "Settings" (/settings) to see how the setting system operates, and for a reference on the types of settings available and the configurations that each type handles.
 
-+ Parameters
-    + `setting_id` (number, required) - Id of the setting.
+- Parameters
+    - `setting_id` (number, required) - Id of the setting.
 
 #### Get a setting [GET]
 
 Returns the setting object of the given id if the user owns or has permission to access to the object. Missing configurations imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "setting": {
@@ -3509,10 +3509,10 @@ Returns the setting object of the given id if the user owns or has permission to
 
 Updates and returns the updated setting object of the given id if the user owns or has permission to access the object. Missing configurations imply that they are still set to their default value - the setting system only records configuration values that differ from system defaults.
 
-+ Attributes
-    + `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
+- Attributes
+    - `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
           "setting": {
@@ -3528,13 +3528,13 @@ Updates and returns the updated setting object of the given id if the user owns 
 
 #### Index [GET]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + spaces (array[Space]) - list of spaces
+- Response 200 (application/json)
+    - Attributes (object)
+        - spaces (array[Space]) - list of spaces
 
-    + Body
+    - Body
 
             {
               "spaces":[
@@ -3600,15 +3600,15 @@ Updates and returns the updated setting object of the given id if the user owns 
 
 #### Create [POST]
 
-+ Request (application/json)
-    + Attributes (object)
-        + space (Space) - new space attributes
+- Request (application/json)
+    - Attributes (object)
+        - space (Space) - new space attributes
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - created space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - created space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -3672,16 +3672,16 @@ Updates and returns the updated setting object of the given id if the user owns 
 
 #### Show [GET /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - retrieved space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - retrieved space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -3745,18 +3745,18 @@ Updates and returns the updated setting object of the given id if the user owns 
 
 #### Update [PUT /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
-    + Attributes (object)
-        + space (Space) - space update
+- Request (application/json)
+    - Attributes (object)
+        - space (Space) - space update
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - updated space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - updated space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -3820,161 +3820,161 @@ Updates and returns the updated setting object of the given id if the user owns 
 
 #### Delete [DELETE /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 ## Group Space Member
 
 ### Space Members [/spaces/{space_id}/members]
 
-+ Parameters
+- Parameters
 
-    + `space_id` (uuid)
+    - `space_id` (uuid)
 
 #### Index [GET]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `requested_at` (number) - token representing a timestamp of this request
-        * `total` (number) - total number of objects
-        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-            * *3 (string)* (id) - integer order on current page => Space Member ID
-        * `objects` (object)
-            * *123456 (string)* (object) - an object indexed by Space Member ID
-                * `id`: 18700
-                * `user_id` (uuid)
-                * `space_id` (uuid)
-                * `role_name_in_space` (enum[string])
-                    * Members
-                        * Member
-                        * Administrator
-                        * Read only
-                * `user` (object) - attributes of this Space member
-                    * `id` (uuid) - Ribose user ID
-                    * `owner` (boolean) - `true` iff is the Space owner
-                    * `admin` (boolean) - `true` iff is a Space admin
-                    * `connected` (boolean) - `true` iff this Space member is a connection of current user
-                    * `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
-                    * `name` (string) - Space Member's display name
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => Space Member ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by Space Member ID
+                - `id`: 18700
+                - `user_id` (uuid)
+                - `space_id` (uuid)
+                - `role_name_in_space` (enum[string])
+                    - Members
+                        - Member
+                        - Administrator
+                        - Read only
+                - `user` (object) - attributes of this Space member
+                    - `id` (uuid) - Ribose user ID
+                    - `owner` (boolean) - `true` iff is the Space owner
+                    - `admin` (boolean) - `true` iff is a Space admin
+                    - `connected` (boolean) - `true` iff this Space member is a connection of current user
+                    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+                    - `name` (string) - Space Member's display name
 
 
 #### Destroy [DELETE /spaces/{space_id}/members/{space_member_id}]
 
-+ Parameters
+- Parameters
 
-    + `space_member_id` (id)
+    - `space_member_id` (id)
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        + `message` (string) - Success message for removal of member
+    - Attributes (object)
+        - `message` (string) - Success message for removal of member
 
 ### Fetching roles [GET /people/users/{user_id}/roles/get_roles{?in_space}]
 
-+ Parameters
+- Parameters
 
-    + `user_id` (uuid) - UUID of the User involved
-    + `in_space` (uuid) - UUID of the Space involved
+    - `user_id` (uuid) - UUID of the User involved
+    - `in_space` (uuid) - UUID of the Space involved
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        + `roles` (object) - 0-indexed map
-            + *`0` (string)* (object)
-                + `id` (id) - Role ID
-                + `name` (enum[string])
-                    + Members
-                        + Member
-                        + Administrator
-                        + Read only
-                + `space_id` (uuid) - UUID of the associated Space
-        + `user_role` (object) - details of current user's role
-            + `id` (id) - Role ID
-            + `name` (enum[string])
-                + Members
-                    + Member
-                    + Administrator
-                    + Read only
-            + `space_id` (uuid) - UUID of the associated Space
+    - Attributes (object)
+        - `roles` (object) - 0-indexed map
+            - *`0` (string)* (object)
+                - `id` (id) - Role ID
+                - `name` (enum[string])
+                    - Members
+                        - Member
+                        - Administrator
+                        - Read only
+                - `space_id` (uuid) - UUID of the associated Space
+        - `user_role` (object) - details of current user's role
+            - `id` (id) - Role ID
+            - `name` (enum[string])
+                - Members
+                    - Member
+                    - Administrator
+                    - Read only
+            - `space_id` (uuid) - UUID of the associated Space
 
 ### Assigning roles [PUT /people/users/{user_id}/roles/change_assignment{?in_space}]
 
-+ Parameters
+- Parameters
 
-    + `user_id` (uuid) - UUID of the User involved
-    + `in_space` (uuid) - UUID of the Space involved
+    - `user_id` (uuid) - UUID of the User involved
+    - `in_space` (uuid) - UUID of the Space involved
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `checked_role`  (id) - Role ID
+    - Attributes (object)
+        - `checked_role`  (id) - Role ID
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        + Body
+    - Attributes (object)
+        - Body
                 {}
 ## Group User
 
 ### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `unique` (boolean)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `unique` (boolean)
 
 ### Create sign-up request [POST /signup_requests]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 ### Submit sign-up details [POST /signup.user]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
-        + `otp` (string, required) - OTP value from confirmation email
-        + `password` (string, required) - string of new password
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
+        - `otp` (string, required) - OTP value from confirmation email
+        - `password` (string, required) - string of new password
 
-+ Response 201 (application/json)
-    + Attributes (object)
-        + `id` (string) - ID of new user
-        + `name` (string) - username
+- Response 201 (application/json)
+    - Attributes (object)
+        - `id` (string) - ID of new user
+        - `name` (string) - username
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 ### Delete user [DELETE /cancel_registration]
 
-+ request (application/json)
-    + Attributes (object)
-        + `user_id` (uuid) - ID of the user
-        + `password` (string) - password of the user
+- request (application/json)
+    - Attributes (object)
+        - `user_id` (uuid) - ID of the user
+        - `password` (string) - password of the user
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 ## Group Authentication
 
@@ -3983,28 +3983,28 @@ Updates and returns the updated setting object of the given id if the user owns 
 On successful login, server responds with redirection to URL passed as
 `return_to` option in request.  Otherwise, it responds with HTTP 200 OK.
 
-+ Request (application/x-www-form-urlencoded)
-    + Attributes
-        + `utf8` (string, required) - Any string containing characters specific to UTF-8, e.g. `"✓"`
-        + `authenticity_token` (string, required) - CSRF prevention
-        + `invitation_code` (string, required) - invitation code
-        + `return_to` (string, required) - URL redirection parameter
-        + `username` (string, required) - username or email
-        + `password` (string, required) - password
-        + `remember_me` (boolean, required) - `1` for true or `0` for false
+- Request (application/x-www-form-urlencoded)
+    - Attributes
+        - `utf8` (string, required) - Any string containing characters specific to UTF-8, e.g. `"✓"`
+        - `authenticity_token` (string, required) - CSRF prevention
+        - `invitation_code` (string, required) - invitation code
+        - `return_to` (string, required) - URL redirection parameter
+        - `username` (string, required) - username or email
+        - `password` (string, required) - password
+        - `remember_me` (boolean, required) - `1` for true or `0` for false
 
-+ Response 302 (text/html; charset=utf-8)
+- Response 302 (text/html; charset=utf-8)
 
-+ Response 200 (text/html; charset=utf-8)
+- Response 200 (text/html; charset=utf-8)
 
 ### Log out [DELETE /logout]
 
 Typically, server returns HTTP 204 No Content.  That said, a redirection will
 happen if no user was logged in.
 
-+ Request (application/x-www-form-urlencoded)
-    + Attributes
+- Request (application/x-www-form-urlencoded)
+    - Attributes
 
-+ Response 204 (text/html)
+- Response 204 (text/html)
 
-+ Response 302 (text/html)
+- Response 302 (text/html)

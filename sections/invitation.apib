@@ -2,8 +2,8 @@
 
 ### Invitation to Ribose [/invitations/to_new_member/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 #### Resending [POST /invitations/to_new_member/{invitation_id}/resend]
 
@@ -11,449 +11,449 @@
     - time throttled
     - only applicable to invitations sent to non-member emails
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + success: true (boolean)
+        - success: true (boolean)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
+        - error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
 
 
 #### Creating [POST /invitations/to_new_member/mass_create]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email]) - must specify at least either `emails`
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email]) - must specify at least either `emails`
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (InvitationToIndigo) - an object indexed by Email
-                * `user_ids` (object)
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids` (object) - empty
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (InvitationToIndigo) - an object indexed by Email
+                - `user_ids` (object)
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids` (object) - empty
 
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 #### Retrieving [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (object)
-        * `requested_at` (number) - token representing a timestamp of this request
-        * `rejected_ids` (array[id]) - rejected invitation IDs
-        * `total` (number) - total number of objects
-        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-            * *3 (string)* (id) - integer order on current page => invitation ID
-        * `objects` (object)
-            * *123456 (string)* (object) - an object indexed by invitation ID
-                * `id` (id) - invitation
-                * `email` (email, nullable) - invitee email
-                * `body`  (string, nullable) - Invitation body message
-                * `created_at` (DatetimeString) - invitation creation
-                * `state` (enum[number])
-                    * Members
-                        * 0 - Pending
-                        * 1 - Accepted
-                        * 2 - Rejected
-                        * 3 - Maybe
-                        * 100 - Invalid
-                * `type`: Invitation::ToIndigo (string, fixed)
-                * `updated_at` (DatetimeString)
-                * `invitee` (InviterInvitee)
-                * `inviter` (InviterInvitee)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `rejected_ids` (array[id]) - rejected invitation IDs
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => invitation ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by invitation ID
+                - `id` (id) - invitation
+                - `email` (email, nullable) - invitee email
+                - `body`  (string, nullable) - Invitation body message
+                - `created_at` (DatetimeString) - invitation creation
+                - `state` (enum[number])
+                    - Members
+                        - 0 - Pending
+                        - 1 - Accepted
+                        - 2 - Rejected
+                        - 3 - Maybe
+                        - 100 - Invalid
+                - `type`: Invitation::ToIndigo (string, fixed)
+                - `updated_at` (DatetimeString)
+                - `invitee` (InviterInvitee)
+                - `inviter` (InviterInvitee)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 
 ### Invitation to connection [/invitations/to_connection/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 #### Deleting / Cancelling [DELETE]
 
     - an inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Body
+    - Body
 
             {}
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 #### Accepting / Rejecting [PUT]
 
     - an invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
-+ Response 200 (application/json)
-    * Attributes (InvitationToConnection)
+- Response 200 (application/json)
+    - Attributes (InvitationToConnection)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 
 #### Retrieving [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (object)
-        * `requested_at` (number) - token representing a timestamp of this request
-        * `rejected_ids` (array[id]) - rejected invitation IDs
-        * `total` (number) - total number of objects
-        * `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
-            * *3 (string)* (id) - integer order on current page => invitation ID
-        * `objects` (object)
-            * *123456 (string)* (object) - an object indexed by invitation ID
-                * `id` (id) - invitation
-                * `email` (email, nullable) - invitee email
-                * `body`  (string, nullable) - Invitation body message
-                * `created_at` (DatetimeString) - invitation creation
-                * `state` (enum[number])
-                    * Members
-                        * 0 - Pending
-                        * 1 - Accepted
-                        * 2 - Rejected
-                        * 3 - Maybe
-                        * 100 - Invalid
-                * `type`: Invitation::ToConnection (string, fixed)
-                * `updated_at` (DatetimeString)
-                * `invitee` (InviterInvitee)
-                * `inviter` (InviterInvitee)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `rejected_ids` (array[id]) - rejected invitation IDs
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => Invitation ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => invitation ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by invitation ID
+                - `id` (id) - invitation
+                - `email` (email, nullable) - invitee email
+                - `body`  (string, nullable) - Invitation body message
+                - `created_at` (DatetimeString) - invitation creation
+                - `state` (enum[number])
+                    - Members
+                        - 0 - Pending
+                        - 1 - Accepted
+                        - 2 - Rejected
+                        - 3 - Maybe
+                        - 100 - Invalid
+                - `type`: Invitation::ToConnection (string, fixed)
+                - `updated_at` (DatetimeString)
+                - `invitee` (InviterInvitee)
+                - `inviter` (InviterInvitee)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Creating [POST /invitations/to_connection/mass_create]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email]) - must specify at least either `emails` / `user_ids`
-            + `user_ids` (array[uuid]) - must specify at least either `emails` / `user_ids`
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email]) - must specify at least either `emails` / `user_ids`
+            - `user_ids` (array[uuid]) - must specify at least either `emails` / `user_ids`
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (InvitationToConnection) - an object indexed by Email
-                * `user_ids` (object)
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (InvitationToConnection) - an object indexed by User UUIDs
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids`
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (array[string]) - Array of error strings indexed by User UUIDs
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (InvitationToConnection) - an object indexed by Email
+                - `user_ids` (object)
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (InvitationToConnection) - an object indexed by User UUIDs
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids`
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (array[string]) - Array of error strings indexed by User UUIDs
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
 
 ### Invitation to Space [/invitations/to_space/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 
 #### Deleting a.k.a. Cancelling [DELETE]
 
     - an inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-        * {}
+        - {}
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Accepting / Rejecting [PUT]
 
     - an invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 #### Updating pre-assigned role [PUT /invitations/to_space/{invitation_id}]
 
     - inviter-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `role_id` (id) - Space Role ID
+        - `invitation` (object)
+            - `role_id` (id) - Space Role ID
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 
 #### Retrieving [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    * Attributes (InvitationsToSpace)
+    - Attributes (InvitationsToSpace)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 #### Mass creating [POST /spaces/{space_id}/invitations/to_space/mass_create]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of the Space under which invitations are to be created
+- Parameters
+    - `space_id` (uuid) - UUID of the Space under which invitations are to be created
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `emails` (array[email])
-            + `user_ids` (array[uuid])
-            + `role_ids` (object)
-                + *271A3A83-EA0C-450D-BAFB-51ED42C4CF10 (uuid)* (id) - Map from email / user ID to Space Role ID
-                + *invitee@example.com (email)* (id) - Map from email / user ID to Space Role ID
-            + `space_id` (uuid) - Space (same as :space_id)
-            + `body` - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `emails` (array[email])
+            - `user_ids` (array[uuid])
+            - `role_ids` (object)
+                - *271A3A83-EA0C-450D-BAFB-51ED42C4CF10 (uuid)* (id) - Map from email / user ID to Space Role ID
+                - *invitee@example.com (email)* (id) - Map from email / user ID to Space Role ID
+            - `space_id` (uuid) - Space (same as :space_id)
+            - `body` - Body of invitation message to the invitees
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
-        * `invitations` (object)
-            * `success` (object)
-                * `emails` (object)
-                    * *user@example.com (email)* (object) - an object indexed by Email
-                        * Invitee (InviterInvitee)
-                * `user_ids` (object)
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - an object indexed by User UUIDs
-                        * Invitee (InviterInvitee)
-            * `errors` (object)
-                * `emails`
-                    * *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
-                * `user_ids`
-                    * *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
+    - Attributes (object)
+        - `invitations` (object)
+            - `success` (object)
+                - `emails` (object)
+                    - *user@example.com (email)* (object) - an object indexed by Email
+                        - Invitee (InviterInvitee)
+                - `user_ids` (object)
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - an object indexed by User UUIDs
+                        - Invitee (InviterInvitee)
+            - `errors` (object)
+                - `emails`
+                    - *user@example.com (email)* (array[string]) - Array of error strings indexed by Email
+                - `user_ids`
+                    - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
 
 #### Creating [POST /invitations/to_space]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `state`: 0 (number, fixed)
-            + `type`:  Invitation::ToSpace (string, fixed)
-            + `space_id` (uuid) - Space ID
-            + `body` (string) - Body of invitation message to the invitees
-            + `invitee_id` (uuid) - invitee user ID
+        - `invitation` (object)
+            - `state`: 0 (number, fixed)
+            - `type`:  Invitation::ToSpace (string, fixed)
+            - `space_id` (uuid) - Space ID
+            - `body` (string) - Body of invitation message to the invitees
+            - `invitee_id` (uuid) - invitee user ID
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `to_space` (InvitationToSpace)
+        - `to_space` (InvitationToSpace)
 
 ### Join Space Request [/invitations/join_space_request/{invitation_id}]
 
-+ Parameters
-    + `invitation_id` (id)
+- Parameters
+    - `invitation_id` (id)
 
 
 #### Accepting / Rejecting a.k.a Ignoring [PUT]
 
     - An invitee-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
-        + `invitation` (object)
-            + `state` (enum[number])
-                * Members
-                    * 1 - Accepting
-                    * 2 - Rejecting (ignoring)
+    - Attributes (object)
+        - `invitation` (object)
+            - `state` (enum[number])
+                - Members
+                    - 1 - Accepting
+                    - 2 - Rejecting (ignoring)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `join_space_request` (InvitationToSpace)
+        - `join_space_request` (InvitationToSpace)
 
 #### Updating pre-assigned role [PUT]
 
     - A Space Admin-only action
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `role_id` (id) - Space Role Id
+        - `invitation` (object)
+            - `role_id` (id) - Space Role Id
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        * `join_space_request` (InvitationToSpace)
+        - `join_space_request` (InvitationToSpace)
 
 #### Retrieving [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
 
-+ Parameters
+- Parameters
 
-    + `view`: received (enum[string]) - which view to retrieve
-        * Members
-            * received
-            * sent
-    + `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    + `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    + `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        * Members
-            * created_at
-            * updated_at
-    + `direction` (enum[string], optional) - pagination sorting direction. Optional
-        * Members
-            * desc
-            * asc
-    + `s` (string) - pagination synchronization string
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (JoinSpaceRequests)
+    - Attributes (JoinSpaceRequests)
 
 #### Creating [POST /invitations/join_space_request]
 
-+ Request (application/json)
+- Request (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `invitation` (object)
-            + `state`: 0 (number, fixed)
-            + `type`:  Invitation::JoinSpaceRequest (string, fixed)
-            + `space_id` (uuid) - Space ID
-            + `body` (string) - Body of invitation message to the invitees
+        - `invitation` (object)
+            - `state`: 0 (number, fixed)
+            - `type`:  Invitation::JoinSpaceRequest (string, fixed)
+            - `space_id` (uuid) - Space ID
+            - `body` (string) - Body of invitation message to the invitees
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (JoinSpaceRequest)
+    - Attributes (JoinSpaceRequest)

@@ -1,13 +1,13 @@
 :[](non_recurrence.apib)
-    + `event[until]` (enum[string])
-        + members
-          + `never` - Indicates the recurring series will never end.
-          + `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
-    + `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
-    + `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
+    - `event[until]` (enum[string])
+        - members
+          - `never` - Indicates the recurring series will never end.
+          - `to_date` - Indicates the recurring series will end at a date specified in `event[until_date]`.
+    - `event[repeat_every]` (number) - Repeats by the number of units given by the recurring type.
+    - `event[until_date]`: dd/mm/yyyy, mm/dd/yyyy, dd.mm.yyyy, yyyy-mm-dd (string)
 
         Repeats until the specified date.
 
-    + `event[repeat_by]`: 2,4,7 (string)
+    - `event[repeat_by]`: 2,4,7 (string)
 
         Repeats by the days in a week (1-7 representing Monday to Sunday), separated by a delimiter ",".

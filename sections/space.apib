@@ -4,13 +4,13 @@
 
 #### Index [GET]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + spaces (array[Space]) - list of spaces
+- Response 200 (application/json)
+    - Attributes (object)
+        - spaces (array[Space]) - list of spaces
 
-    + Body
+    - Body
 
             {
               "spaces":[
@@ -76,15 +76,15 @@
 
 #### Create [POST]
 
-+ Request (application/json)
-    + Attributes (object)
-        + space (Space) - new space attributes
+- Request (application/json)
+    - Attributes (object)
+        - space (Space) - new space attributes
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - created space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - created space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -148,16 +148,16 @@
 
 #### Show [GET /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - retrieved space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - retrieved space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -221,18 +221,18 @@
 
 #### Update [PUT /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
-    + Attributes (object)
-        + space (Space) - space update
+- Request (application/json)
+    - Attributes (object)
+        - space (Space) - space update
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + space (Space) - updated space
+- Response 200 (application/json)
+    - Attributes (object)
+        - space (Space) - updated space
 
-    + Body
+    - Body
 
             {
               "space": {
@@ -296,9 +296,9 @@
 
 #### Delete [DELETE /spaces/{space_id}]
 
-+ Parameters
-    + `space_id` (uuid)
+- Parameters
+    - `space_id` (uuid)
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)

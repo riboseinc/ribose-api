@@ -4,22 +4,22 @@
 
 #### Retrieve a calendar collection [GET]
 
-+ Attributes
-    + `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
-    + `length` (number) - How many days to fetch.
-    + `cal_ids`: `_H~C_Bn.J` (string)
+- Attributes
+    - `start` (number) - Fetch events starting from a date (an integer computed by the difference in days between the date and 01/01/1970).
+    - `length` (number) - How many days to fetch.
+    - `cal_ids`: `_H~C_Bn.J` (string)
 
         Specify the calendars to fetch with `calendar_ids` encoded by `Range Codec`.
 
-    + `time_zone`: `Etc/UTC` (string)
+    - `time_zone`: `Etc/UTC` (string)
 
         Specify the time zone for the events.
 
-+ Request Retrieve only the calendar collection (application/json)
+- Request Retrieve only the calendar collection (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "filter": {
@@ -80,7 +80,7 @@
             "requested_at": 847475124
         }
 
-+ Request Retrieve events in the calendar collection (application/json)
+- Request Retrieve events in the calendar collection (application/json)
 
         {
             "start": 17465,
@@ -89,7 +89,7 @@
             "time_zone": "Etc/UTC"
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_events": [
@@ -509,15 +509,15 @@
 #### Create a calendar [POST]
 
 
-+ Attributes (object)
-    + `calendar[name]` (string) - Name of the calendar.
-    + `calendar[owner_type]` (enum[string], required) - Type of the owner of the calendar.
-        + members
-            + `User`
-            + `Space`
-    + `calendar[owner_id]` (uuid, required) - Id of the owner of the calendar.
+- Attributes (object)
+    - `calendar[name]` (string) - Name of the calendar.
+    - `calendar[owner_type]` (enum[string], required) - Type of the owner of the calendar.
+        - members
+            - `User`
+            - `Space`
+    - `calendar[owner_id]` (uuid, required) - Id of the owner of the calendar.
 
-+ Request (application/json)
+- Request (application/json)
 
         {
             "calendar[name]": "A new personal calendar",
@@ -525,7 +525,7 @@
             "calendar[owner_id]": "bdc6aced-f7d0-465d-9d8b-6629d1cfd150"
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "calendar": {
@@ -544,31 +544,31 @@
 
 #### Delete a calendar [DELETE]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
 
-+ Attributes
-    + `move_events` (boolean) - Whether to move events to a new calendar.
-    + `new_cal_id` (number) - Id of the new calendar for the moving events.
+- Attributes
+    - `move_events` (boolean) - Whether to move events to a new calendar.
+    - `new_cal_id` (number) - Id of the new calendar for the moving events.
 
-+ Request Delete together with all the events inside (application/json)
+- Request Delete together with all the events inside (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "id": 113
         }
 
-+ Request Delete and move events to another calendar (application/json)
+- Request Delete and move events to another calendar (application/json)
 
         {
             "move_events": true,
             "new_cal_id": 112
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "old_cal_id": 114,
@@ -579,13 +579,13 @@
 
 #### Create an event [POST]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
 
-+ Attributes
+- Attributes
 :[](calendar/recurrence.apib)
 
-+ Request With no recurrence (application/json)
+- Request With no recurrence (application/json)
 
         {
             "event[name]": "My first event!!!",
@@ -596,7 +596,7 @@
             "event[time_finish]": "12:00am"
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "events": {
@@ -620,7 +620,7 @@
             }
         }
 
-+ Request With recurrence (application/json)
+- Request With recurrence (application/json)
 
         {
             "event[name]": "My first recurrence",
@@ -638,7 +638,7 @@
             "event[all_day]": false
         }
 
-+ Response 201 (application/json)
+- Response 201 (application/json)
 
         {
             "events": [
@@ -824,15 +824,15 @@
 
 #### Retrieve an event [GET]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Request (application/json)
+- Request (application/json)
 
         {}
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "filter": {
@@ -880,16 +880,16 @@
 
 #### Update an event [PUT]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Attributes
-    + `event[future]` (boolean) - Whether to update events in the series from this event on.
-    + `event[all]` (boolean) - Whether to update the entire series.
+- Attributes
+    - `event[future]` (boolean) - Whether to update events in the series from this event on.
+    - `event[all]` (boolean) - Whether to update the entire series.
 :[](calendar/recurrence.apib)
 
-+ Request With no recurrence (application/json)
+- Request With no recurrence (application/json)
 
         {
             "event[name]": "My first event!!! (Edited)",
@@ -904,7 +904,7 @@
             "event[repeat_by]": ""
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events":[
@@ -930,7 +930,7 @@
             ]
         }
 
-+ Request With recurrence and for future (application/json)
+- Request With recurrence and for future (application/json)
 
         {
             "event[date_start]": "22/11/2017",
@@ -943,7 +943,7 @@
             "event[future]": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events": [
@@ -1074,7 +1074,7 @@
             }
         }
 
-+ Request With recurrence and for the entire series (application/json)
+- Request With recurrence and for the entire series (application/json)
 
         {
             "event[date_start]": "16/11/2017",
@@ -1089,7 +1089,7 @@
             "event[all]": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "events":[
@@ -1276,29 +1276,29 @@
 
 #### Delete an event [DELETE]
 
-+ Parameters
-    + `calendar_id` (number, required) - Id of the calendar.
-    + `event_id` (number, required) - Id of the event.
+- Parameters
+    - `calendar_id` (number, required) - Id of the calendar.
+    - `event_id` (number, required) - Id of the event.
 
-+ Attributes
-    + `after` (boolean) - Whether to delete event in the series from this event on.
-    + `all` (boolean) - Whether to delete the entire series.
+- Attributes
+    - `after` (boolean) - Whether to delete event in the series from this event on.
+    - `all` (boolean) - Whether to delete the entire series.
 
-+ Request With no recurrence (application/json)
-
-        {}
-
-+ Response 200 (application/json)
+- Request With no recurrence (application/json)
 
         {}
 
-+ Request With recurrence and for future (application/json)
+- Response 200 (application/json)
+
+        {}
+
+- Request With recurrence and for future (application/json)
 
         {
             "after": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_id": 90,
@@ -1306,13 +1306,13 @@
             "last_entity": 91
         }
 
-+ Request With recurrence and for future (application/json)
+- Request With recurrence and for future (application/json)
 
         {
             "after": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {
             "head_id": 90,
@@ -1321,12 +1321,12 @@
         }
 
 
-+ Request With recurrence and for the entire series (application/json)
+- Request With recurrence and for the entire series (application/json)
 
         {
             "all": true
         }
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
         {}
