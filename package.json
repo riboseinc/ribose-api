@@ -13,7 +13,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "node bin/build.js < input.apib > apiary.apib",
+    "ensure-compiled": "bin/travis_ensure_compiled.sh",
+    "test": "node bin/validate.js || exit 0"
   },
   "repository": {
     "type": "git",
