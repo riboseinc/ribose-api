@@ -2,49 +2,49 @@
 
 ### Check email uniqueness [GET /signup_validation/check_user_field_uniqueness]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `unique` (boolean)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `unique` (boolean)
 
 ### Create sign-up request [POST /signup_requests]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 ### Submit sign-up details [POST /signup.user]
 
-+ request (application/json)
-    + Attributes (object)
-        + `email` (string, required) - email address of user
-        + `otp` (string, required) - OTP value from confirmation email
-        + `password` (string, required) - string of new password
+- request (application/json)
+    - Attributes (object)
+        - `email` (string, required) - email address of user
+        - `otp` (string, required) - OTP value from confirmation email
+        - `password` (string, required) - string of new password
 
-+ Response 201 (application/json)
-    + Attributes (object)
-        + `id` (string) - ID of new user
-        + `name` (string) - username
+- Response 201 (application/json)
+    - Attributes (object)
+        - `id` (string) - ID of new user
+        - `name` (string) - username
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 
 ### Delete user [DELETE /cancel_registration]
 
-+ request (application/json)
-    + Attributes (object)
-        + `user_id` (uuid) - ID of the user
-        + `password` (string) - password of the user
+- request (application/json)
+    - Attributes (object)
+        - `user_id` (uuid) - ID of the user
+        - `password` (string) - password of the user
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-+ Response 403 (application/json)
+- Response 403 (application/json)
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
 

@@ -2,212 +2,212 @@
 
 ### Request information [GET /app_data]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
-    + Attributes (object)
+    - Attributes (object)
 
-        + `misc` (object)
-            + `jabber` (object) - chat metadata for current user
-                + `login`: username (string) - user login
-                + `status`: unavailable (enum[string]) - user chat status
-                    + Members
-                        + unavailable
-                        + available
-                        + idle
-                        + offline
-                + `status_message`: "Free to chat!" (string)
-            + `locale`: en (enum[string])
-                + Members
-                    + en - English
-            + `notification` (object)
-                + `notifications_last_received`: 1234567 (id) - last received notification item ID
-                + `notifications_last_shown`: 1234123 (id) - last read notification item ID
-            + `capps` (object)
-                + *0 (string)* (object) - int-indexed metadata of Space Apps for current user
-                    + `id`: 123456 (id) - ID of the App
-                    + `app_name`: app/dashboard (enum[string])
-                        + Members
-                            + app/dashboard
-                            + app/conversation
-                            + app/file
-                            + app/member
-                            + app/calendar
-                            + app/wiki
-                            + app/poll
-                    + `enabled`: true (boolean)
-                    + `name`: null (string, nullable, fixed)
-                    + `order_id`: 0 (number) - display purpose only
-                    + `used_storage`: 0 (number) - counts how much storage is used by this App
-                    + `owner_type`: Space (string, fixed)
-                    + `owner_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
-                    + `system`: true (boolean, fixed)
-                    + `app_type`: home (enum[string])
-                        + Members
-                            + home
-                            + conversation
-                            + file
-                            + people
-                            + calendar
-                            + wiki
-                            + poll
-                    + `space_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
-                    + `namespace`: dashboard (enum[string])
-                        + Members
-                            + dashboard
-                            + conversation
-                            + file
-                            + people
-                            + calendar
-                            + wiki
-                            + poll
-                    + `show_in_menu?`: true (boolean, fixed)
-                    + `uses_email_notifications?`: false (boolean)
-                    + `searchable?`: false (boolean) - whether Search results would contain this App
-            + `status_message`: "Free to chat!" (string)
-            + `number_of_connections`: 51 (number) - how many current connections are active
-        + `user` (object) - profile of current user
-            + `id` (uuid)
-            + `login`: myusername (string, nullable) - login name of current user
-            + `email` (email) - account's email address of current user
-            + `created_at` (DatetimeString) - account's creation time
-            + `activity_points` (object) - activity profile of current user
-                + `level`: 3 (number)
-                + `total`: 313370 (number) - total activity points gained since account creation
-                + `last7days`: 120 (number) - activity points gained during the last 7 days
-                + `last30days`: 720 (number) - activity points gained during the last 30 days
-                + `points_till_next_level`: 1187255 (number)
-                + `points_for_current_level`: 1457750 (number)
-            + `mutual_users` (array[uuid]) - list of connected Users's UUID
-            + `visible_spaces` (array[SimpleSpace]) - list of current User's Spaces
-            + `connection_id`: null (uuid, nullable)
-            + `from_ribose?`: true (boolean, fixed)
-            + `name`: Joe Public (string)
-            + `connected_users` (array[User])
-            + `badge_states` (array)
-            + `avatar` (object) - current User's avatar metadata
-                + `id`: 1512 (id) - avatar object ID
-                + `thumb_width`: 500 (number) - avatar thumbnail image width
-                + `thumb_height`: 520 (number) - avatar thumbnail image height
-                + `generate_status`: SUCCESS (enum[string]) - whether thumbnail generation has succeeded
-                    + Members
-                        + SUCCESS
-                        + FAIL
-            + `profile` (object) - current User's Profile
-                + `id`: 135 (id) - Profile object ID
-                + `first_name`: Joe (string)
-                + `last_name`: Blogg (string)
-                + `user_id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - corresponding Ribose User UUID
-                + `fields` (object)
-                    + `name` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `family`: Blogg (string)
-                            + `given`: Joe (string)
-                    + `note` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: Hello, World!11 (string)
-                    + `organization` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `company`: Monster Inc (string)
-                            + `department`: Animation (string)
-                    + `url` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: ribose.com (string)
-                            + `scheme` (string, nullable)
-                            + `mediatype` (string, nullable)
-                    + `title` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: Animator (string)
-                    + `address` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: public (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `tz` (string, nullable)
-                            + `geo` (string, nullable)
-                            + `pobox` (string, nullable)
-                            + `extended` (string, nullable)
-                            + `street` (string, nullable)
-                            + `locality` (string, nullable)
-                            + `region` (string, nullable)
-                            + `postalcode` (string, nullable)
-                            + `country`: Planet Urf (string, nullable)
-                            + `delivery` (string, nullable)
-                    + `email` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: joe@example.com (string)
-                    + `birthday` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `year`: 1970 (number, nullable)
-                            + `month`: 1 (number, nullable)
-                            + `day`: 1 (number, nullable)
-                    + `telephone` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `type` (array[string])
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: 123454321 (string)
-                    + `impp` (array[object])
-                        + (object)
-                            + `preferred`: false (boolean)
-                            + `purpose` (array[string])
-                            + `scheme`: skype (string)
-                            + `visibility`: connection (enum[string])
-                                + Members
-                                    + public
-                                    + connection
-                                    + invisible
-                            + `value`: myskypeid (string)
-                + `name`: Joe Blogg (string) - concatenation of first- and last-name of current User
+        - `misc` (object)
+            - `jabber` (object) - chat metadata for current user
+                - `login`: username (string) - user login
+                - `status`: unavailable (enum[string]) - user chat status
+                    - Members
+                        - unavailable
+                        - available
+                        - idle
+                        - offline
+                - `status_message`: "Free to chat!" (string)
+            - `locale`: en (enum[string])
+                - Members
+                    - en - English
+            - `notification` (object)
+                - `notifications_last_received`: 1234567 (id) - last received notification item ID
+                - `notifications_last_shown`: 1234123 (id) - last read notification item ID
+            - `capps` (object)
+                - *0 (string)* (object) - int-indexed metadata of Space Apps for current user
+                    - `id`: 123456 (id) - ID of the App
+                    - `app_name`: app/dashboard (enum[string])
+                        - Members
+                            - app/dashboard
+                            - app/conversation
+                            - app/file
+                            - app/member
+                            - app/calendar
+                            - app/wiki
+                            - app/poll
+                    - `enabled`: true (boolean)
+                    - `name`: null (string, nullable, fixed)
+                    - `order_id`: 0 (number) - display purpose only
+                    - `used_storage`: 0 (number) - counts how much storage is used by this App
+                    - `owner_type`: Space (string, fixed)
+                    - `owner_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
+                    - `system`: true (boolean, fixed)
+                    - `app_type`: home (enum[string])
+                        - Members
+                            - home
+                            - conversation
+                            - file
+                            - people
+                            - calendar
+                            - wiki
+                            - poll
+                    - `space_id`: 948AD10F-B2A2-4DDC-9AC7-E766E4586A20 (uuid) - UUID of the App's Space
+                    - `namespace`: dashboard (enum[string])
+                        - Members
+                            - dashboard
+                            - conversation
+                            - file
+                            - people
+                            - calendar
+                            - wiki
+                            - poll
+                    - `show_in_menu?`: true (boolean, fixed)
+                    - `uses_email_notifications?`: false (boolean)
+                    - `searchable?`: false (boolean) - whether Search results would contain this App
+            - `status_message`: "Free to chat!" (string)
+            - `number_of_connections`: 51 (number) - how many current connections are active
+        - `user` (object) - profile of current user
+            - `id` (uuid)
+            - `login`: myusername (string, nullable) - login name of current user
+            - `email` (email) - account's email address of current user
+            - `created_at` (DatetimeString) - account's creation time
+            - `activity_points` (object) - activity profile of current user
+                - `level`: 3 (number)
+                - `total`: 313370 (number) - total activity points gained since account creation
+                - `last7days`: 120 (number) - activity points gained during the last 7 days
+                - `last30days`: 720 (number) - activity points gained during the last 30 days
+                - `points_till_next_level`: 1187255 (number)
+                - `points_for_current_level`: 1457750 (number)
+            - `mutual_users` (array[uuid]) - list of connected Users's UUID
+            - `visible_spaces` (array[SimpleSpace]) - list of current User's Spaces
+            - `connection_id`: null (uuid, nullable)
+            - `from_ribose?`: true (boolean, fixed)
+            - `name`: Joe Public (string)
+            - `connected_users` (array[User])
+            - `badge_states` (array)
+            - `avatar` (object) - current User's avatar metadata
+                - `id`: 1512 (id) - avatar object ID
+                - `thumb_width`: 500 (number) - avatar thumbnail image width
+                - `thumb_height`: 520 (number) - avatar thumbnail image height
+                - `generate_status`: SUCCESS (enum[string]) - whether thumbnail generation has succeeded
+                    - Members
+                        - SUCCESS
+                        - FAIL
+            - `profile` (object) - current User's Profile
+                - `id`: 135 (id) - Profile object ID
+                - `first_name`: Joe (string)
+                - `last_name`: Blogg (string)
+                - `user_id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid) - corresponding Ribose User UUID
+                - `fields` (object)
+                    - `name` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `family`: Blogg (string)
+                            - `given`: Joe (string)
+                    - `note` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: Hello, World!11 (string)
+                    - `organization` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `company`: Monster Inc (string)
+                            - `department`: Animation (string)
+                    - `url` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: ribose.com (string)
+                            - `scheme` (string, nullable)
+                            - `mediatype` (string, nullable)
+                    - `title` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: Animator (string)
+                    - `address` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: public (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `tz` (string, nullable)
+                            - `geo` (string, nullable)
+                            - `pobox` (string, nullable)
+                            - `extended` (string, nullable)
+                            - `street` (string, nullable)
+                            - `locality` (string, nullable)
+                            - `region` (string, nullable)
+                            - `postalcode` (string, nullable)
+                            - `country`: Planet Urf (string, nullable)
+                            - `delivery` (string, nullable)
+                    - `email` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: joe@example.com (string)
+                    - `birthday` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `year`: 1970 (number, nullable)
+                            - `month`: 1 (number, nullable)
+                            - `day`: 1 (number, nullable)
+                    - `telephone` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `type` (array[string])
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: 123454321 (string)
+                    - `impp` (array[object])
+                        - (object)
+                            - `preferred`: false (boolean)
+                            - `purpose` (array[string])
+                            - `scheme`: skype (string)
+                            - `visibility`: connection (enum[string])
+                                - Members
+                                    - public
+                                    - connection
+                                    - invisible
+                            - `value`: myskypeid (string)
+                - `name`: Joe Blogg (string) - concatenation of first- and last-name of current User

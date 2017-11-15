@@ -2,197 +2,197 @@
 
 ### Upload a file [POST /spaces/{space_id}/file/files/upload]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
+- Parameters
+    - `space_id` (uuid) - UUID of space
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info` (object)
-            + `attachment` (required, array) - array of files to be uploaded
-            + `description`: This is an important file (optional, string) - description of the file
-            + `tag_list`: tag1,tag2 (optional, string) - list of tags separated by commas
+- Request (application/json)
+    - Attributes (object)
+        - `file_info` (object)
+            - `attachment` (required, array) - array of files to be uploaded
+            - `description`: This is an important file (optional, string) - description of the file
+            - `tag_list`: tag1,tag2 (optional, string) - list of tags separated by commas
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `attachment` (File)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `attachment` (File)
 
-+ Response 422 (application/json)
-    + Attributes (object)
-        + `attachment_errors` (string) - the error message
+- Response 422 (application/json)
+    - Attributes (object)
+        - `attachment_errors` (string) - the error message
 
 ### List files [GET /spaces/{space_id}/file/files]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
+- Parameters
+    - `space_id` (uuid) - UUID of space
 
-+ Request (application/json)
-    + Attributes (object)
-        + `order_by`: date (optional, enum[string]) - sort order of files
-            + Members
-                + name
-                + size
-                + date
-                + author
-                + file_type
-        + `direction`: desc (optional, enum[string]) - sort direction of files
-            + Members
-                + asc
-                + desc
-        + `start`: 0 (optional, number) - starting index of file collection, default: 0
-        + `length`: 100 (optional, number) - maximum size of collection, default: 100
+- Request (application/json)
+    - Attributes (object)
+        - `order_by`: date (optional, enum[string]) - sort order of files
+            - Members
+                - name
+                - size
+                - date
+                - author
+                - file_type
+        - `direction`: desc (optional, enum[string]) - sort direction of files
+            - Members
+                - asc
+                - desc
+        - `start`: 0 (optional, number) - starting index of file collection, default: 0
+        - `length`: 100 (optional, number) - maximum size of collection, default: 100
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `total` (number) - total number of files
-        + `indices` (object) - hash of index-file_id
-        + `objects` (array[File]) - array of file attributes
-        + `tags` (object) - hash of tags
-            + `all_tags` (array) - the array of all tags in space
-            + `related_tags` (array) - array of tags related to the current file
-            + `selected_tags` (array) - array of selected tags
-        + `recent_activity` (array) - array of recent activities of files
-            + `date` (string) - the date of the activities in format `%A, %B %d, %Y`
-            + `links` (array) - the array of recent updated files inside the grouped date
-                + (object)
-                    + `id` (number) - the ID of the file
-                    + `name` (string) - the name of the file
-                    + `path` (string) - the relative path of the link to the file
-        + `permissions` (object) - the hash of the permissions of the user
-            + `allow_create` (boolean) - the permission of the user to create a file
-            + `allow_delete` (boolean) - the permission of the user to delete a file
-            + `allow_download` (boolean) - the permission of the user to download a file
-            + `allow_edit` (boolean) - the permission of the user to edit a file
-            + `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
+- Response 200 (application/json)
+    - Attributes (object)
+        - `total` (number) - total number of files
+        - `indices` (object) - hash of index-file_id
+        - `objects` (array[File]) - array of file attributes
+        - `tags` (object) - hash of tags
+            - `all_tags` (array) - the array of all tags in space
+            - `related_tags` (array) - array of tags related to the current file
+            - `selected_tags` (array) - array of selected tags
+        - `recent_activity` (array) - array of recent activities of files
+            - `date` (string) - the date of the activities in format `%A, %B %d, %Y`
+            - `links` (array) - the array of recent updated files inside the grouped date
+                - (object)
+                    - `id` (number) - the ID of the file
+                    - `name` (string) - the name of the file
+                    - `path` (string) - the relative path of the link to the file
+        - `permissions` (object) - the hash of the permissions of the user
+            - `allow_create` (boolean) - the permission of the user to create a file
+            - `allow_delete` (boolean) - the permission of the user to delete a file
+            - `allow_download` (boolean) - the permission of the user to download a file
+            - `allow_edit` (boolean) - the permission of the user to edit a file
+            - `allow_mass_actions` (boolean) - the permission of the user to perform mass actions on files
 
 
 ### File [/spaces/{space_id}/file/files/{file_id}]
 
-+ Parameters
-    + `space_id` (uuid) - UUID of space
-    + `file_id` (id) - ID of file
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `file_id` (id) - ID of file
 
 #### Show a file [GET]
 
-+ Request (text/html)
+- Request (text/html)
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the file
-    + Body
+    - Body
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of file indices and an array of objects of files
 
-    + Attributes (object)
-        + `file` (File)
+    - Attributes (object)
+        - `file` (File)
 
 #### Update a file [PUT]
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info` (object)
-            + `name` (string, optional) - file name
-            + `description` (string, optional) - brief description of the file
-            + `tag_list` (string, optional) - list of tags separated by commas
+- Request (application/json)
+    - Attributes (object)
+        - `file_info` (object)
+            - `name` (string, optional) - file name
+            - `description` (string, optional) - brief description of the file
+            - `tag_list` (string, optional) - list of tags separated by commas
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of file attributes, tags of files and recent 
       activities of files.
 
-    + Attributes (object)
-        + `file` (File)
-        + `tags` (object)
-            + `all_tags` (array[string]) - the array of all tags in space
-            + `related_tags` (array[string]) - array of tags related to current file
-            + `selected_tags` (array[string]) - array of the selected tags
-        + `recent_activity` (array[object]) - array of recent activities of files
-            + `date` (DatetimeString) - the date of the activities in format "%A, %B %d, %Y"
-            + `links` (array) - the array of recent updated files inside the grouped date
-                + (object)
-                    + `id` (number) - the ID of the file
-                    + `name` (string) - the name of the file
-                    + `path` (string) - the relative path of the link to the file
+    - Attributes (object)
+        - `file` (File)
+        - `tags` (object)
+            - `all_tags` (array[string]) - the array of all tags in space
+            - `related_tags` (array[string]) - array of tags related to current file
+            - `selected_tags` (array[string]) - array of the selected tags
+        - `recent_activity` (array[object]) - array of recent activities of files
+            - `date` (DatetimeString) - the date of the activities in format "%A, %B %d, %Y"
+            - `links` (array) - the array of recent updated files inside the grouped date
+                - (object)
+                    - `id` (number) - the ID of the file
+                    - `name` (string) - the name of the file
+                    - `path` (string) - the relative path of the link to the file
 
-+ Response 422 (application/json)
+- Response 422 (application/json)
     - hash of errors
 
-    + Attributes (object)
+    - Attributes (object)
 
 #### Delete a file [DELETE /spaces/{space_id}/file/files/{file_ids}]
 
-+ Parameters
-    + `file_ids` (id) - ID of a file or multiple IDs separated by commas
+- Parameters
+    - `file_ids` (id) - ID of a file or multiple IDs separated by commas
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
+- Response 200 (application/json)
 
     - This returns a hash of statistics of deleting the files.
 
-    + Attributes (object)
-        + `message` (object)
-            + `records_name` (string) - name of record
-            + `action_name` (string) - name of action
-            + `ok_count` (number) - number of successful files, only returned when deleting more than one file
-            + `total_count` (number) - number of total files, only returned when files failed to delete
+    - Attributes (object)
+        - `message` (object)
+            - `records_name` (string) - name of record
+            - `action_name` (string) - name of action
+            - `ok_count` (number) - number of successful files, only returned when deleting more than one file
+            - `total_count` (number) - number of total files, only returned when files failed to delete
 
 #### Get a file icon [GET /spaces/{space_id}/file/files/{file_id}/icon]
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `icon_processed` (boolean) - the file icon has been processed or not
-        + `icon_path` (string) - path of the file icon
+- Response 200 (application/json)
+    - Attributes (object)
+        - `icon_processed` (boolean) - the file icon has been processed or not
+        - `icon_path` (string) - path of the file icon
 
 #### Download a file [GET /spaces/{space_id}/file/files/{file_ids}/download]
 
-+ Parameters
-    + `file_ids` (id) - ID of a file or multiple IDs separated by commas
+- Parameters
+    - `file_ids` (id) - ID of a file or multiple IDs separated by commas
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the selected files
-    + Body
+    - Body
 
 #### Show a file version [GET /spaces/{space_id}/file/files/{file_id}/versions/{file_version_id}]
 
-+ Parameters
-    + `file_version_id` (id) - ID of file
+- Parameters
+    - `file_version_id` (id) - ID of file
 
-+ Response 200
+- Response 200
 
     - Redirects to download link of the version of the file
-    + Body
+    - Body
 
 #### Upload a file version [POST /spaces/{space_id}/file/files/{file_id}/versions/upload]
 
-+ Request (application/json)
-    + Attributes (object)
-        + `file_info_version` (object)
-            + `attachment` (required) - the file to be uploaded as a new version
-            + `description` (string, optional) - description of the new file version
+- Request (application/json)
+    - Attributes (object)
+        - `file_info_version` (object)
+            - `attachment` (required) - the file to be uploaded as a new version
+            - `description` (string, optional) - description of the new file version
 
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `attachment` (FileVersion)
+- Response 200 (application/json)
+    - Attributes (object)
+        - `attachment` (FileVersion)
 
-+ Response 422 (application/json)
-    + Attributes (object)
-        + `attachment_errors` (string) - error message
+- Response 422 (application/json)
+    - Attributes (object)
+        - `attachment_errors` (string) - error message
 
 #### Revert a file version [PUT /spaces/{space_id}/file/files/{file_id}/versions/{file_version_id}/revert]
 
     -  `GET` would also work
 
-+ Parameters
-    + `file_version_id` (id) - ID of file
+- Parameters
+    - `file_version_id` (id) - ID of file
 
-+ Request (application/json)
+- Request (application/json)
 
-+ Response 200 (application/json)
-    + Attributes (File)
+- Response 200 (application/json)
+    - Attributes (File)
