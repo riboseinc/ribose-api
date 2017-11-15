@@ -8,7 +8,8 @@
     "drafter.js": "^2.6.7",
     "find-root": "^1.1.0",
     "glob": "^7.1.2",
-    "hercule": "^4.1.0"
+    "hercule": "^4.1.0",
+    "replacestream": "^4.0.3"
   },
   "devDependencies": {},
   "scripts": {
