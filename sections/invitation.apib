@@ -252,11 +252,11 @@
 
 - Response 422 (application/json)
 
-#### Accepting / Rejecting [PUT]
+#### Updating / Accepting / Rejecting [PUT]
 
-    - an invitee-only action
+- Request Accepting / Rejecting a.k.a Ignoring (application/json)
 
-- Request (application/json)
+    Must be performed by invitee.
 
     - Attributes (object)
         - `invitation` (object)
@@ -265,18 +265,15 @@
                     - 1 - Accepting
                     - 2 - Rejecting (ignoring)
 
-
 - Response 200 (application/json)
 
     - Attributes (object)
 
         - `to_space` (InvitationToSpace)
 
-#### Updating pre-assigned role [PUT /invitations/to_space/{invitation_id}]
+- Request Updating pre-assigned role (application/json)
 
-    - inviter-only action
-
-- Request (application/json)
+    Must be performed by inviter.
 
     - Attributes (object)
 
@@ -288,7 +285,6 @@
     - Attributes (object)
 
         - `to_space` (InvitationToSpace)
-
 
 #### Retrieving [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
 
@@ -380,11 +376,11 @@
     - `invitation_id` (id)
 
 
-#### Accepting / Rejecting a.k.a Ignoring [PUT]
+#### Updating / Accepting / Rejecting [PUT]
 
-    - An invitee-only action
+- Request Accepting / Rejecting a.k.a Ignoring (application/json)
 
-- Request (application/json)
+    Must be performed by invitee.
 
     - Attributes (object)
         - `invitation` (object)
@@ -399,11 +395,9 @@
 
         - `join_space_request` (InvitationToSpace)
 
-#### Updating pre-assigned role [PUT]
+- Request Updating pre-assigned role (application/json)
 
-    - A Space Admin-only action
-
-- Request (application/json)
+    Must be performed by Space Admin.
 
     - Attributes (object)
 
