@@ -11,6 +11,7 @@ let findRoot = require("find-root")
 let fs = require("fs")
 let hercule = require("hercule")
 let path = require("path")
+let replacestream = require("replacestream")
 
 let resolvers = [
   importFixture,
@@ -19,12 +20,17 @@ let resolvers = [
   hercule.resolveString,
 ]
 
+/// HTML comment, possibly followed by a blank line.
+/// Trailing spaces should be removed by Hercule at this point.
+let commentRx = /<!--[\s\S]*?-->\n?/g
+
 let projectRoot = findRoot(require.main.filename)
 let fixturesRoot = path.join(projectRoot, "fixtures", "spec", "fixtures")
 
 let input = process.stdin
 let output = process.stdout
 let transcluder = new hercule.TranscludeStream(undefined, { resolvers })
+let commentsRemover = replacestream(commentRx, "")
 
 /// Handles transclusion exceptions like dead links
 transcluder.on("error", (err) => {
@@ -32,7 +38,7 @@ transcluder.on("error", (err) => {
   process.exit(1)
 })
 
-input.pipe(transcluder).pipe(output)
+input.pipe(transcluder).pipe(commentsRemover).pipe(output)
 
 /// Resolves response fixture links like fixture:spaces.json
 ///
