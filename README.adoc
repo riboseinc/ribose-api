@@ -1,21 +1,25 @@
 = Ribose API
 
-This repo is used to store API documentation viewable at http://docs.ribose.apiary.io .
-
-If you're only interested in viewing the API, head to the above link.
+NOTE: Ribose API documentation can be browsed at http://docs.ribose.apiary.io
+in a human-friendly format.  This repository contains source files we build
+that documentation from, and some build tools.  If you are going to contribute
+to documentation, you are in right place.
 
 == Contributing
 
-We use https://github.com/jamesramsay/hercule[Hercule] to generate the API file
-for http://docs.ribose.apiary.io[Apiary].
+=== Setting things up
 
-Clone this repo:
+Clone this repository:
 
 [source,bash]
 ----
-git clone https://github.com/riboseinc/ribose-api
+git clone --recursive https://github.com/riboseinc/ribose-api
 cd ribose-api
 ----
+
+NOTE: The `--recursive` option initializes and pulls submodules, which are
+needed to build the documentation.
+See https://git-scm.com/book/en/v2/Git-Tools-Submodules[Git Book] for details.
 
 Install dependencies:
 
@@ -24,19 +28,59 @@ Install dependencies:
 npm install
 ----
 
-Edit source files, and run `make`:
+=== Compiling and validating the blueprint
+
+For external reasons, an up-to-date blueprint compilation is required to be
+checked into repository.  It is stored in `apiary.apib` file.  In order to
+compile and validate `apiary.apib`, run following:
 
 [source,bash]
 ----
-make
+npm run compile
 ----
 
-Commit all changes to the repo and push.
+After successful blueprint compilation, a tiny validation tool is run.  Issues,
+if any, will be printed in console.
+
+== Documentation structure
+
+=== Transclusions
+
+We use Hercule tool to compile `apiary.apib` from the source files.  It
+introduces the concept of _transclusion_, which roughly means including one
+document in another, at least in our simple case.
+
+To find out more about this tool, visit https://github.com/jamesramsay/hercule.
 
 === Sections
 
-The `sections/` directory contains APIB files that can be transcluded in the
-final output.
+Final blueprint is built from section subdocuments which reside in the
+`sections/` directory.  The `input.apib` defines how that document is composed,
+hence don't forget to update that file when contributing a new section.
+Section subdocuments are transcluded with `:()[sections/<section-name>.apib]`
+expressions.  For example, expression `:()[sections/space.apib]` will transclude
+content of `sections/space.apib` file.
 
-Corresponding entries in the `input.apib` has to be maintained, so don't forget
-to add `:()[my_new_section.apib]` when contributing a new section.
+=== Response fixtures
+
+Response fixtures can be imported from `spec/fixtures` directory
+of the https://github.com/riboseinc/ribose-ruby[ribose-ruby] project.
+They are transcluded with `:()[fixture:fixture-file-name]` expression.  For
+example, `:()[fixture:spaces.json]` will resolve to `spec/fixtures/spaces.json`
+in ribose-ruby project.
+
+Under the hood, Git submodules are involved.  The ribose-ruby project is
+added as a submodule in `fixtures` directory.  Run `git submodule update` to
+grab the freshest content, if necessary.
+
+If you want to read more about submodules, Git Book contains an excellent
+chapter on this topic: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+=== Comments
+
+HTML comments can be used in document, either in `input.apib` or in any section.
+They are removed at blueprint compilation.
+
+```
+<!-- This is a HTML comment. -->
+```
