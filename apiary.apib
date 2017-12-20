@@ -214,6 +214,58 @@ This is the Ribose API.
 - `name`: Jane Blogg (string) - User's display name
 - `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
 
+### Attachment (object)
+
+- `id`: 21337 (id)
+- `name`: dankmeme.jpg (string)
+- `content_type`: image/jpeg (string)
+- `content_size`: 31337 (number)
+- `icon_path`: /attachments/21337?type=usual (string)
+- `icon_processed`: true (boolean)
+
+### Conversation (object)
+
+- `id`: 033ecb76-ad6b-4f7b-aa85-4ee165d71c71 (uuid)
+- `space_id`: 76f3e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+- `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+- `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+- `name`: Test message (string)
+- `tag_list` (array[string])
+- `published`: false (boolean)
+- `is_favorite`: false (boolean)
+- `is_read`: true (boolean)
+- `allow_publish`: false (boolean)
+- `number_of_messages`: 5 (number)
+- `allow_edit`: true (boolean)
+- `allow_delete`: true (boolean)
+- `allow_comment`: true (boolean)
+- `contents`: <p>Hello world</p> (string)
+- `attachments_listed` (array[Attachment])
+- `user` (object) - attributes of this Space member
+    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+    - `name` (string) - Conversation's display name
+
+### ConversationMessage (object)
+
+- `id`: 033ecb76-ad6b-4f6b-aa85-4ee165d71c71 (uuid) - message 
+  UUID
+- `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+- `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+- `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+- `contents`: <p>Hello world</p> (string)
+- `attachments_listed` (array[Attachment])
+- `attachments_inline` (array[Attachment])
+- `allow_edit`: true (boolean)
+- `allow_delete`: true (boolean)
+- `user` (object) - attributes of the author
+    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+    - `name` (string) - Conversation's display name
+
+
 
 ## Group General
 
@@ -1917,6 +1969,195 @@ This is the Ribose API.
 - Response 200 (application/json)
 
         {}
+## Group Conversation
+
+### Conversations [/spaces/{space_id}/conversation/conversations]
+
+- Parameters
+    - `space_id` (uuid)
+
+#### Create a conversation [POST]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `published`: false (boolean, optional)
+            - `tag_list` (array[string], optional)
+            - `name`: My conversation (string,required) - Title of the thread
+
+- Response 201 (application/json)
+    - Attributes (object)
+
+#### Retrieve a conversation collection [GET /spaces/{space_id}/conversation/conversations{?start,s,additional_data}]
+
+- Parameters
+    - `start`: 0 (number, optional) - pagination starting point (default = 0)
+    - `s` (string) - pagination synchronization string
+    - `additional_data` (boolean) - `true` : endpoint-specific data
+
+- Request Retrieve only the conversation collection (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => object ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => object ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by object ID
+                - `id`: 033ecb76-ad6b-4f7b-aa85-4ee165d71c71 (uuid)
+                - `space_id`: 76f3e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+                - `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+                - `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+                - `name`: Test message (string)
+                - `tag_list` (array[string])
+                - `published`: false (boolean)
+                - `is_favorite`: false (boolean)
+                - `is_read`: true (boolean)
+                - `allow_publish`: false (boolean)
+                - `number_of_messages`: 5 (number)
+                - `allow_edit`: true (boolean)
+                - `allow_delete`: true (boolean)
+                - `allow_comment`: true (boolean)
+                - `contents`: <p>Hello world</p> (string)
+                - `attachments_listed`: [] (array)
+                - `all_attachments`: [] (array)
+                - `user` (object) - attributes of the author
+                    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+                    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+                    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+                    - `name` (string) - Conversation's display name
+
+### Conversation [/spaces/{space_id}/conversation/conversations/{conversation_id}]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+
+#### Show a conversation [GET]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `conversation` (Conversation)
+
+#### Update a conversation [PUT]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `published`: false (boolean, optional)
+            - `tag_list` (array[string], optional)
+            - `name`: My conversation (string,required) - Title of the thread
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `conversation` (Conversation)
+
+#### Delete a conversation [DELETE]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Body
+
+            {}
+
+#### Mark a conversation as favorite [PUT /spaces/{space_id}/conversation/conversations/{conversation_id}/mark_as_favorite]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `is_favorite` (enum[string], required)
+                - Members
+                    - true
+                    - false
+
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `id` (uuid) - UUID of the conversation marked / unmarked
+        - `is_favorite` (boolean) - `true` iff it's marked as favorite
+
+### Conversation messages [/spaces/{space_id}/conversation/conversations/{conversation_id}/messages]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+
+#### Create a conversation message [POST]
+
+- Request (application/json)
+    - Attributes (object)
+        - `message` (object)
+            - `contents`: <p>Hello there</p> (string)
+            - `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+            - `new_attachment` (object)
+                - `id` (array[id]) - array of ID of the attachments
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+
+#### Retrieve a conversation message collection [GET /spaces/{space_id}/conversation/conversations/{conversation_id}/messages{?start,length,s}]
+
+- Parameters
+    - `length`: 10 (number, optional) - how many objects to return (default = 10)
+    - `start`: 0 (number, optional) - pagination starting point (default = 0)
+    - `s` (string) - pagination synchronization string
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => object ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => object ID
+        - `objects` (object)
+            - *123456 (string)* (ConversationMessage) - an object indexed by object ID
+
+### Conversation message [/spaces/{space_id}/conversation/conversations/{conversation_id}/messages/{message_id}]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+    - `message_id` (uuid) - UUID of conversation message
+
+#### Show a conversation message [GET]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+#### Update a conversation message [PUT]
+
+- Request (application/json)
+    - Attributes (object)
+        - `message` (object)
+            - `contents`: <p>Hello there</p> (string)
+            - `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+            - `new_attachment` (object)
+                - `id` (array[id]) - array of ID of the attachments
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+#### Delete a conversation message [DELETE]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Body
+
+            {}
 ## Group Wiki
 
 ### Wikis [/spaces/{space_id}/wiki/wiki_pages]
@@ -3289,6 +3530,9 @@ Fetches the user's latest network activities (up to 20).
 
 Creates a new API token for the user and returns it. Current password must be sent under 'password_confirmation' to authorize action.
 
+- Attributes
+    - `password_confirmation` (string) - current password
+
 - Response 200 (application/json)
 
         {
@@ -3326,7 +3570,7 @@ Changes the user's secret question and answer. Current password must be sent und
 
 #### Change Email [POST /settings/general/change_email]
 
-Sends a confirmation email to the submitted email address. If the activation link in the sent email is opened, The user's email will be successfully updated when the activation link. Current password must be sent under 'password_confirmation' to authorize action.
+Sends a confirmation email to the submitted email address. The user's email will be successfully updated when the activation link in the confirmation email is visited. Current password must be sent under 'password_confirmation' to authorize action.
 
 - Attributes
     - `password_confirmation` (string) - current password
@@ -3340,7 +3584,7 @@ Sends a confirmation email to the submitted email address. If the activation lin
 
 #### Resend Email Activation [POST /settings/general/resend_email_activation]
 
-If there is a pending email change request for the user, this action will send an email with a new activation link to the pending email address. This action imposes a 12-hour minimum delay between emails, and will not resend if the last email was sent less than 12 hours ago.
+If there is a pending email change request for the user, this action will send another email with a new activation link to the pending email address. This action does nothing if the last email was sent less than 12 hours ago.
 
 - Response 201 (application/json)
 
@@ -3349,7 +3593,7 @@ If there is a pending email change request for the user, this action will send a
 
 #### Discard Email Activation [POST /settings/general/reject_change]
 
-If there is a pending email change request for the user, this action cancels that request.
+If there is a pending email change request for the user, this action cancels that request. The activation link in the sent confirmation email is deactivated, and will no longer do anything if visited.
 
 - Response 201 (application/json)
 
@@ -3360,63 +3604,63 @@ If there is a pending email change request for the user, this action cancels tha
 
 The non-general setting endpoints deal with remembering a user's preferences for how various parts of the Ribose platform should behave. The full list of setting types and the configurations they take are as follows:
 
--*Setting::Personal** - affect site-wide behavior for the user
+**Setting::Personal** - affect site-wide behavior for the user
 - `help_getting_started` (boolean) - determines whether the user needs to go through the initial tutorial upon signing in. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
 - `help_change_space_color` (boolean) - determines whether the tutorial on changing space color should be shown. Starts as true in new user accounts, and later changes to false once the user has completed the tutorial.
 - `chat_show_offline_users` (boolean) - sets whether the chat widget shows users who are offline. Default is true.
 - `chat_show_spaces` (boolean) - sets whether the Shared Spaces Indicator should be shown in chat. Default is false.
 - `chat_sound` (boolean) - sets whether a sound should play when the user receives a chat message. Default is true.
-- `theme_id` (number) - integer that references a Theme object id that the user has access to. Default is 1, the default Ribose theme.
-- `time_zone` (string) - sets the user's time zone. This configuration accepts any value defined by the public domain  IANA Time Zone Database (https://www.iana.org/time-zones). Default is "Etc/UTC".
+- `theme_id` (number) - integer that references a Theme object id to use. Default is 1, the id of the default Ribose theme. Custom themes have their own ids. Users are not allowed to use other users' themes.
+- `time_zone` (string) - sets the user's time zone. This configuration accepts any value defined by the public domain IANA Time Zone Database (https://www.iana.org/time-zones). Default is "Etc/UTC".
 - `time_zone_autodetect` (string) - sets whether time zone should be automatically detected. Takes either "always" or "prompt". Default is "always".
 - `time_format` (string) - sets the format used to display time. Takes either "%I:%M%p" or "%H:%M". Default is "%I:%M%p".
 - `date_format` (string) - sets the format used to display dates. Only accepts values from "%d/%m/%Y", "%m/%d/%Y", "%d.%m.%Y", "%m.%d.%Y", or "%Y-%m-%d". Default is "%d/%m/%Y".
-- `block_concurrent_signin` (false) - sets whether the user's account is prevented from signing in concurrently from multiple devices. Default is false, which does allow concurrent sign in.
+- `block_concurrent_signin` (false) - sets whether the user's account is prevented from signing in concurrently from multiple devices. Default is false, which allows concurrent sign in.
 - `connection_request_email` (boolean) - sets whether an email notification is sent when the user receives a connection request. Default is true.
 - `space_invitation_email` (boolean) - sets whether an email notification is sent when the user receives a space invitation. Default is true.
 - `connection_request_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's connection request. Default is true.
 - `space_invitation_acceptance_email` (boolean) - sets whether an email notification is sent when someone accepts the user's space invitation. Default is true.
 - `inbox_message_email` (boolean) - sets whether an email notification is sent when the user receives an inbox message. Default is true.
 
--*Setting::Space** - affect all members of a specific space; only accessible by admins or the owner
+**Setting::Space** - affect all members of a specific space; only accessible by admins or the owner
 - `email_notifications` (boolean) - determines whether space members are sent email notifications about activities in the space. Default is true.
 - `realtime_notifications` (boolean) - determines whether space members are sent realtime notifications about activities in the space. Default is true.
 
--*Setting::UserSpace** - affect how a specific space behaves for the user (another user might have different settings for the same space)
+**Setting::UserSpace** - affect how a specific space behaves for the user (another user might have different settings for the same space)
 - `space_color` (string) - sets the color of the space's default avatar and some interface elements. Only accepts values from #E1EBE8, #D8E3EC, #EBE1E2, #E59C7D, #F2EFD1, DADBBC, #A3B7B9, or #C5C3B2. Default is #E1EBE8.
 - `email_notification_type` (number) - sets whether email notifications about activity in the space are sent to the user. Only accepts 0 for no notifications, or 2 for email notifications. Default is 2 which sends the email notifications.
 
--*Setting::UserApp::Calendar** - affect how calendars behave for the user
+**Setting::UserApp::Calendar** - affect how calendars behave for the user
 - `week_start_day` (integer) - integer representing the starting day of the week. Only accepts 0 to 6. Default is 1 which stands for Monday.
-- `show_weekends` (boolean) - determines whether weekends are shown in the calendar. Default is true.
-- `work_day_begin` (number) - integer representing the hour that the calendar will treat as the start of a work day. Only accepts numbers 0 to 23. Default is 9 which stands for 9 a.m.
-- `work_day_end` (number) - integer representing the hour that the calendar will treat as the end of a work day. Only accepts numbers 0 to 23. Default is 18 which stands for 6 p.m.
-- `weekends` (number) - array of integers representing days that the calendar will treat as weekends. Only accepts numbers 0 to 6. Default is [0, 6] which stands for Saturday & Sunday.
-- `calendars_disabled` (number) - array of calendar ids; events from calendars listed here will not be displayed. Default is an empty array.
+- `show_weekends` (boolean) - determines whether weekends are shown in calendars. Default is true.
+- `work_day_begin` (number) - integer representing the hour that calendars will treat as the start of a work day. Only accepts numbers 0 to 23. Default is 9 which stands for 9 a.m.
+- `work_day_end` (number) - integer representing the hour that calendars will treat as the end of a work day. Only accepts numbers 0 to 23. Default is 18 which stands for 6 p.m.
+- `weekends` (number) - array of integers representing days that calendars will treat as weekends. Only accepts numbers 0 to 6. Default is [0, 6] which stands for Saturday & Sunday.
+- `calendars_disabled` (number) - array of calendar ids; events from calendars listed here will be hidden. Default is an empty array.
 
--*Setting::UserApp::Conversation**
+**Setting::UserApp::Conversation**
 - `per_page` (number) - number of threads to display in each page when browsing the conversation section of spaces. Default is 50.
 
--*Setting::UserApp::File**
+**Setting::UserApp::File**
 - `per_page` (number) - number of files to display in each page when browsing the file section of spaces. Default is 100.
 
--*Setting::UserApp::Inbox**
+**Setting::UserApp::Inbox**
 - `per_page` (number) - number of messages to display in each page when browsing the inbox. Default is 50.
 
--*Setting::UserApp::People**
-- `per_page` (number) - number of . Default is 90.
+**Setting::UserApp::People**
+- `per_page` (number) - number of people to display in each page when broswing the contacts page. Default is 90.
 
--*Setting::UserApp::Search**
+**Setting::UserApp::Search**
 - `per_page` (number) - number of results to display in each page when searching. Default is 25.
 
--*Setting::UserApp::Wiki**
+**Setting::UserApp::Wiki**
 - `per_page` (number) - number of entries to display in each page when browsing space wikis. Default is 50.
 
--*Setting::Widget::Notification**
+**Setting::Widget::Notification**
 - `disabled_spaces` (string) - array of space ids; listed Spaces will not generate any notifications for the user. Default is an empty array.
 
--*Setting::Widget::Weather**
-- `order` (number) - array of Weather Widget object ids; each Weather Widget holds a saved weather location in the sidebar widget, and this configurations saves the order in which they appear. Default is an empty array.
+**Setting::Widget::Weather**
+- `order` (number) - array of Weather Widget object ids; each Weather Widget holds a saved weather location in the sidebar widget, and this configuration saves the order in which they appear. Default is an empty array.
 
 #### Get all settings [GET]
 
@@ -3453,7 +3697,7 @@ Creates a new setting object, obeying the following restrictions:
 - **Setting::UserApps** - each user can only have 1 UserApp setting of each type (e.g. only 1 Setting::UserApp::Conversation per user). A UserApp setting must also have a user_id that references the user.
 - **Setting::Widget** - each user can only have 1 Widget setting of each type (e.g. only 1 Setting::Widget::Notification per user). A Widget setting must also have a widget_id that references the corresponding Widget object (e.g. a Widget::Weather object for a Setting::Widget::Weather object).
 
-If a create request conflicts with the above quantity restrictions, i.e. if a user tries to create a setting that already exists for them such as a Personal setting or their UserApp::Wiki setting, then this action will simply return the existing setting without any changes, behaving much like a get request for an individual setting. This will not change any of the setting's configuration values no matter what values were submitted in the create request. To change an existing setting's configuration values, perform an update request instead.
+If a create request conflicts with the above quantity restrictions, i.e. if a user tries to create a setting that already exists for them such as a Personal setting or their UserApp::Wiki setting, then this action will simply return the existing setting without any changes, behaving much like a `GET` request for an individual setting. This will not change any of the setting's configuration values no matter what values were submitted in the create request. To change an existing setting's configuration values, perform an update request instead.
 
 - Attributes
     - `setting` (object) - object in which config keys and their new values are defined. Permitted configurations differ from one setting type to another (see main "Settings" entry).
