@@ -202,3 +202,55 @@
 - `id`: 109EF27E-B8BD-4CAC-9DC5-4F00BD2444ED (uuid)
 - `name`: Jane Blogg (string) - User's display name
 - `mutual_spaces` (array[uuid]) - list of mutual Space UUIDs
+
+### Attachment (object)
+
+- `id`: 21337 (id)
+- `name`: dankmeme.jpg (string)
+- `content_type`: image/jpeg (string)
+- `content_size`: 31337 (number)
+- `icon_path`: /attachments/21337?type=usual (string)
+- `icon_processed`: true (boolean)
+
+### Conversation (object)
+
+- `id`: 033ecb76-ad6b-4f7b-aa85-4ee165d71c71 (uuid)
+- `space_id`: 76f3e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+- `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+- `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+- `name`: Test message (string)
+- `tag_list` (array[string])
+- `published`: false (boolean)
+- `is_favorite`: false (boolean)
+- `is_read`: true (boolean)
+- `allow_publish`: false (boolean)
+- `number_of_messages`: 5 (number)
+- `allow_edit`: true (boolean)
+- `allow_delete`: true (boolean)
+- `allow_comment`: true (boolean)
+- `contents`: <p>Hello world</p> (string)
+- `attachments_listed` (array[Attachment])
+- `user` (object) - attributes of this Space member
+    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+    - `name` (string) - Conversation's display name
+
+### ConversationMessage (object)
+
+- `id`: 033ecb76-ad6b-4f6b-aa85-4ee165d71c71 (uuid) - message 
+  UUID
+- `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+- `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+- `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+- `contents`: <p>Hello world</p> (string)
+- `attachments_listed` (array[Attachment])
+- `attachments_inline` (array[Attachment])
+- `allow_edit`: true (boolean)
+- `allow_delete`: true (boolean)
+- `user` (object) - attributes of the author
+    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+    - `name` (string) - Conversation's display name
+

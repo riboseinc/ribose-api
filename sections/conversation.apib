@@ -1,0 +1,189 @@
+## Group Conversation
+
+### Conversations [/spaces/{space_id}/conversation/conversations]
+
+- Parameters
+    - `space_id` (uuid)
+
+#### Create a conversation [POST]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `published`: false (boolean, optional)
+            - `tag_list` (array[string], optional)
+            - `name`: My conversation (string,required) - Title of the thread
+
+- Response 201 (application/json)
+    - Attributes (object)
+
+#### Retrieve a conversation collection [GET /spaces/{space_id}/conversation/conversations{?start,s,additional_data}]
+
+- Parameters
+    - `start`: 0 (number, optional) - pagination starting point (default = 0)
+    - `s` (string) - pagination synchronization string
+    - `additional_data` (boolean) - `true` : endpoint-specific data
+
+- Request Retrieve only the conversation collection (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => object ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => object ID
+        - `objects` (object)
+            - *123456 (string)* (object) - an object indexed by object ID
+                - `id`: 033ecb76-ad6b-4f7b-aa85-4ee165d71c71 (uuid)
+                - `space_id`: 76f3e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+                - `created_at`: 2017-11-08T14:26:14.000+01:00 (DatetimeString)
+                - `updated_at`: 2017-12-18T14:33:26.000+01:00 (DatetimeString)
+                - `name`: Test message (string)
+                - `tag_list` (array[string])
+                - `published`: false (boolean)
+                - `is_favorite`: false (boolean)
+                - `is_read`: true (boolean)
+                - `allow_publish`: false (boolean)
+                - `number_of_messages`: 5 (number)
+                - `allow_edit`: true (boolean)
+                - `allow_delete`: true (boolean)
+                - `allow_comment`: true (boolean)
+                - `contents`: <p>Hello world</p> (string)
+                - `attachments_listed`: [] (array)
+                - `all_attachments`: [] (array)
+                - `user` (object) - attributes of the author
+                    - `id`: f00f51a6-7f38-5d7f-9a3a-07c7607f9eb3 (uuid) - Ribose user ID
+                    - `connected`: true (boolean) - `true` iff this Space member is a connection of current user
+                    - `mutual_spaces` (array[uuid]) - UUIDs of mutual Spaces
+                    - `name` (string) - Conversation's display name
+
+### Conversation [/spaces/{space_id}/conversation/conversations/{conversation_id}]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+
+#### Show a conversation [GET]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `conversation` (Conversation)
+
+#### Update a conversation [PUT]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `published`: false (boolean, optional)
+            - `tag_list` (array[string], optional)
+            - `name`: My conversation (string,required) - Title of the thread
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `conversation` (Conversation)
+
+#### Delete a conversation [DELETE]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Body
+
+            {}
+
+#### Mark a conversation as favorite [PUT /spaces/{space_id}/conversation/conversations/{conversation_id}/mark_as_favorite]
+
+- Request (application/json)
+    - Attributes (object)
+        - `conversation` (object)
+            - `is_favorite` (enum[string], required)
+                - Members
+                    - true
+                    - false
+
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `id` (uuid) - UUID of the conversation marked / unmarked
+        - `is_favorite` (boolean) - `true` iff it's marked as favorite
+
+### Conversation messages [/spaces/{space_id}/conversation/conversations/{conversation_id}/messages]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+
+#### Create a conversation message [POST]
+
+- Request (application/json)
+    - Attributes (object)
+        - `message` (object)
+            - `contents`: <p>Hello there</p> (string)
+            - `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+            - `new_attachment` (object)
+                - `id` (array[id]) - array of ID of the attachments
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+
+#### Retrieve a conversation message collection [GET /spaces/{space_id}/conversation/conversations/{conversation_id}/messages{?start,length,s}]
+
+- Parameters
+    - `length`: 10 (number, optional) - how many objects to return (default = 10)
+    - `start`: 0 (number, optional) - pagination starting point (default = 0)
+    - `s` (string) - pagination synchronization string
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `requested_at` (number) - token representing a timestamp of this request
+        - `total` (number) - total number of objects
+        - `indices` (object) - map of { Int => object ID }, for pagination purposes
+            - *3 (string)* (id) - integer order on current page => object ID
+        - `objects` (object)
+            - *123456 (string)* (ConversationMessage) - an object indexed by object ID
+
+### Conversation message [/spaces/{space_id}/conversation/conversations/{conversation_id}/messages/{message_id}]
+
+- Parameters
+    - `space_id` (uuid) - UUID of space
+    - `conversation_id` (uuid) - UUID of conversation thread
+    - `message_id` (uuid) - UUID of conversation message
+
+#### Show a conversation message [GET]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+#### Update a conversation message [PUT]
+
+- Request (application/json)
+    - Attributes (object)
+        - `message` (object)
+            - `contents`: <p>Hello there</p> (string)
+            - `conversation_id`: 76f4e7c5-0209-5c1f-ab0e-91b69ec14de7 (uuid)
+            - `new_attachment` (object)
+                - `id` (array[id]) - array of ID of the attachments
+
+- Response 200 (application/json)
+    - Attributes (object)
+        - `message` (ConversationMessage)
+
+#### Delete a conversation message [DELETE]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Body
+
+            {}
