@@ -2849,7 +2849,7 @@ This is the Ribose API.
 - Parameters
     - `invitation_id` (id)
 
-#### Resending [POST /invitations/to_new_member/{invitation_id}/resend]
+#### Resending an Invitation to Ribose [POST /invitations/to_new_member/{invitation_id}/resend]
 
     - inviter-only action
     - time throttled
@@ -2870,7 +2870,7 @@ This is the Ribose API.
         - error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
 
 
-#### Creating [POST /invitations/to_new_member/mass_create]
+#### Creating an Invitation to Ribose [POST /invitations/to_new_member/mass_create]
 
 - Request (application/json)
 
@@ -2898,7 +2898,7 @@ This is the Ribose API.
 
 - Response 403 (application/json)
 
-#### Retrieving [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
+#### Retrieving a collection of Invitation to Ribose [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -2956,7 +2956,7 @@ This is the Ribose API.
 - Parameters
     - `invitation_id` (id)
 
-#### Deleting / Cancelling [DELETE]
+#### Deleting / Cancelling an Invitation to Connection [DELETE]
 
     - an inviter-only action
 
@@ -2972,7 +2972,7 @@ This is the Ribose API.
 
 - Response 403 (application/json)
 
-#### Accepting / Rejecting [PUT]
+#### Accepting / Rejecting an Invitation to Connection [PUT]
 
     - an invitee-only action
 
@@ -2993,7 +2993,7 @@ This is the Ribose API.
 - Response 422 (application/json)
 
 
-#### Retrieving [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
+#### Retrieving a collection of Invitation to Connection [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -3045,7 +3045,7 @@ This is the Ribose API.
 
 - Response 422 (application/json)
 
-#### Creating [POST /invitations/to_connection/mass_create]
+#### Creating an Invitation to Connection [POST /invitations/to_connection/mass_create]
 
 - Request (application/json)
 
@@ -3082,7 +3082,7 @@ This is the Ribose API.
     - `invitation_id` (id)
 
 
-#### Deleting a.k.a. Cancelling [DELETE]
+#### Deleting a.k.a. Cancelling an Invitation to Space [DELETE]
 
     - an inviter-only action
 
@@ -3096,7 +3096,7 @@ This is the Ribose API.
 
 - Response 422 (application/json)
 
-#### Updating / Accepting / Rejecting [PUT]
+#### Updating / Accepting / Rejecting an Invitation to Space [PUT]
 
 - Request Accepting / Rejecting a.k.a Ignoring (application/json)
 
@@ -3130,7 +3130,7 @@ This is the Ribose API.
 
         - `to_space` (InvitationToSpace)
 
-#### Retrieving [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
+#### Retrieving a collection of Invitations to Space [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -3160,7 +3160,7 @@ This is the Ribose API.
 
 - Response 422 (application/json)
 
-#### Mass creating [POST /spaces/{space_id}/invitations/to_space/mass_create]
+#### Mass creating Invitations to Space [POST /spaces/{space_id}/invitations/to_space/mass_create]
 
 - Parameters
     - `space_id` (uuid) - UUID of the Space under which invitations are to be created
@@ -3195,7 +3195,7 @@ This is the Ribose API.
                 - `user_ids`
                     - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
 
-#### Creating [POST /invitations/to_space]
+#### Creating an Invitation to Space [POST /invitations/to_space]
 
 - Request (application/json)
 
@@ -3216,7 +3216,7 @@ This is the Ribose API.
 
 ### Join Space Requests [/invitations/join_space_request]
 
-#### Creating [POST]
+#### Creating a Join Space Request [POST]
 
 - Request (application/json)
 
@@ -3232,7 +3232,7 @@ This is the Ribose API.
 
     - Attributes (JoinSpaceRequest)
 
-#### Retrieving [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
+#### Retrieving a collection [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -3263,7 +3263,7 @@ This is the Ribose API.
 - Parameters
     - `invitation_id` (id)
 
-#### Retrieving [GET]
+#### Retrieving a Join Space Request [GET]
 
 - Request (application/json)
 
@@ -3274,7 +3274,7 @@ This is the Ribose API.
         - `join_space_request` (InvitationToSpace)
 
 
-#### Updating / Accepting / Rejecting [PUT]
+#### Updating / Accepting / Rejecting a Join Space Request [PUT]
 
 - Request Accepting / Rejecting a.k.a Ignoring (application/json)
 

@@ -5,7 +5,7 @@
 - Parameters
     - `invitation_id` (id)
 
-#### Resending [POST /invitations/to_new_member/{invitation_id}/resend]
+#### Resend an Invitation to Ribose [POST /invitations/to_new_member/{invitation_id}/resend]
 
     - inviter-only action
     - time throttled
@@ -26,7 +26,7 @@
         - error_message: "Relax. You'll be able to resend the invitation 24 hours after your previous attempt." (string) - the error message
 
 
-#### Creating [POST /invitations/to_new_member/mass_create]
+#### Create an Invitation to Ribose [POST /invitations/to_new_member/mass_create]
 
 - Request (application/json)
 
@@ -54,7 +54,7 @@
 
 - Response 403 (application/json)
 
-#### Retrieving [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
+#### Retrieve a collection of Invitation to Ribose [GET /invitations/to_new_member{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -112,7 +112,7 @@
 - Parameters
     - `invitation_id` (id)
 
-#### Deleting / Cancelling [DELETE]
+#### Delete / Cancel an Invitation to Connection [DELETE]
 
     - an inviter-only action
 
@@ -128,7 +128,7 @@
 
 - Response 403 (application/json)
 
-#### Accepting / Rejecting [PUT]
+#### Accept / Reject an Invitation to Connection [PUT]
 
     - an invitee-only action
 
@@ -138,8 +138,8 @@
         - `invitation` (object)
             - `state` (enum[number])
                 - Members
-                    - 1 - Accepting
-                    - 2 - Rejecting (ignoring)
+                    - 1 - Accept
+                    - 2 - Reject (ignore)
 
 - Response 200 (application/json)
     - Attributes (InvitationToConnection)
@@ -149,7 +149,7 @@
 - Response 422 (application/json)
 
 
-#### Retrieving [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
+#### Retrieve a collection of Invitation to Connection [GET /invitations/to_connection{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -201,7 +201,7 @@
 
 - Response 422 (application/json)
 
-#### Creating [POST /invitations/to_connection/mass_create]
+#### Create an Invitation to Connection [POST /invitations/to_connection/mass_create]
 
 - Request (application/json)
 
@@ -238,7 +238,7 @@
     - `invitation_id` (id)
 
 
-#### Deleting a.k.a. Cancelling [DELETE]
+#### Delete a.k.a. Cancel an Invitation to Space [DELETE]
 
     - an inviter-only action
 
@@ -252,9 +252,9 @@
 
 - Response 422 (application/json)
 
-#### Updating / Accepting / Rejecting [PUT]
+#### Update / Accept / Reject an Invitation to Space [PUT]
 
-- Request Accepting / Rejecting a.k.a Ignoring (application/json)
+- Request Accept / Reject a.k.a Ignore (application/json)
 
     Must be performed by invitee.
 
@@ -262,8 +262,8 @@
         - `invitation` (object)
             - `state` (enum[number])
                 - Members
-                    - 1 - Accepting
-                    - 2 - Rejecting (ignoring)
+                    - 1 - Accept
+                    - 2 - Reject (ignore)
 
 - Response 200 (application/json)
 
@@ -271,7 +271,7 @@
 
         - `to_space` (InvitationToSpace)
 
-- Request Updating pre-assigned role (application/json)
+- Request Update pre-assigned role (application/json)
 
     Must be performed by inviter.
 
@@ -286,7 +286,7 @@
 
         - `to_space` (InvitationToSpace)
 
-#### Retrieving [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
+#### Retrieve a collection of Invitations to Space [GET /invitations/to_space{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -316,7 +316,7 @@
 
 - Response 422 (application/json)
 
-#### Mass creating [POST /spaces/{space_id}/invitations/to_space/mass_create]
+#### Mass create Invitations to Space [POST /spaces/{space_id}/invitations/to_space/mass_create]
 
 - Parameters
     - `space_id` (uuid) - UUID of the Space under which invitations are to be created
@@ -351,7 +351,7 @@
                 - `user_ids`
                     - *2d6696ad-f8ec-42a2-80c4-1ebd8196ce9c (uuid)* (object) - Array of error strings indexed by User UUIDs
 
-#### Creating [POST /invitations/to_space]
+#### Create an Invitation to Space [POST /invitations/to_space]
 
 - Request (application/json)
 
@@ -372,7 +372,7 @@
 
 ### Join Space Requests [/invitations/join_space_request]
 
-#### Creating [POST]
+#### Create a Join Space Request [POST]
 
 - Request (application/json)
 
@@ -388,7 +388,7 @@
 
     - Attributes (JoinSpaceRequest)
 
-#### Retrieving a collection [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
+#### Retrieve a collection [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
 
 - Parameters
 
@@ -419,7 +419,7 @@
 - Parameters
     - `invitation_id` (id)
 
-#### Retrieving an item [GET]
+#### Retrieve a Join Space Request [GET]
 
 - Request (application/json)
 
@@ -430,9 +430,9 @@
         - `join_space_request` (InvitationToSpace)
 
 
-#### Updating / Accepting / Rejecting [PUT]
+#### Update / Accept / Reject a Join Space Request [PUT]
 
-- Request Accepting / Rejecting a.k.a Ignoring (application/json)
+- Request Accept / Reject a.k.a Ignore (application/json)
 
     Must be performed by invitee.
 
@@ -440,8 +440,8 @@
         - `invitation` (object)
             - `state` (enum[number])
                 - Members
-                    - 1 - Accepting
-                    - 2 - Rejecting (ignoring)
+                    - 1 - Accept
+                    - 2 - Reject (ignore)
 
 - Response 200 (application/json)
 
@@ -449,7 +449,7 @@
 
         - `join_space_request` (InvitationToSpace)
 
-- Request Updating pre-assigned role (application/json)
+- Request Update pre-assigned role (application/json)
 
     Must be performed by Space Admin.
 
