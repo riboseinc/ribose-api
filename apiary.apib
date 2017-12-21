@@ -3214,10 +3214,64 @@ This is the Ribose API.
 
         - `to_space` (InvitationToSpace)
 
+### Join Space Requests [/invitations/join_space_request]
+
+#### Creating [POST]
+
+- Request (application/json)
+
+    - Attributes (object)
+
+        - `invitation` (object)
+            - `state`: 0 (number, fixed)
+            - `type`:  Invitation::JoinSpaceRequest (string, fixed)
+            - `space_id` (uuid) - Space ID
+            - `body` (string) - Body of invitation message to the invitees
+
+- Response 200 (application/json)
+
+    - Attributes (JoinSpaceRequest)
+
+#### Retrieving [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
+
+- Parameters
+
+    - `view`: received (enum[string]) - which view to retrieve
+        - Members
+            - received
+            - sent
+    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
+    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
+    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
+        - Members
+            - created_at
+            - updated_at
+    - `direction` (enum[string], optional) - pagination sorting direction. Optional
+        - Members
+            - desc
+            - asc
+    - `s` (string) - pagination synchronization string
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Attributes (JoinSpaceRequests)
+
 ### Join Space Request [/invitations/join_space_request/{invitation_id}]
 
 - Parameters
     - `invitation_id` (id)
+
+#### Retrieving [GET]
+
+- Request (application/json)
+
+- Response 200 (application/json)
+
+    - Attributes (object)
+
+        - `join_space_request` (InvitationToSpace)
 
 
 #### Updating / Accepting / Rejecting [PUT]
@@ -3254,47 +3308,7 @@ This is the Ribose API.
 
         - `join_space_request` (InvitationToSpace)
 
-#### Retrieving [GET /invitations/join_space_request{?view,start,length,s,order_by,direction}]
 
-- Parameters
-
-    - `view`: received (enum[string]) - which view to retrieve
-        - Members
-            - received
-            - sent
-    - `length`: 10 (number, optional) - how many objects to return (default = 10). Optional
-    - `start`: 0 (number, optional) - pagination starting point (default = 0). Optional
-    - `order_by` (enum[string], optional) - pagination sorting attribute. Optional
-        - Members
-            - created_at
-            - updated_at
-    - `direction` (enum[string], optional) - pagination sorting direction. Optional
-        - Members
-            - desc
-            - asc
-    - `s` (string) - pagination synchronization string
-
-- Request (application/json)
-
-- Response 200 (application/json)
-
-    - Attributes (JoinSpaceRequests)
-
-#### Creating [POST /invitations/join_space_request]
-
-- Request (application/json)
-
-    - Attributes (object)
-
-        - `invitation` (object)
-            - `state`: 0 (number, fixed)
-            - `type`:  Invitation::JoinSpaceRequest (string, fixed)
-            - `space_id` (uuid) - Space ID
-            - `body` (string) - Body of invitation message to the invitees
-
-- Response 200 (application/json)
-
-    - Attributes (JoinSpaceRequest)
 ## Group Search
 
 ### Search [/search]
